@@ -817,34 +817,34 @@ def challenge_page():
     display_progress_bar(st.session_state.step)
         
         # 1단계: 참여자 정보 입력
-        if st.session_state.step == 1:
-            st.markdown('<div class="section-header">🌱 참여자 정보 입력</div>', unsafe_allow_html=True)
-            
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                name = st.text_input("이름", key="name", placeholder="이름을 입력하세요")
-                gender = st.selectbox("성별", ["선택하세요", "남성", "여성", "기타"], key="gender")
-            
-            with col2:
-                age = st.number_input("연령", min_value=1, max_value=120, key="age", value=25)
-                organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
-            
-            st.markdown("<br>", unsafe_allow_html=True)
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                if st.button("🌿 다음 단계로", key="step1_next", use_container_width=True):
-                    if name and gender != "선택하세요" and age and organization:
-                        st.session_state.participant_info = {
-                            "name": name,
-                            "gender": gender,
-                            "age": age,
-                            "organization": organization
-                        }
-                        st.session_state.step = 2
-                        st.rerun()
-                    else:
-                        st.error("모든 정보를 입력해주세요.")
+    if st.session_state.step == 1:
+        st.markdown('<div class="section-header">🌱 참여자 정보 입력</div>', unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            name = st.text_input("이름", key="name", placeholder="이름을 입력하세요")
+            gender = st.selectbox("성별", ["선택하세요", "남성", "여성", "기타"], key="gender")
+        
+        with col2:
+            age = st.number_input("연령", min_value=1, max_value=120, key="age", value=25)
+            organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
+        
+        st.markdown("<br>", unsafe_allow_html=True)
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            if st.button("🌿 다음 단계로", key="step1_next", use_container_width=True):
+                if name and gender != "선택하세요" and age and organization:
+                    st.session_state.participant_info = {
+                        "name": name,
+                        "gender": gender,
+                        "age": age,
+                        "organization": organization
+                    }
+                    st.session_state.step = 2
+                    st.rerun()
+                else:
+                    st.error("모든 정보를 입력해주세요.")
         
         # 2단계: 브랜드 소개
         elif st.session_state.step == 2:
