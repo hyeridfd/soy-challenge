@@ -725,10 +725,10 @@ def challenge_page():
             
             with col1:
                 name = st.text_input("이름", key="name", placeholder="이름을 입력하세요")
-                gender = st.selectbox("성별", ["선택하세요", "남성", "여성", "기타"], key="gender")
+                gender = st.selectbox("성별", ["선택하세요", "남성", "여성"], key="gender")
             
             with col2:
-                age = st.number_input("연령", min_value=1, max_value=120, key="age", value=25)
+                age = st.number_input("연령", min_value=1, max_value=120, key="age", value=35)
                 organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
             
             st.markdown("<br>", unsafe_allow_html=True)
