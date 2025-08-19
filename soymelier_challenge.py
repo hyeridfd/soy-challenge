@@ -195,7 +195,7 @@ st.markdown("""
         background: rgba(255, 255, 255, 0.9);
         border-radius: 20px;
         padding: 25px;
-        margin: 10px 0;
+        #margin: px 0;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         border: 2px solid rgba(46, 204, 113, 0.1);
         transition: all 0.3s ease;
