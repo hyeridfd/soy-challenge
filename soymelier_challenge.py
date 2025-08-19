@@ -1152,7 +1152,7 @@ def show_organization_analysis(organization_filter):
                     
                     # 완벽한 정답자 표시
                     if all_correct_participants:
-                        st.success(f"🏆 **완벽한 정답자 ({len(all_correct_participants)}명):** {', '.join(all_correct_participants)}")
+                        st.success(f"🏆 **완벽한 두믈리에 ({len(all_correct_participants)}명):** {', '.join(all_correct_participants)}")
                     else:
                         st.info("🎯 아직 네 개 브랜드를 모두 맞춘 참여자가 없습니다.")
                     
