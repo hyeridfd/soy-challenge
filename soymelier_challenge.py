@@ -597,7 +597,13 @@ def create_taste_profile_radar(taste_data, title):
     values = [taste_data.get('진함', 0), taste_data.get('단맛', 0)]
     
     fig = go.Figure()
-    
+    # create_taste_profile_radar 함수에서
+    title={
+        'text': title,
+        'x': 0.5,           # 가운데 정렬 (기존에 있었음)
+        'xanchor': 'center', # 🆕 앵커를 중심으로 설정
+        'font': {'size': 16, 'color': '#27ae60', 'family': 'Noto Sans KR'}
+    }
     fig.add_trace(go.Scatterpolar(
         r=values,
         theta=categories,
@@ -764,10 +770,8 @@ def challenge_page():
                     #     st.markdown('</div>', unsafe_allow_html=True)
 
                     # 수정 후 (간단하게)
-                    col_left, col_center, col_right = st.columns([0.5, 2, 0.5])
-                    with col_center:
-                        fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
-                        st.plotly_chart(fig, use_container_width=True)
+                    fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
+                    st.plotly_chart(fig, use_container_width=True)
 
                     # 맛 프로필 바 차트
                     cleanness = BRANDS[brand]["taste_profile"]["진함"]
