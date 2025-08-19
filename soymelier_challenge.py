@@ -835,7 +835,7 @@ def challenge_page():
                                 help="1: 매우 깔끔함, 5: 매우 진함",
                                 key=f"{sample}_cleanness"
                             )
-                            st.markdown(f"현재 값: {cleanness}/5 {'🟢' * cleanness}{'⚪' * (5-cleanness)}")
+                            st.markdown(f"현재 값: {cleanness}/5 {'🔵' * cleanness}{'⚪' * (5-cleanness)}")
                             
                             # 단맛 슬라이더
                             sweetness = st.slider(
@@ -844,7 +844,7 @@ def challenge_page():
                                 help="1: 달지 않음, 5: 달큰함",
                                 key=f"{sample}_sweetness"
                             )
-                            st.markdown(f"현재 값: {sweetness}/5 {'🟢' * sweetness}{'⚪' * (5-sweetness)}")
+                            st.markdown(f"현재 값: {sweetness}/5 {'🔵' * sweetness}{'⚪' * (5-sweetness)}")
                             
                             # 브랜드 선택
                             available_brands = get_available_brands(sample)
