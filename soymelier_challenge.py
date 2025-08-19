@@ -485,19 +485,19 @@ st.markdown("""
 BRANDS = {
     "밥스누 약콩두유": {
         "description": "100% 국산 약콩을 통째로, 콩 본연의 건강한 맛",
-        "taste_profile": {"깔끔함": 4, "단맛": 2}  # 1-5 스케일
+        "taste_profile": {"진함": 4, "단맛": 2}  # 1-5 스케일
     },
     "황성주 검은콩두유": {
         "description": "국내산 검은콩, 검은콩의 고소하고 진한 맛",
-        "taste_profile": {"깔끔함": 3, "단맛": 3}
+        "taste_profile": {"진함": 3, "단맛": 3}
     },
     "매일두유": {
         "description": "원액 두유 99.9%, 건강하고 고소한 맛",
-        "taste_profile": {"깔끔함": 2, "단맛": 1}
+        "taste_profile": {"진함": 2, "단맛": 1}
     },
     "베지밀 두유": {
         "description": "오랜 역사와 대중성, 균형 잡히고 친숙한 부드러운 맛",
-        "taste_profile": {"깔끔함": 3, "단맛": 4}
+        "taste_profile": {"진함": 3, "단맛": 4}
     }
 }
 
@@ -547,29 +547,29 @@ def save_to_gsheet(data):
                 if not all_values or len(all_values) == 0:
                     # 빈 시트인 경우 헤더 추가
                     headers = ['이름', '성별', '연령', '소속', '제출시간',
-                              'A_깔끔함', 'A_단맛', 'A_선택브랜드',
-                              'B_깔끔함', 'B_단맛', 'B_선택브랜드',
-                              'C_깔끔함', 'C_단맛', 'C_선택브랜드',
-                              'D_깔끔함', 'D_단맛', 'D_선택브랜드']
+                              'A_진함', 'A_단맛', 'A_선택브랜드',
+                              'B_진함', 'B_단맛', 'B_선택브랜드',
+                              'C_진함', 'C_단맛', 'C_선택브랜드',
+                              'D_진함', 'D_단맛', 'D_선택브랜드']
                     sheet.append_row(headers)
                     st.info(f"✅ 헤더 생성 완료 (총 {len(headers)}개 컬럼)")
                 elif len(all_values[0]) < 16:
                     # 헤더가 부족한 경우 시트 초기화
                     sheet.clear()
                     headers = ['이름', '성별', '연령', '소속', '제출시간',
-                              'A_깔끔함', 'A_단맛', 'A_선택브랜드',
-                              'B_깔끔함', 'B_단맛', 'B_선택브랜드',
-                              'C_깔끔함', 'C_단맛', 'C_선택브랜드',
-                              'D_깔끔함', 'D_단맛', 'D_선택브랜드']
+                              'A_진함', 'A_단맛', 'A_선택브랜드',
+                              'B_진함', 'B_단맛', 'B_선택브랜드',
+                              'C_진함', 'C_단맛', 'C_선택브랜드',
+                              'D_진함', 'D_단맛', 'D_선택브랜드']
                     sheet.append_row(headers)
                     st.info("✅ 시트가 재초기화되었습니다.")
             except:
                 # 안전한 초기화
                 headers = ['이름', '성별', '연령', '소속', '제출시간',
-                          'A_깔끔함', 'A_단맛', 'A_선택브랜드',
-                          'B_깔끔함', 'B_단맛', 'B_선택브랜드',
-                          'C_깔끔함', 'C_단맛', 'C_선택브랜드',
-                          'D_깔끔함', 'D_단맛', 'D_선택브랜드']
+                          'A_진함', 'A_단맛', 'A_선택브랜드',
+                          'B_진함', 'B_단맛', 'B_선택브랜드',
+                          'C_진함', 'C_단맛', 'C_선택브랜드',
+                          'D_진함', 'D_단맛', 'D_선택브랜드']
                 sheet.clear()
                 sheet.append_row(headers)
             
@@ -601,8 +601,8 @@ def save_to_gsheet(data):
 
 def create_taste_profile_radar(taste_data, title):
     """Taste Profile 레이더 차트 생성 - 자연 테마"""
-    categories = ['깔끔함', '단맛']
-    values = [taste_data.get('깔끔함', 0), taste_data.get('단맛', 0)]
+    categories = ['진함', '단맛']
+    values = [taste_data.get('진함', 0), taste_data.get('단맛', 0)]
     
     fig = go.Figure()
     
@@ -772,11 +772,11 @@ def challenge_page():
                         st.markdown('</div>', unsafe_allow_html=True)
                     
                     # 맛 프로필 바 차트
-                    cleanness = BRANDS[brand]["taste_profile"]["깔끔함"]
+                    cleanness = BRANDS[brand]["taste_profile"]["진함"]
                     sweetness = BRANDS[brand]["taste_profile"]["단맛"]
                     
                     st.markdown("**맛 특성:**")
-                    st.markdown(f"깔끔함: {'🟢' * cleanness}{'⚪' * (5-cleanness)} ({cleanness}/5)")
+                    st.markdown(f"진함: {'🟢' * cleanness}{'⚪' * (5-cleanness)} ({cleanness}/5)")
                     st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (5-sweetness)} ({sweetness}/5)")
                     st.markdown("<br>", unsafe_allow_html=True)
             
@@ -879,7 +879,7 @@ def challenge_page():
                             if cleanness and sweetness:
                                 with st.container():
                                     st.markdown('<div class="plot-container">', unsafe_allow_html=True)
-                                    taste_data = {"깔끔함": cleanness, "단맛": sweetness}
+                                    taste_data = {"진함": cleanness, "단맛": sweetness}
                                     fig = create_taste_profile_radar(taste_data, f"{sample} 두유 평가")
                                     st.plotly_chart(fig, use_container_width=True)
                                     st.markdown('</div>', unsafe_allow_html=True)
@@ -916,7 +916,7 @@ def challenge_page():
                     if st.button("🌱 평가 완료하기", key="step3_complete", use_container_width=True):
                         for sample in samples:
                             st.session_state.taste_evaluations[sample] = {
-                                "깔끔함": st.session_state[f"{sample}_cleanness"],
+                                "진함": st.session_state[f"{sample}_cleanness"],
                                 "단맛": st.session_state[f"{sample}_sweetness"],
                                 "선택브랜드": st.session_state[f"{sample}_brand"]
                             }
@@ -948,7 +948,7 @@ def challenge_page():
                 eval_data = st.session_state.taste_evaluations[sample]
                 results_data.append({
                     '샘플': f'{sample} 두유',
-                    '깔끔함 (1-5)': f"{eval_data['깔끔함']}/5 {'🟢' * eval_data['깔끔함']}{'⚪' * (5-eval_data['깔끔함'])}",
+                    '진함 (1-5)': f"{eval_data['진함']}/5 {'🟢' * eval_data['진함']}{'⚪' * (5-eval_data['진함'])}",
                     '단맛 (1-5)': f"{eval_data['단맛']}/5 {'🟢' * eval_data['단맛']}{'⚪' * (5-eval_data['단맛'])}",
                     '예상 브랜드': eval_data['선택브랜드']
                 })
@@ -973,7 +973,7 @@ def challenge_page():
                     for sample in ['A', 'B', 'C', 'D']:
                         eval_data = st.session_state.taste_evaluations[sample]
                         submit_data.extend([
-                            eval_data['깔끔함'],
+                            eval_data['진함'],
                             eval_data['단맛'],
                             eval_data['선택브랜드']
                         ])
@@ -1078,10 +1078,10 @@ def show_all_data():
             st.info("📋 Google Sheets 연동 후 실제 데이터를 표시합니다 (현재 데모 모드)")
             demo_df = pd.DataFrame(st.session_state.demo_data, 
                                  columns=['이름', '성별', '연령', '소속', '제출시간',
-                                         'A_깔끔함', 'A_단맛', 'A_선택브랜드',
-                                         'B_깔끔함', 'B_단맛', 'B_선택브랜드',
-                                         'C_깔끔함', 'C_단맛', 'C_선택브랜드',
-                                         'D_깔끔함', 'D_단맛', 'D_선택브랜드'])
+                                         'A_진함', 'A_단맛', 'A_선택브랜드',
+                                         'B_진함', 'B_단맛', 'B_선택브랜드',
+                                         'C_진함', 'C_단맛', 'C_선택브랜드',
+                                         'D_진함', 'D_단맛', 'D_선택브랜드'])
             st.dataframe(demo_df, use_container_width=True)
         else:
             st.info("아직 데이터가 없습니다.")
@@ -1145,7 +1145,7 @@ def show_organization_analysis(organization_filter):
                                 correct_count += 1
                             result[f'{sample}_선택'] = selected_brand
                             result[f'{sample}_정답'] = '✅' if is_correct else '❌'
-                            result[f'{sample}_깔끔함'] = row.get(f'{sample}_깔끔함', '')
+                            result[f'{sample}_진함'] = row.get(f'{sample}_진함', '')
                             result[f'{sample}_단맛'] = row.get(f'{sample}_단맛', '')
                         
                         result['총_정답수'] = f"{correct_count}/4"
