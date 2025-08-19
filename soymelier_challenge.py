@@ -105,6 +105,8 @@ st.markdown("""
         font-size: 1.1rem;
         border: none;
         transition: all 0.3s ease;
+        min-width: 250px;
+        padding: 0 35px;
     }
     
     .stTabs [data-baseweb="tab"]:hover {
