@@ -764,8 +764,10 @@ def challenge_page():
                     #     st.markdown('</div>', unsafe_allow_html=True)
 
                     # 수정 후 (간단하게)
-                    fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
-                    st.plotly_chart(fig, use_container_width=True)
+                    col_left, col_center, col_right = st.columns([0.5, 2, 0.5])
+                    with col_center:
+                        fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
+                        st.plotly_chart(fig, use_container_width=True)
 
                     # 맛 프로필 바 차트
                     cleanness = BRANDS[brand]["taste_profile"]["진함"]
