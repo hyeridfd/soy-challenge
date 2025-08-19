@@ -203,11 +203,14 @@ st.markdown("""
         overflow: hidden;
     }
 
-    
-    .brand-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        border-color: rgba(46, 204, 113, 0.3);
+    .brand-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #2ecc71, #27ae60);
     }
     
     .brand-name {
