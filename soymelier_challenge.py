@@ -107,19 +107,6 @@ st.markdown("""
         box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
     }
     
-    /* 컨테이너 스타일 */
-    .content-container {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(15px);
-        border-radius: 25px;
-        padding: 40px;
-        margin: 20px 0;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        border: 1px solid rgba(255,255,255,0.3);
-        position: relative;
-    }
-    
-    
     /* 단계 표시기 */
     .step-container {
         display: flex;
