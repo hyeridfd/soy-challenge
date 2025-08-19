@@ -301,12 +301,6 @@ st.markdown("""
     #     background: #27ae60 !important;
     #     border: 2px solid white !important;
     # }
-
-        /* Streamlit 슬라이더 완전 커스터마이징 */
-    .stSlider [data-baseweb="slider"] {
-        background: #e8f5e8;
-    }
-
     
     /* 핸들 색상 */
     .stSlider [role="slider"] {
