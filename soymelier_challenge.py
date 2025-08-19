@@ -195,7 +195,7 @@ st.markdown("""
         background: rgba(255, 255, 255, 0.9);
         border-radius: 20px;
         padding: 25px;
-        margin: 15px 0;
+        margin: 10px 0;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         border: 2px solid rgba(46, 204, 113, 0.1);
         transition: all 0.3s ease;
@@ -228,7 +228,7 @@ st.markdown("""
     
     .brand-description {
         color: #7f8c8d;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         line-height: 1.6;
     }
     
@@ -244,7 +244,21 @@ st.markdown("""
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
     }
+
+        /* 브랜드 카드 하단 여백 완전 제거 */
+    .stMarkdown {
+        margin-bottom: 0.5rem !important;
+    }
     
+    /* 차트 컨테이너 여백 제거 */
+    .js-plotly-plot {
+        margin-bottom: 0px !important;
+    }
+    
+    /* 컬럼 간격 조정 */
+    .stColumns > div {
+        padding-bottom: 0px !important;
+    }
     .stButton > button:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
@@ -755,7 +769,8 @@ def challenge_page():
                     st.markdown("**맛 특성:**")
                     st.markdown(f"진함: {'🟢' * cleanness}{'⚪' * (5-cleanness)} ({cleanness}/5)")
                     st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (5-sweetness)} ({sweetness}/5)")
-                    st.markdown("<br>", unsafe_allow_html=True)
+                    if i < len(brand_list) - 1:
+                        st.markdown("<br>", unsafe_allow_html=True)
             
             st.info("📝 각 브랜드의 맛 특성을 확인하신 후, 다음 단계에서 실제 시음을 진행해주세요!")
             
