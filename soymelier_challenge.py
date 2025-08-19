@@ -749,12 +749,12 @@ def challenge_page():
             
             for i, brand in enumerate(brand_list):
                 with col1 if i % 2 == 0 else col2:
-                    st.markdown(f"""
-                    <div class="brand-card">
-                        <h3 class="brand-name">{brand}</h3>
-                        <p class="brand-description">{BRANDS[brand]["description"]}</p>
-                    </div>
-                    """, unsafe_allow_html=True)
+                    #st.markdown(f"""
+                    #<div class="brand-card">
+                        #<h3 class="brand-name">{brand}</h3>
+                        #<p class="brand-description">{BRANDS[brand]["description"]}</p>
+                    #</div>
+                    #""", unsafe_allow_html=True)
                     
                     # Taste Profile 차트를 컨테이너로 감싸기
                     with st.container():
