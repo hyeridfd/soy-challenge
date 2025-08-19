@@ -350,18 +350,18 @@ st.markdown("""
     #     padding-bottom: 2rem;
     # }
     
-    /* 섹션 헤더 스타일 */
-    .section-header {
-        color: #27ae60;
-        font-size: 2rem;
-        font-weight: 600;
-        text-align: center;
-        margin: 30px 0;
-        padding: 20px;
-        background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05));
-        border-radius: 15px;
-        border: 2px solid rgba(46, 204, 113, 0.2);
-    }
+    # /* 섹션 헤더 스타일 */
+    # .section-header {
+    #     color: #27ae60;
+    #     font-size: 2rem;
+    #     font-weight: 600;
+    #     text-align: center;
+    #     margin: 30px 0;
+    #     padding: 20px;
+    #     background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05));
+    #     border-radius: 15px;
+    #     border: 2px solid rgba(46, 204, 113, 0.2);
+    # }
     
     /* 샘플 카드 스타일 */
     .sample-card {
@@ -406,15 +406,15 @@ st.markdown("""
         border-radius: 20px 20px 0 0;
     }
     
-    # /* 플롯 컨테이너 */
-    # .plot-container {
-    #     background: rgba(255, 255, 255, 0.9);
-    #     border-radius: 15px;
-    #     padding: 20px;
-    #     margin: 15px 0;
-    #     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    #     border: 1px solid rgba(46, 204, 113, 0.1);
-    # }
+    /* 플롯 컨테이너 */
+    .plot-container {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 20px;
+        margin: 15px 0;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        border: 1px solid rgba(46, 204, 113, 0.1);
+    }
     
     /* 관리자 패널 */
     .admin-panel {
