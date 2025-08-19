@@ -219,6 +219,12 @@ st.markdown("""
         color: #27ae60;
         margin-bottom: 10px;
     }
+
+    .brand-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        border-color: rgba(46, 204, 113, 0.3);
+    }
     
     .brand-description {
         color: #7f8c8d;
@@ -253,6 +259,7 @@ st.markdown("""
     .stColumns > div {
         padding-bottom: 0px !important;
     }
+    
     .stButton > button:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
@@ -311,37 +318,37 @@ st.markdown("""
         border-left-color: #3498db;
     }
     
-    /* 데이터프레임 스타일 */
-    .stDataFrame {
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
+    # /* 데이터프레임 스타일 */
+    # .stDataFrame {
+    #     border-radius: 15px;
+    #     overflow: hidden;
+    #     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    # }
     
-    /* 메트릭 스타일 */
-    .stMetric {
-        background: rgba(255, 255, 255, 0.8);
-        padding: 20px;
-        border-radius: 15px;
-        border: 2px solid rgba(46, 204, 113, 0.1);
-        transition: all 0.3s ease;
-    }
+    # /* 메트릭 스타일 */
+    # .stMetric {
+    #     background: rgba(255, 255, 255, 0.8);
+    #     padding: 20px;
+    #     border-radius: 15px;
+    #     border: 2px solid rgba(46, 204, 113, 0.1);
+    #     transition: all 0.3s ease;
+    # }
     
-    .stMetric:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
+    # .stMetric:hover {
+    #     transform: translateY(-2px);
+    #     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    # }
     
-    /* 사이드바 숨기기 */
-    .css-1d391kg {
-        display: none;
-    }
+    # /* 사이드바 숨기기 */
+    # .css-1d391kg {
+    #     display: none;
+    # }
     
-    /* 여백 조정 */
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
+    # /* 여백 조정 */
+    # .block-container {
+    #     padding-top: 2rem;
+    #     padding-bottom: 2rem;
+    # }
     
     /* 섹션 헤더 스타일 */
     .section-header {
