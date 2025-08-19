@@ -597,24 +597,14 @@ def create_taste_profile_radar(taste_data, title):
     values = [taste_data.get('진함', 0), taste_data.get('단맛', 0)]
     
     fig = go.Figure()
-    # create_taste_profile_radar 함수에서
-    title={
-        'text': title,
-        'x': 0.5,           # 가운데 정렬 (기존에 있었음)
-        'xanchor': 'center', # 🆕 앵커를 중심으로 설정
-        'font': {'size': 16, 'color': '#27ae60', 'family': 'Noto Sans KR'}
-    }
     
     fig.add_trace(go.Scatterpolar(
         r=values,
         theta=categories,
         fill='toself',
         name=title,
-        #line_color='#27ae60',
-        fillcolor='rgba(46, 204, 113, 0.3)',
-        #line_width
-         line=dict(color='#27ae60', width=5)
-
+        line=dict(color='#27ae60', width=3),
+        fillcolor='rgba(46, 204, 113, 0.3)'
     ))
     
     fig.update_layout(
@@ -634,7 +624,8 @@ def create_taste_profile_radar(taste_data, title):
         showlegend=False,
         title={
             'text': title,
-            'x': 0.5,
+            'x': 0.5,  # 가운데 정렬
+            'xanchor': 'center',  # 앵커를 중심으로
             'font': {'size': 16, 'color': '#27ae60', 'family': 'Noto Sans KR'}
         },
         height=300,
