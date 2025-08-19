@@ -604,14 +604,17 @@ def create_taste_profile_radar(taste_data, title):
         'xanchor': 'center', # 🆕 앵커를 중심으로 설정
         'font': {'size': 16, 'color': '#27ae60', 'family': 'Noto Sans KR'}
     }
+    
     fig.add_trace(go.Scatterpolar(
         r=values,
         theta=categories,
         fill='toself',
         name=title,
-        line_color='#27ae60',
+        #line_color='#27ae60',
         fillcolor='rgba(46, 204, 113, 0.3)',
-        line_width=5
+        #line_width
+         line=dict(color='#27ae60', width=5)
+
     ))
     
     fig.update_layout(
