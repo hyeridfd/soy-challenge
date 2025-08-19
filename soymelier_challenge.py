@@ -833,7 +833,7 @@ def challenge_page():
                             
                             # 깔끔함 슬라이더
                             cleanness = st.slider(
-                                f"맛의 깔끔함",
+                                f"맛의 진함",
                                 min_value=1, max_value=5, value=3,
                                 help="1: 매우 깔끔함, 5: 매우 진함",
                                 key=f"{sample}_cleanness"
