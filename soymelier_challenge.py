@@ -712,7 +712,7 @@ def main():
     """, unsafe_allow_html=True)
     
     # 탭 구성
-    tab1, tab2 = st.tabs(["🎯 챌린지 참여", "🗒️ 관리자 대시보드"])
+    tab1, tab2 = st.tabs(["🔔 챌린지 참여", "🖥️ 관리자 대시보드"])
     
     with tab1:
         challenge_page()
