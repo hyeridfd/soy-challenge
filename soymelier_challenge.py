@@ -749,20 +749,24 @@ def challenge_page():
             
             for i, brand in enumerate(brand_list):
                 with col1 if i % 2 == 0 else col2:
-                    #st.markdown(f"""
-                    #<div class="brand-card">
-                        #<h3 class="brand-name">{brand}</h3>
-                        #<p class="brand-description">{BRANDS[brand]["description"]}</p>
-                    #</div>
-                    #""", unsafe_allow_html=True)
+                    st.markdown(f"""
+                    <div class="brand-card">
+                        <h3 class="brand-name">{brand}</h3>
+                        <p class="brand-description">{BRANDS[brand]["description"]}</p>
+                    </div>
+                    """, unsafe_allow_html=True)
                     
-                    # Taste Profile 차트를 컨테이너로 감싸기
-                    with st.container():
-                        st.markdown('<div class="plot-container">', unsafe_allow_html=True)
-                        fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
-                        st.plotly_chart(fig, use_container_width=True)
-                        st.markdown('</div>', unsafe_allow_html=True)
-                    
+                    # # Taste Profile 차트를 컨테이너로 감싸기
+                    # with st.container():
+                    #     st.markdown('<div class="plot-container">', unsafe_allow_html=True)
+                    #     fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
+                    #     st.plotly_chart(fig, use_container_width=True)
+                    #     st.markdown('</div>', unsafe_allow_html=True)
+
+                    # 수정 후 (간단하게)
+                    fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
+                    st.plotly_chart(fig, use_container_width=True)
+
                     # 맛 프로필 바 차트
                     cleanness = BRANDS[brand]["taste_profile"]["진함"]
                     sweetness = BRANDS[brand]["taste_profile"]["단맛"]
@@ -771,7 +775,7 @@ def challenge_page():
                     st.markdown(f"진함: {'🟢' * cleanness}{'⚪' * (5-cleanness)} ({cleanness}/5)")
                     st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (5-sweetness)} ({sweetness}/5)")
                     if i < len(brand_list) - 1:
-                        st.markdown("<br>", unsafe_allow_html=True)
+                        st.markdown("---")
             
             st.info("📝 각 브랜드의 맛 특성을 확인하신 후, 다음 단계에서 실제 시음을 진행해주세요!")
             
