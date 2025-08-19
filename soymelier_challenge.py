@@ -830,21 +830,21 @@ def challenge_page():
                             
                             # 깔끔함 슬라이더
                             cleanness = st.slider(
-                                f"맛의 진함",
+                                f"**맛의 진함**",
                                 min_value=1, max_value=5, value=3,
                                 help="1: 매우 깔끔함, 5: 매우 진함",
                                 key=f"{sample}_cleanness"
                             )
-                            st.markdown(f"**현재 값:** {cleanness}/5 {'🟢' * cleanness}{'⚪' * (5-cleanness)}")
+                            st.markdown(f"현재 값: {cleanness}/5 {'🟢' * cleanness}{'⚪' * (5-cleanness)}")
                             
                             # 단맛 슬라이더
                             sweetness = st.slider(
-                                f"단맛 정도",
+                                f"**단맛 정도**",
                                 min_value=1, max_value=5, value=3,
                                 help="1: 달지 않음, 5: 달큰함",
                                 key=f"{sample}_sweetness"
                             )
-                            st.markdown(f"**현재 값:** {sweetness}/5 {'🟢' * sweetness}{'⚪' * (5-sweetness)}")
+                            st.markdown(f"현재 값: {sweetness}/5 {'🟢' * sweetness}{'⚪' * (5-sweetness)}")
                             
                             # 브랜드 선택
                             available_brands = get_available_brands(sample)
