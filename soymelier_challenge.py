@@ -7,6 +7,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import json
 import os
+import pytz
 
 # 페이지 설정
 st.set_page_config(
@@ -989,12 +990,13 @@ def challenge_page():
             with col2:
                 if st.button("🌿 최종 제출하기", key="step4_submit", use_container_width=True):
                     # 저장할 데이터 준비
+                    kst = pytz.timezone('Asia/Seoul')
                     submit_data = [
                         participant['name'],
                         participant['gender'],
                         participant['age'],
                         participant['organization'],
-                        datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        datetime.now(kst).strftime("%Y-%m-%d %H:%M:%S")  # 한국시간 적용
                     ]
                     
                     # A, B, C, D 평가 데이터 추가
