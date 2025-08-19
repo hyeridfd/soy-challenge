@@ -874,12 +874,12 @@ def challenge_page():
                             
                             # 실시간 레이더 차트
                             if cleanness and sweetness:
-                                with st.container():
-                                    st.markdown('<div class="plot-container">', unsafe_allow_html=True)
+                                #with st.container():
+                                    #st.markdown('<div class="plot-container">', unsafe_allow_html=True)
                                     taste_data = {"진함": cleanness, "단맛": sweetness}
                                     fig = create_taste_profile_radar(taste_data, f"{sample} 두유 평가")
                                     st.plotly_chart(fig, use_container_width=True)
-                                    st.markdown('</div>', unsafe_allow_html=True)
+                                    #st.markdown('</div>', unsafe_allow_html=True)
             
             # 선택 현황 표시
             st.markdown('<div class="section-header">📋 현재 선택 현황</div>', unsafe_allow_html=True)
