@@ -119,16 +119,6 @@ st.markdown("""
         position: relative;
     }
     
-    .content-container::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #2ecc71, #27ae60, #16a085);
-        border-radius: 25px 25px 0 0;
-    }
     
     /* 단계 표시기 */
     .step-container {
