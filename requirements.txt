@@ -3,6 +3,7 @@ streamlit
 pandas
 numpy
 plotly
+pytz
 
 # Google Sheets 연동
 gspread==5.12.0                      # Google Sheets API 클라이언트
