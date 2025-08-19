@@ -304,7 +304,7 @@ st.markdown("""
     
     /* 핸들 색상 */
     .stSlider [role="slider"] {
-        background: #27ae60 !important;
+        background: #1e88e5 !important;
         border: 3px solid white !important;
         box-shadow: 0 2px 6px rgba(39, 174, 96, 0.3) !important;
     }
