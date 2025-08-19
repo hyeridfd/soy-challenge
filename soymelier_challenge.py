@@ -846,142 +846,142 @@ def challenge_page():
                 else:
                     st.error("모든 정보를 입력해주세요.")
         
-        # 2단계: 브랜드 소개
-        elif st.session_state.step == 2:
-            st.markdown('<div class="section-header">🥛 네 가지 두유 브랜드 소개</div>', unsafe_allow_html=True)
-            
-            # 브랜드 카드들을 2x2 그리드로 배치
-            col1, col2 = st.columns(2)
-            brand_list = list(BRANDS.keys())
-            
-            for i, brand in enumerate(brand_list):
-                with col1 if i % 2 == 0 else col2:
-                    st.markdown(f"""
-                    <div class="brand-card">
-                        <h3 class="brand-name">{brand}</h3>
-                        <p class="brand-description">{BRANDS[brand]["description"]}</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
-                    # Taste Profile 차트를 컨테이너로 감싸기
-                    with st.container():
-                        st.markdown('<div class="plot-container">', unsafe_allow_html=True)
-                        fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
-                        st.plotly_chart(fig, use_container_width=True)
-                        st.markdown('</div>', unsafe_allow_html=True)
-                    
-                    # 맛 프로필 바 차트
-                    cleanness = BRANDS[brand]["taste_profile"]["깔끔함"]
-                    sweetness = BRANDS[brand]["taste_profile"]["단맛"]
-                    
-                    st.markdown("**맛 특성:**")
-                    st.markdown(f"깔끔함: {'🟢' * cleanness}{'⚪' * (5-cleanness)} ({cleanness}/5)")
-                    st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (5-sweetness)} ({sweetness}/5)")
-                    st.markdown("<br>", unsafe_allow_html=True)
-            
-            st.info("📝 각 브랜드의 맛 특성을 확인하신 후, 다음 단계에서 실제 시음을 진행해주세요!")
-            
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                if st.button("🌱 시음 평가하기", key="step2_next", use_container_width=True):
-                    st.session_state.step = 3
-                    st.rerun()
+    # 2단계: 브랜드 소개
+    elif st.session_state.step == 2:
+        st.markdown('<div class="section-header">🥛 네 가지 두유 브랜드 소개</div>', unsafe_allow_html=True)
         
-        # 3단계: 시음 평가
-        elif st.session_state.step == 3:
-            st.markdown('<div class="section-header">🌿 시음 평가</div>', unsafe_allow_html=True)
-            st.info("A, B, C, D 두유를 시음하고 각각의 맛을 평가해주세요.")
-            
-            samples = ['A', 'B', 'C', 'D']
-            
-            # 이미 선택된 브랜드들을 추적
-            def get_selected_brands():
-                selected = []
-                for sample in samples:
-                    brand = st.session_state.get(f"{sample}_brand", "선택하세요")
-                    if brand != "선택하세요":
-                        selected.append(brand)
-                return selected
-            
-            # 각 샘플에 대해 사용 가능한 브랜드 옵션 생성
-            def get_available_brands(current_sample):
-                selected_brands = get_selected_brands()
-                current_selection = st.session_state.get(f"{current_sample}_brand", "선택하세요")
+        # 브랜드 카드들을 2x2 그리드로 배치
+        col1, col2 = st.columns(2)
+        brand_list = list(BRANDS.keys())
+        
+        for i, brand in enumerate(brand_list):
+            with col1 if i % 2 == 0 else col2:
+                st.markdown(f"""
+                <div class="brand-card">
+                    <h3 class="brand-name">{brand}</h3>
+                    <p class="brand-description">{BRANDS[brand]["description"]}</p>
+                </div>
+                """, unsafe_allow_html=True)
                 
-                available_brands = ["선택하세요"]
-                for brand in BRANDS.keys():
-                    if brand not in selected_brands or brand == current_selection:
-                        available_brands.append(brand)
+                # Taste Profile 차트를 컨테이너로 감싸기
+                with st.container():
+                    st.markdown('<div class="plot-container">', unsafe_allow_html=True)
+                    fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
+                    st.plotly_chart(fig, use_container_width=True)
+                    st.markdown('</div>', unsafe_allow_html=True)
                 
-                return available_brands
+                # 맛 프로필 바 차트
+                cleanness = BRANDS[brand]["taste_profile"]["깔끔함"]
+                sweetness = BRANDS[brand]["taste_profile"]["단맛"]
+                
+                st.markdown("**맛 특성:**")
+                st.markdown(f"깔끔함: {'🟢' * cleanness}{'⚪' * (5-cleanness)} ({cleanness}/5)")
+                st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (5-sweetness)} ({sweetness}/5)")
+                st.markdown("<br>", unsafe_allow_html=True)
+        
+        st.info("📝 각 브랜드의 맛 특성을 확인하신 후, 다음 단계에서 실제 시음을 진행해주세요!")
+        
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            if st.button("🌱 시음 평가하기", key="step2_next", use_container_width=True):
+                st.session_state.step = 3
+                st.rerun()
+    
+    # 3단계: 시음 평가
+    elif st.session_state.step == 3:
+        st.markdown('<div class="section-header">🌿 시음 평가</div>', unsafe_allow_html=True)
+        st.info("A, B, C, D 두유를 시음하고 각각의 맛을 평가해주세요.")
+        
+        samples = ['A', 'B', 'C', 'D']
+        
+        # 이미 선택된 브랜드들을 추적
+        def get_selected_brands():
+            selected = []
+            for sample in samples:
+                brand = st.session_state.get(f"{sample}_brand", "선택하세요")
+                if brand != "선택하세요":
+                    selected.append(brand)
+            return selected
+        
+        # 각 샘플에 대해 사용 가능한 브랜드 옵션 생성
+        def get_available_brands(current_sample):
+            selected_brands = get_selected_brands()
+            current_selection = st.session_state.get(f"{current_sample}_brand", "선택하세요")
             
-            # 2x2 그리드로 샘플 배치
-            for row in range(2):
-                col1, col2 = st.columns(2)
-                for col_idx, col in enumerate([col1, col2]):
-                    sample_idx = row * 2 + col_idx
-                    if sample_idx < len(samples):
-                        sample = samples[sample_idx]
+            available_brands = ["선택하세요"]
+            for brand in BRANDS.keys():
+                if brand not in selected_brands or brand == current_selection:
+                    available_brands.append(brand)
+            
+            return available_brands
+        
+        # 2x2 그리드로 샘플 배치
+        for row in range(2):
+            col1, col2 = st.columns(2)
+            for col_idx, col in enumerate([col1, col2]):
+                sample_idx = row * 2 + col_idx
+                if sample_idx < len(samples):
+                    sample = samples[sample_idx]
+                    
+                    with col:
+                        st.markdown(f"""
+                        <div class="sample-card">
+                            <div class="sample-title">🥛 {sample} 두유</div>
+                        </div>
+                        """, unsafe_allow_html=True)
                         
-                        with col:
-                            st.markdown(f"""
-                            <div class="sample-card">
-                                <div class="sample-title">🥛 {sample} 두유</div>
-                            </div>
-                            """, unsafe_allow_html=True)
+                        # 깔끔함 슬라이더
+                        cleanness = st.slider(
+                            f"맛의 깔끔함",
+                            min_value=1, max_value=5, value=3,
+                            help="1: 매우 깔끔함, 5: 매우 진함",
+                            key=f"{sample}_cleanness"
+                        )
+                        st.markdown(f"**현재 값:** {cleanness}/5 {'🟢' * cleanness}{'⚪' * (5-cleanness)}")
+                        
+                        # 단맛 슬라이더
+                        sweetness = st.slider(
+                            f"단맛 정도",
+                            min_value=1, max_value=5, value=3,
+                            help="1: 달지 않음, 5: 달큰함",
+                            key=f"{sample}_sweetness"
+                        )
+                        st.markdown(f"**현재 값:** {sweetness}/5 {'🟢' * sweetness}{'⚪' * (5-sweetness)}")
+                        
+                        # 브랜드 선택
+                        available_brands = get_available_brands(sample)
+                        current_selection = st.session_state.get(f"{sample}_brand", "선택하세요")
+                        
+                        if current_selection not in available_brands:
+                            current_selection = "선택하세요"
+                        
+                        selected_brand = st.selectbox(
+                            f"어떤 브랜드일까요?",
+                            available_brands,
+                            index=available_brands.index(current_selection) if current_selection in available_brands else 0,
+                            key=f"{sample}_brand"
+                        )
+                        
+                        # 중복 선택 경고
+                        if selected_brand != "선택하세요":
+                            selected_brands = get_selected_brands()
+                            duplicate_samples = []
+                            for other_sample in samples:
+                                if other_sample != sample and st.session_state.get(f"{other_sample}_brand") == selected_brand:
+                                    duplicate_samples.append(other_sample)
                             
-                            # 깔끔함 슬라이더
-                            cleanness = st.slider(
-                                f"맛의 깔끔함",
-                                min_value=1, max_value=5, value=3,
-                                help="1: 매우 깔끔함, 5: 매우 진함",
-                                key=f"{sample}_cleanness"
-                            )
-                            st.markdown(f"**현재 값:** {cleanness}/5 {'🟢' * cleanness}{'⚪' * (5-cleanness)}")
-                            
-                            # 단맛 슬라이더
-                            sweetness = st.slider(
-                                f"단맛 정도",
-                                min_value=1, max_value=5, value=3,
-                                help="1: 달지 않음, 5: 달큰함",
-                                key=f"{sample}_sweetness"
-                            )
-                            st.markdown(f"**현재 값:** {sweetness}/5 {'🟢' * sweetness}{'⚪' * (5-sweetness)}")
-                            
-                            # 브랜드 선택
-                            available_brands = get_available_brands(sample)
-                            current_selection = st.session_state.get(f"{sample}_brand", "선택하세요")
-                            
-                            if current_selection not in available_brands:
-                                current_selection = "선택하세요"
-                            
-                            selected_brand = st.selectbox(
-                                f"어떤 브랜드일까요?",
-                                available_brands,
-                                index=available_brands.index(current_selection) if current_selection in available_brands else 0,
-                                key=f"{sample}_brand"
-                            )
-                            
-                            # 중복 선택 경고
-                            if selected_brand != "선택하세요":
-                                selected_brands = get_selected_brands()
-                                duplicate_samples = []
-                                for other_sample in samples:
-                                    if other_sample != sample and st.session_state.get(f"{other_sample}_brand") == selected_brand:
-                                        duplicate_samples.append(other_sample)
-                                
-                                if duplicate_samples:
-                                    st.warning(f"⚠️ {selected_brand}는 {', '.join(duplicate_samples)} 샘플에서도 선택되었습니다!")
-                                    st.info("💡 각 브랜드는 한 번만 선택할 수 있습니다.")
-                            
-                            # 실시간 레이더 차트
-                            if cleanness and sweetness:
-                                with st.container():
-                                    st.markdown('<div class="plot-container">', unsafe_allow_html=True)
-                                    taste_data = {"깔끔함": cleanness, "단맛": sweetness}
-                                    fig = create_taste_profile_radar(taste_data, f"{sample} 두유 평가")
-                                    st.plotly_chart(fig, use_container_width=True)
-                                    st.markdown('</div>', unsafe_allow_html=True)
+                            if duplicate_samples:
+                                st.warning(f"⚠️ {selected_brand}는 {', '.join(duplicate_samples)} 샘플에서도 선택되었습니다!")
+                                st.info("💡 각 브랜드는 한 번만 선택할 수 있습니다.")
+                        
+                        # 실시간 레이더 차트
+                        if cleanness and sweetness:
+                            with st.container():
+                                st.markdown('<div class="plot-container">', unsafe_allow_html=True)
+                                taste_data = {"깔끔함": cleanness, "단맛": sweetness}
+                                fig = create_taste_profile_radar(taste_data, f"{sample} 두유 평가")
+                                st.plotly_chart(fig, use_container_width=True)
+                                st.markdown('</div>', unsafe_allow_html=True)
             
             # 선택 현황 표시
             st.markdown('<div class="section-header">📋 현재 선택 현황</div>', unsafe_allow_html=True)
@@ -1026,31 +1026,31 @@ def challenge_page():
             elif has_duplicates:
                 st.error("❌ 중복된 브랜드가 선택되었습니다. 각 브랜드는 한 번만 선택할 수 있습니다.")
         
-        # 4단계: 결과 제출
-        elif st.session_state.step == 4:
-            st.markdown('<div class="section-header">🎉 평가 완료!</div>', unsafe_allow_html=True)
-            
-            # 결과 요약
-            participant = st.session_state.participant_info
-            
-            st.markdown(f"""
-            <div class="results-summary">
-                <h3 style="color: #27ae60; margin-bottom: 20px;">📋 평가 결과 요약</h3>
-                <p><strong>참여자:</strong> {participant['name']} ({participant['gender']}, {participant['age']}세)</p>
-                <p><strong>소속:</strong> {participant['organization']}</p>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # 평가 결과 테이블
-            results_data = []
-            for sample in ['A', 'B', 'C', 'D']:
-                eval_data = st.session_state.taste_evaluations[sample]
-                results_data.append({
-                    '샘플': f'{sample} 두유',
-                    '깔끔함 (1-5)': f"{eval_data['깔끔함']}/5 {'🟢' * eval_data['깔끔함']}{'⚪' * (5-eval_data['깔끔함'])}",
-                    '단맛 (1-5)': f"{eval_data['단맛']}/5 {'🟢' * eval_data['단맛']}{'⚪' * (5-eval_data['단맛'])}",
-                    '예상 브랜드': eval_data['선택브랜드']
-                })
+    # 4단계: 결과 제출
+    elif st.session_state.step == 4:
+        st.markdown('<div class="section-header">🎉 평가 완료!</div>', unsafe_allow_html=True)
+        
+        # 결과 요약
+        participant = st.session_state.participant_info
+        
+        st.markdown(f"""
+        <div class="results-summary">
+            <h3 style="color: #27ae60; margin-bottom: 20px;">📋 평가 결과 요약</h3>
+            <p><strong>참여자:</strong> {participant['name']} ({participant['gender']}, {participant['age']}세)</p>
+            <p><strong>소속:</strong> {participant['organization']}</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 평가 결과 테이블
+        results_data = []
+        for sample in ['A', 'B', 'C', 'D']:
+            eval_data = st.session_state.taste_evaluations[sample]
+            results_data.append({
+                '샘플': f'{sample} 두유',
+                '깔끔함 (1-5)': f"{eval_data['깔끔함']}/5 {'🟢' * eval_data['깔끔함']}{'⚪' * (5-eval_data['깔끔함'])}",
+                '단맛 (1-5)': f"{eval_data['단맛']}/5 {'🟢' * eval_data['단맛']}{'⚪' * (5-eval_data['단맛'])}",
+                '예상 브랜드': eval_data['선택브랜드']
+            })
             
             df = pd.DataFrame(results_data)
             st.dataframe(df, use_container_width=True)
