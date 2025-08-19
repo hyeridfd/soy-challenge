@@ -82,6 +82,17 @@ st.markdown("""
         padding: 10px;
         border: 1px solid rgba(255,255,255,0.2);
         box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        /* 탭 리스트 가운데 정렬 */
+        justify-content: center !important;
+        display: flex !important;
+        width: 100%;
+        
+        /* 개별 탭 설정 */
+        flex: 0 0 auto;
+        min-width: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .stTabs [data-baseweb="tab"] {
