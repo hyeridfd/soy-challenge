@@ -981,7 +981,7 @@ def challenge_page():
                     # 저장
                     if save_to_gsheet(submit_data):
                         st.success("🎉 제출이 완료되었습니다! 참여해주셔서 감사합니다.")
-                        st.balloons()
+                        #st.balloons()
                         
                         # 새 참여자를 위한 리셋 버튼
                         if st.button("🌱 새로운 참여자 시작", key="step4_reset", use_container_width=True):
