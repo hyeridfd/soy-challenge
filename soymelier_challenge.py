@@ -635,7 +635,7 @@ def save_to_gsheet(data):
             
             # 데이터 길이를 16개로 맞춤
             if len(data) > 16:
-                data = data[:16]  # 16개로 자르기
+                data = data[:17]  # 16개로 자르기
             elif len(data) < 16:
                 data.extend([''] * (16 - len(data)))  # 부족한 부분 빈 문자열로 채우기
             
@@ -813,8 +813,8 @@ def challenge_page():
     st.markdown('<div class="content-container fade-in">', unsafe_allow_html=True)
         
         # 단계 표시기 및 프로그레스 바
-        display_step_indicator(st.session_state.step)
-        display_progress_bar(st.session_state.step)
+    display_step_indicator(st.session_state.step)
+    display_progress_bar(st.session_state.step)
         
         # 1단계: 참여자 정보 입력
         if st.session_state.step == 1:
