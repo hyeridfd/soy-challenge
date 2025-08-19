@@ -306,10 +306,7 @@ st.markdown("""
     .stSlider [data-baseweb="slider"] {
         background: #e8f5e8;
     }
-    
-    .stSlider [data-baseweb="slider"] > div {
-        background: linear-gradient(90deg, #a8e6a3, #2ecc71) !important;
-    }
+
     
     /* 핸들 색상 */
     .stSlider [role="slider"] {
@@ -317,6 +314,7 @@ st.markdown("""
         border: 3px solid white !important;
         box-shadow: 0 2px 6px rgba(39, 174, 96, 0.3) !important;
     }
+    
     /* 알림창 스타일 */
     .stAlert {
         border-radius: 15px;
