@@ -226,11 +226,11 @@ st.markdown("""
         border-color: rgba(46, 204, 113, 0.3);
     }
     
-    # .brand-description {
-    #     color: #7f8c8d;
-    #     margin-bottom: 10px;
-    #     line-height: 1.6;
-    # }
+    .brand-description {
+        color: #7f8c8d;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
     
     /* 버튼 스타일 */
     .stButton > button {
