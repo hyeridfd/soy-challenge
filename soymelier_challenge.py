@@ -590,7 +590,7 @@ def create_taste_profile_radar(taste_data, title):
         name=title,
         line_color='#27ae60',
         fillcolor='rgba(46, 204, 113, 0.3)',
-        line_width=3
+        line_width=5
     ))
     
     fig.update_layout(
