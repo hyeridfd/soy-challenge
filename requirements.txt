@@ -1,0 +1,23 @@
+# Core Dependencies
+streamlit
+pandas
+numpy
+plotly
+
+# Google Sheets 연동
+gspread==5.12.0                      # Google Sheets API 클라이언트
+google-auth==2.23.4                  # Google 인증
+google-auth-oauthlib==1.1.0          # OAuth2 인증
+google-auth-httplib2==0.2.0          # HTTP 라이브러리
+
+# 유틸리티
+python-dateutil==2.8.2              # 날짜/시간 처리
+pytz==2023.3                         # 시간대 처리
+
+# 선택적 의존성 (성능 향상)
+openpyxl==3.1.2                      # Excel 파일 지원 (pandas 백엔드)
+xlsxwriter==3.1.9                    # Excel 쓰기 지원
+
+# 개발/디버깅 (선택사항)
+streamlit-option-menu==0.3.6       # 사이드바 메뉴 개선
+streamlit-aggrid==0.3.4.post3      # 고급 테이블 표시
