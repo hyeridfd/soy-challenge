@@ -288,7 +288,7 @@ st.markdown("""
     
     /* 슬라이더 스타일 */
     .stSlider > div > div > div > div {
-        background: linear-gradient(90deg, #2ecc71, #27ae60);
+        background: linear-gradient(90deg, #072ac8);
     }
     
     /* 알림창 스타일 */
