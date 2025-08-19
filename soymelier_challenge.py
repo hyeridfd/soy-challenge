@@ -226,11 +226,11 @@ st.markdown("""
         border-color: rgba(46, 204, 113, 0.3);
     }
     
-    .brand-description {
-        color: #7f8c8d;
-        margin-bottom: 10px;
-        line-height: 1.6;
-    }
+    # .brand-description {
+    #     color: #7f8c8d;
+    #     margin-bottom: 10px;
+    #     line-height: 1.6;
+    # }
     
     /* 버튼 스타일 */
     .stButton > button {
@@ -350,18 +350,18 @@ st.markdown("""
     #     padding-bottom: 2rem;
     # }
     
-    # /* 섹션 헤더 스타일 */
-    # .section-header {
-    #     color: #27ae60;
-    #     font-size: 2rem;
-    #     font-weight: 600;
-    #     text-align: center;
-    #     margin: 30px 0;
-    #     padding: 20px;
-    #     background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05));
-    #     border-radius: 15px;
-    #     border: 2px solid rgba(46, 204, 113, 0.2);
-    # }
+    /* 섹션 헤더 스타일 */
+    .section-header {
+        color: #27ae60;
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+        margin: 30px 0;
+        padding: 20px;
+        background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05));
+        border-radius: 15px;
+        border: 2px solid rgba(46, 204, 113, 0.2);
+    }
     
     /* 샘플 카드 스타일 */
     .sample-card {
