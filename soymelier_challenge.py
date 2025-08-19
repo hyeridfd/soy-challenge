@@ -287,10 +287,36 @@ st.markdown("""
     }
     
     /* 슬라이더 스타일 */
-    .stSlider > div > div > div > div {
-        background: linear-gradient(90deg, #072ac8);
+    # .stSlider > div > div > div > div {
+    #     background: linear-gradient(90deg, #072ac8);
+    # }
+
+    # /* 슬라이더 진행 바 (빨간색→초록색으로 변경) */
+    # .stSlider > div > div > div > div {
+    #     background: linear-gradient(90deg, #2ecc71, #27ae60) !important;
+    # }
+
+    # /* 슬라이더 핸들 (초록 동그라미) */
+    # .stSlider > div > div > div > div > div {
+    #     background: #27ae60 !important;
+    #     border: 2px solid white !important;
+    # }
+
+        /* Streamlit 슬라이더 완전 커스터마이징 */
+    .stSlider [data-baseweb="slider"] {
+        background: #e8f5e8;
     }
     
+    .stSlider [data-baseweb="slider"] > div {
+        background: linear-gradient(90deg, #a8e6a3, #2ecc71) !important;
+    }
+    
+    /* 핸들 색상 */
+    .stSlider [role="slider"] {
+        background: #27ae60 !important;
+        border: 3px solid white !important;
+        box-shadow: 0 2px 6px rgba(39, 174, 96, 0.3) !important;
+    }
     /* 알림창 스타일 */
     .stAlert {
         border-radius: 15px;
