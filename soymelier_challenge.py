@@ -899,6 +899,15 @@ def challenge_page():
                                 <div class="sample-title">🥛 {sample} 두유</div>
                             </div>
                             """, unsafe_allow_html=True)
+
+                            # 단맛 슬라이더
+                            sweetness = st.slider(
+                                f"**2) 단맛 정도**",
+                                min_value=1, max_value=4, value=2,
+                                help="1: 달지 않음, 4: 달큰함",
+                                key=f"{sample}_sweetness"
+                            )
+                            st.markdown(f"현재 값: {sweetness}/4 {'🔵' * sweetness}{'⚪' * (4-sweetness)}")
                             
                             # 깔끔함 슬라이더
                             cleanness = st.slider(
@@ -908,15 +917,6 @@ def challenge_page():
                                 key=f"{sample}_cleanness"
                             )
                             st.markdown(f"현재 값: {cleanness}/4 {'🔵' * cleanness}{'⚪' * (4-cleanness)}")
-                            
-                            # 단맛 슬라이더
-                            sweetness = st.slider(
-                                f"**2) 단맛 정도**",
-                                min_value=1, max_value=4, value=2,
-                                help="1: 달지 않음, 4: 달큰함",
-                                key=f"{sample}_sweetness"
-                            )
-                            st.markdown(f"현재 값: {sweetness}/4 {'🔵' * sweetness}{'⚪' * (4-sweetness)}")
                             
                             # 브랜드 선택
                             available_brands = get_available_brands(sample)
