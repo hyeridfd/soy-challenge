@@ -643,7 +643,7 @@ def create_taste_profile_radar(taste_data, title):
         polar=dict(
             radialaxis=dict(
                 visible=True,
-                range=[0, 5],
+                range=[0, 4],
                 gridcolor='rgba(46, 204, 113, 0.2)',
                 linecolor='rgba(46, 204, 113, 0.3)'
             ),
@@ -804,8 +804,8 @@ def challenge_page():
                     sweetness = BRANDS[brand]["taste_profile"]["단맛"]
                     
                     st.markdown("**맛 특성:**")
-                    st.markdown(f"진함: {'🟢' * cleanness}{'⚪' * (5-cleanness)} ({cleanness}/5)")
-                    st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (5-sweetness)} ({sweetness}/5)")
+                    st.markdown(f"진함: {'🟢' * cleanness}{'⚪' * (4-cleanness)} ({cleanness}/4)")
+                    st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (4-sweetness)} ({sweetness}/4)")
                     if i < len(brand_list) - 1:
                         st.markdown("---")
             
