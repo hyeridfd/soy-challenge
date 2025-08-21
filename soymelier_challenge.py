@@ -668,12 +668,12 @@ def display_brand_rankings():
     with col1:
         st.markdown("""
         <div style="background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(39, 174, 96, 0.2);">
-            <h4 style="color: #27ae60; text-align: center; margin-bottom: 15px;">☕ 진함 순위</h4>
+            <h4 style="color: #27ae60; text-align: center; margin-bottom: 15px;">진함 순위</h4>
         """, unsafe_allow_html=True)
         
         for i, (brand, info) in enumerate(brands_by_intensity, 1):
             intensity = info["taste_profile"]["진함"]
-            emoji_bar = "☕" * intensity + "⚪" * (4 - intensity)
+            emoji_bar = "🟢" * intensity + "⚪" * (4 - intensity)
             medal = ["🥇", "🥈", "🥉", "🏅"][i-1]
             
             st.markdown(f"""
@@ -688,12 +688,12 @@ def display_brand_rankings():
     with col2:
         st.markdown("""
         <div style="background: rgba(241, 196, 15, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(241, 196, 15, 0.2);">
-            <h4 style="color: #f1c40f; text-align: center; margin-bottom: 15px;">🧊 단맛 순위</h4>
+            <h4 style="color: #f1c40f; text-align: center; margin-bottom: 15px;">단맛 순위</h4>
         """, unsafe_allow_html=True)
         
         for i, (brand, info) in enumerate(brands_by_sweetness, 1):
             sweetness = info["taste_profile"]["단맛"]
-            emoji_bar = "🧊" * sweetness + "⚪" * (4 - sweetness)
+            emoji_bar = "🟢" * sweetness + "⚪" * (4 - sweetness)
             medal = ["🥇", "🥈", "🥉", "🏅"][i-1]
             
             st.markdown(f"""
