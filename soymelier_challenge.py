@@ -623,49 +623,49 @@ def save_to_gsheet(data):
         st.info("🔗 실제 Google Sheets 연동을 위해 설정 가이드를 참조해주세요.")
         return True
 
-def create_taste_profile_radar(taste_data, title):
-    """Taste Profile 레이더 차트 생성 - 자연 테마"""
-    categories = ['진함', '단맛']
-    values = [taste_data.get('진함', 0), taste_data.get('단맛', 0)]
+# def create_taste_profile_radar(taste_data, title):
+#     """Taste Profile 레이더 차트 생성 - 자연 테마"""
+#     categories = ['진함', '단맛']
+#     values = [taste_data.get('진함', 0), taste_data.get('단맛', 0)]
     
-    fig = go.Figure()
+#     fig = go.Figure()
     
-    fig.add_trace(go.Scatterpolar(
-        r=values,
-        theta=categories,
-        fill='toself',
-        name=title,
-        line=dict(color='#27ae60', width=3),
-        fillcolor='rgba(46, 204, 113, 0.3)'
-    ))
+#     fig.add_trace(go.Scatterpolar(
+#         r=values,
+#         theta=categories,
+#         fill='toself',
+#         name=title,
+#         line=dict(color='#27ae60', width=3),
+#         fillcolor='rgba(46, 204, 113, 0.3)'
+#     ))
     
-    fig.update_layout(
-        polar=dict(
-            radialaxis=dict(
-                visible=True,
-                range=[0, 4],
-                gridcolor='rgba(46, 204, 113, 0.2)',
-                linecolor='rgba(46, 204, 113, 0.3)'
-            ),
-            angularaxis=dict(
-                gridcolor='rgba(46, 204, 113, 0.2)',
-                linecolor='rgba(46, 204, 113, 0.3)'
-            ),
-            bgcolor='rgba(255, 255, 255, 0.8)'
-        ),
-        showlegend=False,
-        title={
-            'text': title,
-            'x': 0.5,  # 가운데 정렬
-            'xanchor': 'center',  # 앵커를 중심으로
-            'font': {'size': 16, 'color': '#27ae60', 'family': 'Noto Sans KR'}
-        },
-        height=300,
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)'
-    )
+#     fig.update_layout(
+#         polar=dict(
+#             radialaxis=dict(
+#                 visible=True,
+#                 range=[0, 4],
+#                 gridcolor='rgba(46, 204, 113, 0.2)',
+#                 linecolor='rgba(46, 204, 113, 0.3)'
+#             ),
+#             angularaxis=dict(
+#                 gridcolor='rgba(46, 204, 113, 0.2)',
+#                 linecolor='rgba(46, 204, 113, 0.3)'
+#             ),
+#             bgcolor='rgba(255, 255, 255, 0.8)'
+#         ),
+#         showlegend=False,
+#         title={
+#             'text': title,
+#             'x': 0.5,  # 가운데 정렬
+#             'xanchor': 'center',  # 앵커를 중심으로
+#             'font': {'size': 16, 'color': '#27ae60', 'family': 'Noto Sans KR'}
+#         },
+#         height=300,
+#         paper_bgcolor='rgba(0,0,0,0)',
+#         plot_bgcolor='rgba(0,0,0,0)'
+#     )
     
-    return fig
+#     return fig
 
 def display_step_indicator(current_step):
     """단계 표시기 렌더링"""
