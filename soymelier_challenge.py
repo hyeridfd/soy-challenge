@@ -623,50 +623,88 @@ def save_to_gsheet(data):
         st.info("🔗 실제 Google Sheets 연동을 위해 설정 가이드를 참조해주세요.")
         return True
 
-def create_taste_profile_radar(taste_data, title):
-    """Taste Profile 레이더 차트 생성 - 자연 테마"""
-    categories = ['진함', '단맛']
-    values = [taste_data.get('진함', 0), taste_data.get('단맛', 0)]
-    
+# 기존 create_taste_profile_radar 함수를 교체
+def create_modern_taste_profile(taste_data, title):
+    """수평 바 차트 + 이모지로 맛 프로필 생성"""
     fig = go.Figure()
     
-    fig.add_trace(go.Scatterpolar(
-        r=values,
-        theta=categories,
-        fill='toself',
-        name=title,
-        line=dict(color='#27ae60', width=3),
-        fillcolor='rgba(46, 204, 113, 0.3)'
+    categories = ['🌊 진함', '🍯 단맛']
+    values = [taste_data.get('진함', 0), taste_data.get('단맛', 0)]
+    colors = ['#27ae60', '#2ecc71']
+    
+    fig.add_trace(go.Bar(
+        y=categories,
+        x=values,
+        orientation='h',
+        marker_color=colors,
+        text=[f"{val}/4" for val in values],
+        textposition='inside',
+        textfont=dict(color='white', size=14, family='Noto Sans KR')
     ))
     
     fig.update_layout(
-        polar=dict(
-            radialaxis=dict(
-                visible=True,
-                range=[0, 4],
-                gridcolor='rgba(46, 204, 113, 0.2)',
-                linecolor='rgba(46, 204, 113, 0.3)'
-            ),
-            angularaxis=dict(
-                gridcolor='rgba(46, 204, 113, 0.2)',
-                linecolor='rgba(46, 204, 113, 0.3)'
-            ),
-            bgcolor='rgba(255, 255, 255, 0.8)'
-        ),
+        title={'text': title, 'x': 0.5, 'xanchor': 'center'},
+        xaxis=dict(range=[0, 4], showgrid=True, gridcolor='rgba(46, 204, 113, 0.2)'),
+        height=200,
         showlegend=False,
-        title={
-            'text': title,
-            'x': 0.5,  # 가운데 정렬
-            'xanchor': 'center',  # 앵커를 중심으로
-            'font': {'size': 16, 'color': '#27ae60', 'family': 'Noto Sans KR'}
-        },
-        height=300,
         paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)'
+        plot_bgcolor='rgba(255,255,255,0.8)',
+        margin=dict(l=80, r=50, t=60, b=50),
+        font=dict(family='Noto Sans KR', color='#2c3e50')
     )
-    
     return fig
 
+def display_brand_rankings():
+    """브랜드 순위 정리 표시"""
+    st.markdown('<div class="section-header">📊 브랜드 맛 특성 순위</div>', unsafe_allow_html=True)
+    
+    # 진함 순위
+    brands_by_intensity = sorted(BRANDS.items(), key=lambda x: x[1]["taste_profile"]["진함"], reverse=True)
+    # 단맛 순위  
+    brands_by_sweetness = sorted(BRANDS.items(), key=lambda x: x[1]["taste_profile"]["단맛"], reverse=True)
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div style="background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(39, 174, 96, 0.2);">
+            <h4 style="color: #27ae60; text-align: center; margin-bottom: 15px;">🌊 진함 순위</h4>
+        """, unsafe_allow_html=True)
+        
+        for i, (brand, info) in enumerate(brands_by_intensity, 1):
+            intensity = info["taste_profile"]["진함"]
+            emoji_bar = "🌊" * intensity + "⚪" * (4 - intensity)
+            medal = ["🥇", "🥈", "🥉", "🏅"][i-1]
+            
+            st.markdown(f"""
+            <div style="margin: 10px 0; padding: 10px; background: white; border-radius: 10px;">
+                <strong>{medal} {i}위: {brand}</strong><br>
+                {emoji_bar} ({intensity}/4)
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div style="background: rgba(241, 196, 15, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(241, 196, 15, 0.2);">
+            <h4 style="color: #f1c40f; text-align: center; margin-bottom: 15px;">🍯 단맛 순위</h4>
+        """, unsafe_allow_html=True)
+        
+        for i, (brand, info) in enumerate(brands_by_sweetness, 1):
+            sweetness = info["taste_profile"]["단맛"]
+            emoji_bar = "🍯" * sweetness + "⚪" * (4 - sweetness)
+            medal = ["🥇", "🥈", "🥉", "🏅"][i-1]
+            
+            st.markdown(f"""
+            <div style="margin: 10px 0; padding: 10px; background: white; border-radius: 10px;">
+                <strong>{medal} {i}위: {brand}</strong><br>
+                {emoji_bar} ({sweetness}/4)
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+        
 def display_step_indicator(current_step):
     """단계 표시기 렌더링"""
     st.markdown(f"""
@@ -796,7 +834,7 @@ def challenge_page():
                     #     st.markdown('</div>', unsafe_allow_html=True)
 
                     # 수정 후 (간단하게)
-                    fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
+                    fig = create_modern_taste_profile(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
                     st.plotly_chart(fig, use_container_width=True)
 
                     # 맛 프로필 바 차트
@@ -808,6 +846,8 @@ def challenge_page():
                     st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (4-sweetness)} ({sweetness}/4)")
                     if i < len(brand_list) - 1:
                         st.markdown("---")
+
+            display_brand_rankings()
             
             st.info("📝 각 브랜드의 맛 특성을 확인하신 후, 다음 단계에서 실제 시음을 진행해주세요!")
             
@@ -909,7 +949,7 @@ def challenge_page():
                                 #with st.container():
                                     #st.markdown('<div class="plot-container">', unsafe_allow_html=True)
                                     taste_data = {"진함": cleanness, "단맛": sweetness}
-                                    fig = create_taste_profile_radar(taste_data, f"{sample} 두유 평가")
+                                    fig = create_modern_taste_profile(taste_data, f"{sample} 두유 평가")
                                     st.plotly_chart(fig, use_container_width=True)
                                     #st.markdown('</div>', unsafe_allow_html=True)
             
