@@ -842,8 +842,8 @@ def challenge_page():
                     sweetness = BRANDS[brand]["taste_profile"]["단맛"]
                     
                     st.markdown("**맛 특성:**")
-                    st.markdown(f"진함: {'🟢' * cleanness}{'⚪' * (4-cleanness)} ({cleanness}/4)")
                     st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (4-sweetness)} ({sweetness}/4)")
+                    st.markdown(f"진함: {'🟢' * cleanness}{'⚪' * (4-cleanness)} ({cleanness}/4)")
                     if i < len(brand_list) - 1:
                         st.markdown("---")
 
