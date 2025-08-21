@@ -926,7 +926,7 @@ def challenge_page():
                                 current_selection = "선택하세요"
                             
                             selected_brand = st.selectbox(
-                                f"어떤 브랜드일까요?",
+                                f"**어떤 브랜드일까요?**",
                                 available_brands,
                                 index=available_brands.index(current_selection) if current_selection in available_brands else 0,
                                 key=f"{sample}_brand"
