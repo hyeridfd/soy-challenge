@@ -902,7 +902,7 @@ def challenge_page():
                             
                             # 깔끔함 슬라이더
                             cleanness = st.slider(
-                                f"**맛의 진함**",
+                                f"**1) 맛의 진함**",
                                 min_value=1, max_value=4, value=2,
                                 help="1: 매우 깔끔함, 4: 매우 진함",
                                 key=f"{sample}_cleanness"
@@ -911,7 +911,7 @@ def challenge_page():
                             
                             # 단맛 슬라이더
                             sweetness = st.slider(
-                                f"**단맛 정도**",
+                                f"**2) 단맛 정도**",
                                 min_value=1, max_value=4, value=2,
                                 help="1: 달지 않음, 4: 달큰함",
                                 key=f"{sample}_sweetness"
@@ -926,7 +926,7 @@ def challenge_page():
                                 current_selection = "선택하세요"
                             
                             selected_brand = st.selectbox(
-                                f"**어떤 브랜드일까요?**",
+                                f"**3) 어떤 브랜드일까요?**",
                                 available_brands,
                                 index=available_brands.index(current_selection) if current_selection in available_brands else 0,
                                 key=f"{sample}_brand"
