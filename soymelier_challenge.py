@@ -688,7 +688,7 @@ def display_brand_rankings():
     with col2:
         st.markdown("""
         <div style="background: rgba(241, 196, 15, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(241, 196, 15, 0.2);">
-            <h4 style="color: #f1c40f; text-align: center; margin-bottom: 15px;">단맛 순위</h4>
+            <h4 style="color: #27ae60; text-align: center; margin-bottom: 15px;">단맛 순위</h4>
         """, unsafe_allow_html=True)
         
         for i, (brand, info) in enumerate(brands_by_sweetness, 1):
