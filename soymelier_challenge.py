@@ -902,7 +902,7 @@ def challenge_page():
 
                             # 단맛 슬라이더
                             sweetness = st.slider(
-                                f"**2) 단맛 정도**",
+                                f"**1) 단맛 정도**",
                                 min_value=1, max_value=4, value=2,
                                 help="1: 달지 않음, 4: 달큰함",
                                 key=f"{sample}_sweetness"
@@ -911,7 +911,7 @@ def challenge_page():
                             
                             # 깔끔함 슬라이더
                             cleanness = st.slider(
-                                f"**1) 맛의 진함**",
+                                f"**2) 맛의 진함**",
                                 min_value=1, max_value=4, value=2,
                                 help="1: 매우 깔끔함, 4: 매우 진함",
                                 key=f"{sample}_cleanness"
