@@ -1014,11 +1014,15 @@ def challenge_page():
             # 평가 결과 테이블
             results_data = []
             for sample in SAMPLES:
-                eval_data = st.session_state.taste_evaluations[sample]
+                eval_data = st.session_state.taste_evaluations.get(sample, {
+                    "진함": 0,
+                    "단맛": 0,
+                    "선택브랜드": "선택안함"
+                })
                 results_data.append({
                     '샘플': f'{sample}_두유',
-                    '진함 (1-４)': f"{eval_data['진함']}/4 {'🟢' * eval_data['진함']}{'⚪' * (4-eval_data['진함'])}",
-                    '단맛 (1-４)': f"{eval_data['단맛']}/4 {'🟢' * eval_data['단맛']}{'⚪' * (4-eval_data['단맛'])}",
+                    '진함 (1-4)': f"{eval_data['진함']}/4 {'🟢' * eval_data['진함']}{'⚪' * (4-eval_data['진함'])}",
+                    '단맛 (1-4)': f"{eval_data['단맛']}/4 {'🟢' * eval_data['단맛']}{'⚪' * (4-eval_data['단맛'])}",
                     '예상 브랜드': eval_data['선택브랜드']
                 })
             
