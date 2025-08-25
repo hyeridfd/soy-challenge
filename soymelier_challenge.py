@@ -1183,9 +1183,37 @@ def show_organization_analysis(organization_filter):
                     
                     # 완벽한 정답자 표시
                     if all_correct_participants:
-                        st.success(f"🏆 **완벽한 두믈리에 ({len(all_correct_participants)}명):** {', '.join(all_correct_participants)}")
+                        names = ', '.join(all_correct_participants)
+                        st.markdown(f"""
+                        <div style="
+                            background: linear-gradient(135deg, #2ecc71, #27ae60);
+                            color: white;
+                            padding: 25px;
+                            border-radius: 20px;
+                            text-align: center;
+                            font-size: 1.5rem;
+                            font-weight: 700;
+                            box-shadow: 0 0 30px rgba(46,204,113,0.6);
+                            animation: pop 1s ease forwards, glow 1.5s infinite alternate;
+                            ">
+                            🏆 완벽한 두믈리에 탄생!<br>
+                            <span style="font-size:1.2rem; font-weight:500;">{names}</span>
+                        </div>
+                        <style>
+                        @keyframes pop {{
+                            0% {{ transform: scale(0.5); opacity: 0; }}
+                            80% {{ transform: scale(1.1); opacity: 1; }}
+                            100% {{ transform: scale(1); }}
+                        }}
+                        @keyframes glow {{
+                            from {{ box-shadow: 0 0 10px rgba(46,204,113,0.6); }}
+                            to {{ box-shadow: 0 0 30px rgba(46,204,113,1); }}
+                        }}
+                        </style>
+                        """, unsafe_allow_html=True)
                     else:
                         st.info("🎯 아직 네 개 브랜드를 모두 맞춘 참여자가 없습니다.")
+
                     
                     # 상세 결과 테이블
                     detailed_results = []
