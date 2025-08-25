@@ -563,61 +563,43 @@ def init_gsheet():
         return None
 
 def save_to_gsheet(data):
-    """데이터를 Google Sheets에 저장"""
     sheet = init_gsheet()
     if sheet:
         try:
-            # 먼저 시트를 완전히 초기화 (기존 데이터가 있어도 헤더 재설정)
+            headers = ['이름', '성별', '연령', '소속', '제출시간',
+                       '1_진함', '1_단맛', '1_선택브랜드',
+                       '2_진함', '2_단맛', '2_선택브랜드',
+                       '3_진함', '3_단맛', '3_선택브랜드',
+                       '4_진함', '4_단맛', '4_선택브랜드']  # ← 총 17개
+
             try:
                 all_values = sheet.get_all_values()
                 if not all_values or len(all_values) == 0:
-                    # 빈 시트인 경우 헤더 추가
-                    headers = ['이름', '성별', '연령', '소속', '제출시간',
-                              '1_진함', '1_단맛', '1_선택브랜드',
-                              '2_진함', '2_단맛', '2_선택브랜드',
-                              '3_진함', '3_단맛', '3_선택브랜드',
-                              '4_진함', '4_단맛', '4_선택브랜드']
                     sheet.append_row(headers)
                     st.info(f"✅ 헤더 생성 완료 (총 {len(headers)}개 컬럼)")
-                elif len(all_values[0]) < 16:
-                    # 헤더가 부족한 경우 시트 초기화
+                elif len(all_values[0]) < len(headers):  # ← 17과 비교
                     sheet.clear()
-                    headers = ['이름', '성별', '연령', '소속', '제출시간',
-                              '1_진함', '1_단맛', '1_선택브랜드',
-                              '2_진함', '2_단맛', '2_선택브랜드',
-                              '3_진함', '3_단맛', '3_선택브랜드',
-                              '4_진함', '4_단맛', '4_선택브랜드']
                     sheet.append_row(headers)
                     st.info("✅ 시트가 재초기화되었습니다.")
             except:
-                # 안전한 초기화
-                headers = ['이름', '성별', '연령', '소속', '제출시간',
-                          '1_진함', '1_단맛', '1_선택브랜드',
-                          '2_진함', '2_단맛', '2_선택브랜드',
-                          '3_진함', '3_단맛', '3_선택브랜드',
-                          '4_진함', '4_단맛', '4_선택브랜드']
                 sheet.clear()
                 sheet.append_row(headers)
-            
-            # 데이터 길이를 16개로 맞춤
-            if len(data) > 16:
-                data = data[:17]  # 16개로 자르기
-            elif len(data) < 16:
-                data.extend([''] * (16 - len(data)))  # 부족한 부분 빈 문자열로 채우기
-            
-            # 모든 데이터를 문자열로 변환
+
+            # 데이터 길이를 17개로 맞춤
+            if len(data) > len(headers):
+                data = data[:len(headers)]      # ← [:17]
+            elif len(data) < len(headers):
+                data.extend([''] * (len(headers) - len(data)))
+
             data = [str(item) for item in data]
-            
-            # 데이터 추가
             sheet.append_row(data)
             return True
-            
+
         except Exception as e:
             st.error(f"❌ 데이터 저장 오류: {e}")
             st.error(f"❌ 오류 상세: {type(e).__name__}")
             return False
     else:
-        # Google Sheets 연동이 안된 경우 세션에 임시 저장 (데모용)
         if 'demo_data' not in st.session_state:
             st.session_state.demo_data = []
         st.session_state.demo_data.append(data)
@@ -1030,6 +1012,7 @@ def challenge_page():
             st.dataframe(df, use_container_width=True)
             
             # 제출 버튼
+            # 제출 버튼
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
                 if st.button("🌿 최종 제출하기", key="step4_submit", use_container_width=True):
@@ -1040,30 +1023,32 @@ def challenge_page():
                         participant['gender'],
                         participant['age'],
                         participant['organization'],
-                        datetime.now(kst).strftime("%Y-%m-%d %H:%M:%S")  # 한국시간 적용
+                        datetime.now(kst).strftime("%Y-%m-%d %H:%M:%S")
                     ]
-                    
-                    # A, B, C, D 평가 데이터 추가
-                    for sample in ['A', 'B', 'C', 'D']:
-                        eval_data = st.session_state.taste_evaluations[sample]
+            
+                    # 1,2,3,4 평가 데이터 추가 (안전 접근)
+                    for sample in SAMPLES:  # ['1','2','3','4']
+                        eval_data = st.session_state.taste_evaluations.get(sample, {
+                            "진함": "",
+                            "단맛": "",
+                            "선택브랜드": ""
+                        })
                         submit_data.extend([
-                            eval_data['진함'],
-                            eval_data['단맛'],
-                            eval_data['선택브랜드']
+                            eval_data.get('진함', ''),
+                            eval_data.get('단맛', ''),
+                            eval_data.get('선택브랜드', '')
                         ])
-                    
+            
                     # 저장
                     if save_to_gsheet(submit_data):
                         st.success("🎉 제출이 완료되었습니다! 참여해주셔서 감사합니다.")
-                        #st.balloons()
-                        
-                        # 새 참여자를 위한 리셋 버튼
                         if st.button("🌱 새로운 참여자 시작", key="step4_reset", use_container_width=True):
                             for key in list(st.session_state.keys()):
                                 del st.session_state[key]
                             st.rerun()
                     else:
                         st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
+
         
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -1162,8 +1147,8 @@ def show_all_data():
 
 def show_organization_analysis(organization_filter):
     """소속별 분석 표시"""
-    #samples = ['A', 'B', 'C', 'D']
-    
+
+    samples = ['1', '2', '3', '4']
     sheet = init_gsheet()
     if sheet:
         try:
