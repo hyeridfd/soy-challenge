@@ -5,7 +5,7 @@ import numpy as np
 from datetime import datetime
 import gspread
 from google.oauth2.service_account import Credentials
-import jsonf
+import json
 import os
 import pytz
 
