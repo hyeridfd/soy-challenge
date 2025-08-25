@@ -571,10 +571,10 @@ def save_to_gsheet(data):
                 if not all_values or len(all_values) == 0:
                     # 빈 시트인 경우 헤더 추가
                     headers = ['이름', '성별', '연령', '소속', '제출시간',
-                              'A_진함', 'A_단맛', 'A_선택브랜드',
-                              'B_진함', 'B_단맛', 'B_선택브랜드',
-                              'C_진함', 'C_단맛', 'C_선택브랜드',
-                              'D_진함', 'D_단맛', 'D_선택브랜드']
+                              '1_진함', '1_단맛', '1_선택브랜드',
+                              '2_진함', '2_단맛', '2_선택브랜드',
+                              '3_진함', '3_단맛', '3_선택브랜드',
+                              '4_진함', '4_단맛', '4_선택브랜드']
                     sheet.append_row(headers)
                     st.info(f"✅ 헤더 생성 완료 (총 {len(headers)}개 컬럼)")
                 elif len(all_values[0]) < 16:
@@ -861,8 +861,9 @@ def challenge_page():
         elif st.session_state.step == 3:
             st.markdown('<div class="section-header">🌿 시음 평가</div>', unsafe_allow_html=True)
             st.info("1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.")
-            
-            samples = ['A', 'B', 'C', 'D']
+
+            SAMPLES = ['1', '2', '3', '4']
+            samples = SAMPLES  # ['1','2','3','4']
             
             # 이미 선택된 브랜드들을 추적
             def get_selected_brands():
@@ -877,12 +878,10 @@ def challenge_page():
             def get_available_brands(current_sample):
                 selected_brands = get_selected_brands()
                 current_selection = st.session_state.get(f"{current_sample}_brand", "선택하세요")
-                
                 available_brands = ["선택하세요"]
-                for brand in BRANDS.keys():
+                for brand in BRANDS.keys():  # A, B, C, D
                     if brand not in selected_brands or brand == current_selection:
                         available_brands.append(brand)
-                
                 return available_brands
             
             # 2x2 그리드로 샘플 배치
@@ -896,7 +895,7 @@ def challenge_page():
                         with col:
                             st.markdown(f"""
                             <div class="sample-card">
-                                <div class="sample-title">🥛 {sample} 두유</div>
+                                <div class="sample-title">🥛 {sample}_두유</div>
                             </div>
                             """, unsafe_allow_html=True)
 
@@ -961,7 +960,7 @@ def challenge_page():
                 brand = st.session_state.get(f"{sample}_brand", "선택하세요")
                 status = "✅ 완료" if brand != "선택하세요" else "❌ 미완료"
                 selection_status.append({
-                    "샘플": f"{sample} 두유",
+                    "샘플": f"{sample}_두유",
                     "선택한 브랜드": brand,
                     "상태": status
                 })
@@ -1013,10 +1012,10 @@ def challenge_page():
             
             # 평가 결과 테이블
             results_data = []
-            for sample in ['A', 'B', 'C', 'D']:
+            for sample in SAMPLES:
                 eval_data = st.session_state.taste_evaluations[sample]
                 results_data.append({
-                    '샘플': f'{sample} 두유',
+                    '샘플': f'{sample}_두유',
                     '진함 (1-４)': f"{eval_data['진함']}/4 {'🟢' * eval_data['진함']}{'⚪' * (4-eval_data['진함'])}",
                     '단맛 (1-４)': f"{eval_data['단맛']}/4 {'🟢' * eval_data['단맛']}{'⚪' * (4-eval_data['단맛'])}",
                     '예상 브랜드': eval_data['선택브랜드']
@@ -1175,10 +1174,10 @@ def show_organization_analysis(organization_filter):
                     
                     # 정답 설정 (실제 챌린지에 맞게 수정하세요)
                     correct_answers = {
-                        'A': '밥스누 약콩두유',
-                        'B': '황성주 검은콩두유', 
-                        'C': '매일두유',
-                        'D': '베지밀 두유'
+                        '1': 'A',
+                        '2': 'B', 
+                        '3': 'C',
+                        '4': 'D'
                     }
                     
                     # 완벽한 정답자 찾기
