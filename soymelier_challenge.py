@@ -1196,7 +1196,7 @@ def show_organization_analysis(organization_filter):
                             box-shadow: 0 0 30px rgba(46,204,113,0.6);
                             animation: pop 1s ease forwards, glow 1.5s infinite alternate;
                             ">
-                            🏆 완벽한 두믈리에 탄생!<br>
+                            🏆 완벽한 두믈리에 탄생 🏆<br>
                             <span style="font-size:1.2rem; font-weight:500;">{names}</span>
                         </div>
                         <style>
