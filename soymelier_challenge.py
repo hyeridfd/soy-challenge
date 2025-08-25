@@ -5,7 +5,7 @@ import numpy as np
 from datetime import datetime
 import gspread
 from google.oauth2.service_account import Credentials
-import json
+import jsonf
 import os
 import pytz
 
@@ -525,6 +525,8 @@ BRANDS = {
     }
 }
 
+SAMPLES = ['1','2','3','4']
+
 # Google Sheets 연동 함수
 def init_gsheet():
     """Google Sheets 초기화"""
@@ -861,8 +863,7 @@ def challenge_page():
         elif st.session_state.step == 3:
             st.markdown('<div class="section-header">🌿 시음 평가</div>', unsafe_allow_html=True)
             st.info("1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.")
-
-            SAMPLES = ['1', '2', '3', '4']
+            
             samples = SAMPLES  # ['1','2','3','4']
             
             # 이미 선택된 브랜드들을 추적
@@ -1157,7 +1158,7 @@ def show_all_data():
 
 def show_organization_analysis(organization_filter):
     """소속별 분석 표시"""
-    samples = ['A', 'B', 'C', 'D']
+    #samples = ['A', 'B', 'C', 'D']
     
     sheet = init_gsheet()
     if sheet:
