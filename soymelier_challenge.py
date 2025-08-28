@@ -651,12 +651,12 @@ def challenge_page():
             col1, col2 = st.columns(2)
             
             with col1:
-                name = st.text_input("이름", key="name", placeholder="이름을 입력하세요(ex. 김스누")
-                gender = st.text_input("성별", key='gender', placeholder="성별을 입력하세요(ex. 남/여")
+                name = st.text_input("이름", key="name", placeholder="이름을 입력하세요(ex. 김스누)")
+                gender = st.text_input("성별", key='gender', placeholder="성별을 입력하세요(ex. 남/여)")
                 #gender = st.selectbox("성별", ["선택하세요", "남성", "여성"], key="gender")
             
             with col2:
-                age = st.text_input("연령", key='age', placeholder="연령을 입력하세요(ex. 35")
+                age = st.text_input("연령", key='age', placeholder="연령을 입력하세요(ex. 35)")
                 #age = st.number_input("연령", min_value=1, max_value=120, key="age", value=35)
                 organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
             
