@@ -773,7 +773,7 @@ def home_page():
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: center;
-                gap: 30px;                         /* ← 내부 간격 */
+                gap: 12px;                         /* ← 내부 간격 */
             ">
                 <div style="font-size: 48px; line-height: 1;">{step['icon']}</div>
                 <div style="color: #2980b9; font-weight: 700; font-size: 18px; margin: 8px 0;">
