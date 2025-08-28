@@ -1317,17 +1317,19 @@ def show_organization_analysis(organization_filter):
                     total_attempts = len(filtered_df) * 4
                     overall_accuracy = (total_correct / total_attempts) * 100
                     
-                    st.metric(
-                        label="전체 정답률",
-                        value=f"{overall_accuracy:.1f}%",
-                        delta=f"{total_correct}/{total_attempts}"
-                    )
-                    
-                    st.metric(
-                        label="완벽한 정답자",
-                        value=f"{len(all_correct_participants)}명",
-                        delta=f"{len(all_correct_participants)}/{len(filtered_df)}"
-                    )
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        st.metric(
+                            label="전체 정답률",
+                            value=f"{overall_accuracy:.1f}%",
+                            delta=f"{total_correct}/{total_attempts}"
+                        )
+                    with col2:
+                        st.metric(
+                            label="완벽한 정답자",
+                            value=f"{len(all_correct_participants)}명",
+                            delta=f"{len(all_correct_participants)}/{len(filtered_df)}"
+                        )
                     
                     # 개별 정답률
                     st.markdown("**브랜드별 상세 정답률:**")
