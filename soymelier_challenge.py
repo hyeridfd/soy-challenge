@@ -24,7 +24,7 @@ st.markdown("""
     
     /* 전체 앱 배경 */
     .stApp {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 50%, #e8f5e8 100%);
+        background: #ffffff;
         font-family: 'Noto Sans KR', sans-serif;
     }
     
@@ -32,10 +32,10 @@ st.markdown("""
     .main-header {
         text-align: center;
         padding: 40px 0;
-        background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05));
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.05));
         border-radius: 25px;
         margin-bottom: 30px;
-        border: 2px solid rgba(46, 204, 113, 0.2);
+        border: 2px solid rgba(52, 152, 219, 0.2);
         position: relative;
         overflow: hidden;
     }
@@ -47,13 +47,13 @@ st.markdown("""
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, #2ecc71, #27ae60, #16a085);
+        background: linear-gradient(90deg, #3498db, #2980b9, #1e88e5);
     }
     
     .main-title {
         font-size: 3.5rem;
         font-weight: 700;
-        background: linear-gradient(45deg, #2ecc71, #27ae60, #16a085);
+        background: linear-gradient(45deg, #3498db, #2980b9, #1e88e5);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -111,14 +111,14 @@ st.markdown("""
     }
     
     .stTabs [data-baseweb="tab"]:hover {
-        background: rgba(46, 204, 113, 0.1);
+        background: rgba(52, 152, 219, 0.1);
         transform: translateY(-2px);
     }
     
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+        background: linear-gradient(135deg, #3498db, #2980b9) !important;
         color: white !important;
-        box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
     }
     
     /* 단계 표시기 */
@@ -149,9 +149,9 @@ st.markdown("""
     }
     
     .step-completed {
-        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        background: linear-gradient(135deg, #3498db, #2980b9);
         color: white;
-        box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
     }
     
     .step-current {
@@ -174,7 +174,7 @@ st.markdown("""
     }
     
     .step-line.completed {
-        background: linear-gradient(90deg, #2ecc71, #27ae60);
+        background: linear-gradient(90deg, #3498db, #2980b9);
     }
     
     @keyframes pulse {
@@ -199,7 +199,7 @@ st.markdown("""
     
     .progress-fill {
         height: 100%;
-        background: linear-gradient(90deg, #2ecc71, #27ae60);
+        background: linear-gradient(90deg, #3498db, #2980b9);
         border-radius: 4px;
         transition: width 0.5s ease;
     }
@@ -211,7 +211,7 @@ st.markdown("""
         padding: 25px;
         #margin: px 0;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        border: 2px solid rgba(46, 204, 113, 0.1);
+        border: 2px solid rgba(52, 152, 219, 0.1);
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
@@ -224,20 +224,20 @@ st.markdown("""
         left: 0;
         right: 0;
         height: 3px;
-        background: linear-gradient(90deg, #2ecc71, #27ae60);
+        background: linear-gradient(90deg, #3498db, #2980b9);
     }
     
     .brand-name {
         font-size: 1.4rem;
         font-weight: 600;
-        color: #27ae60;
+        color: #2980b9;
         margin-bottom: 10px;
     }
 
     .brand-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        border-color: rgba(46, 204, 113, 0.3);
+        border-color: rgba(52, 152, 219, 0.3);
     }
     
     .brand-description {
@@ -248,7 +248,7 @@ st.markdown("""
     
     /* 버튼 스타일 */
     .stButton > button {
-        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        background: linear-gradient(135deg, #3498db, #2980b9);
         color: white;
         border: none;
         border-radius: 15px;
@@ -256,7 +256,7 @@ st.markdown("""
         font-size: 1.1rem;
         font-weight: 600;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
     }
 
         /* 브랜드 카드 하단 여백 완전 제거 */
@@ -276,15 +276,15 @@ st.markdown("""
     
     .stButton > button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
-        background: linear-gradient(135deg, #27ae60, #2ecc71);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        background: linear-gradient(135deg, #2980b9, #3498db);
     }
     
     /* 입력 필드 스타일 */
     .stTextInput > div > div > input,
     .stSelectbox > div > div > select,
     .stNumberInput > div > div > input {
-        border: 2px solid #e8f5e8;
+        border: 2px solid #e8f3ff;
         border-radius: 15px;
         padding: 15px 20px;
         background: rgba(255, 255, 255, 0.8);
@@ -295,8 +295,8 @@ st.markdown("""
     .stTextInput > div > div > input:focus,
     .stSelectbox > div > div > select:focus,
     .stNumberInput > div > div > input:focus {
-        border-color: #2ecc71;
-        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
         background: white;
     }
     
@@ -331,8 +331,8 @@ st.markdown("""
     }
     
     .stSuccess {
-        background: rgba(46, 204, 113, 0.1);
-        border-left-color: #2ecc71;
+        background: rgba(52, 152, 219, 0.1);
+        border-left-color: #3498db;
     }
     
     .stWarning {
@@ -384,15 +384,15 @@ st.markdown("""
     
     /* 섹션 헤더 스타일 */
     .section-header {
-        color: #27ae60;
+        color: #2980b9;
         font-size: 2rem;
         font-weight: 600;
         text-align: center;
         margin: 30px 0;
         padding: 20px;
-        background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05));
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.05));
         border-radius: 15px;
-        border: 2px solid rgba(46, 204, 113, 0.2);
+        border: 2px solid rgba(52, 152, 219, 0.2);
     }
     
     /* 샘플 카드 스타일 */
@@ -409,21 +409,21 @@ st.markdown("""
     .sample-title {
         font-size: 1.6rem;
         font-weight: 600;
-        color: #27ae60;
+        color: #2980b9;
         text-align: center;
         margin-bottom: 20px;
         padding: 15px;
-        background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05));
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.05));
         border-radius: 10px;
     }
     
     /* 결과 요약 스타일 */
     .results-summary {
-        background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.1));
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
         border-radius: 20px;
         padding: 30px;
         margin: 25px 0;
-        border: 2px solid rgba(46, 204, 113, 0.2);
+        border: 2px solid rgba(52, 152, 219, 0.2);
         position: relative;
     }
     
@@ -434,7 +434,7 @@ st.markdown("""
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, #2ecc71, #27ae60, #16a085);
+        background: linear-gradient(90deg, #3498db, #2980b9, #1e88e5);
         border-radius: 20px 20px 0 0;
     }
     
@@ -445,7 +445,7 @@ st.markdown("""
         padding: 20px;
         margin: 15px 0;
         box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        border: 1px solid rgba(46, 204, 113, 0.1);
+        border: 1px solid rgba(52, 152, 219, 0.1);
     }
     
     /* 관리자 패널 */
@@ -614,7 +614,7 @@ def create_modern_taste_profile(taste_data, title):
     
     categories = ['☕ 진함', '🧊 단맛']
     values = [taste_data.get('진함', 0), taste_data.get('단맛', 0)]
-    colors = ['#27ae60', '#2ecc71']
+    colors = ['#2980b9', '#3498db']
     
     fig.add_trace(go.Bar(
         y=categories,
@@ -628,7 +628,7 @@ def create_modern_taste_profile(taste_data, title):
     
     fig.update_layout(
         title={'text': title, 'x': 0.5, 'xanchor': 'center'},
-        xaxis=dict(range=[0, 4], showgrid=True, gridcolor='rgba(46, 204, 113, 0.2)'),
+        xaxis=dict(range=[0, 4], showgrid=True, gridcolor='rgba(52, 152, 219, 0.2)'),
         height=200,
         showlegend=False,
         paper_bgcolor='rgba(0,0,0,0)',
@@ -651,13 +651,13 @@ def display_brand_rankings():
     
     with col1:
         st.markdown("""
-        <div style="background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(39, 174, 96, 0.2);">
-            <h4 style="color: #27ae60; text-align: center; margin-bottom: 15px;">진함 순위</h4>
+        <div style="background: rgba(52, 152, 219, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(52, 152, 219, 0.2);">
+            <h4 style="color: #2980b9; text-align: center; margin-bottom: 15px;">진함 순위</h4>
         """, unsafe_allow_html=True)
         
         for i, (brand, info) in enumerate(brands_by_intensity, 1):
             intensity = info["taste_profile"]["진함"]
-            emoji_bar = "🟢" * intensity + "⚪" * (4 - intensity)
+            emoji_bar = "🔵" * intensity + "⚪" * (4 - intensity)
             medal = ["🥇", "🥈", "🥉", "🏅"][i-1]
             
             st.markdown(f"""
@@ -671,13 +671,13 @@ def display_brand_rankings():
     
     with col2:
         st.markdown("""
-        <div style="background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(39, 174, 96, 0.2);">
-            <h4 style="color: #27ae60; text-align: center; margin-bottom: 15px;">단맛 순위</h4>
+        <div style="background: rgba(52, 152, 219, 0.1); padding: 20px; border-radius: 15px; border: 2px solid rgba(52, 152, 219, 0.2);">
+            <h4 style="color: #2980b9; text-align: center; margin-bottom: 15px;">단맛 순위</h4>
         """, unsafe_allow_html=True)
         
         for i, (brand, info) in enumerate(brands_by_sweetness, 1):
             sweetness = info["taste_profile"]["단맛"]
-            emoji_bar = "🟢" * sweetness + "⚪" * (4 - sweetness)
+            emoji_bar = "🔵" * sweetness + "⚪" * (4 - sweetness)
             medal = ["🥇", "🥈", "🥉", "🏅"][i-1]
             
             st.markdown(f"""
@@ -693,21 +693,6 @@ def display_step_indicator(current_step):
     """단계 표시기 렌더링"""
     st.markdown(f"""
     <div class="step-container">
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 1 else 'step-current' if current_step == 1 else 'step-pending'}">1</div>
-            <span>참여자 정보</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 1 else ''}"></div>
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 2 else 'step-current' if current_step == 2 else 'step-pending'}">2</div>
-            <span>브랜드 소개</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 2 else ''}"></div>
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 3 else 'step-current' if current_step == 3 else 'step-pending'}">3</div>
-            <span>시음 평가</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 3 else ''}"></div>
         <div class="step-item">
             <div class="step-circle {'step-completed' if current_step == 4 else 'step-pending'}">4</div>
             <span>결과 확인</span>
@@ -810,13 +795,6 @@ def challenge_page():
                     </div>
                     """, unsafe_allow_html=True)
                     
-                    # # Taste Profile 차트를 컨테이너로 감싸기
-                    # with st.container():
-                    #     st.markdown('<div class="plot-container">', unsafe_allow_html=True)
-                    #     fig = create_taste_profile_radar(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
-                    #     st.plotly_chart(fig, use_container_width=True)
-                    #     st.markdown('</div>', unsafe_allow_html=True)
-
                     # 수정 후 (간단하게)
                     fig = create_modern_taste_profile(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
                     st.plotly_chart(fig, use_container_width=True)
@@ -826,8 +804,8 @@ def challenge_page():
                     sweetness = BRANDS[brand]["taste_profile"]["단맛"]
                     
                     st.markdown("**맛 특성:**")
-                    st.markdown(f"단맛: {'🟢' * sweetness}{'⚪' * (4-sweetness)} ({sweetness}/4)")
-                    st.markdown(f"진함: {'🟢' * cleanness}{'⚪' * (4-cleanness)} ({cleanness}/4)")
+                    st.markdown(f"단맛: {'🔵' * sweetness}{'⚪' * (4-sweetness)} ({sweetness}/4)")
+                    st.markdown(f"진함: {'🔵' * cleanness}{'⚪' * (4-cleanness)} ({cleanness}/4)")
                     if i < len(brand_list) - 1:
                         st.markdown("---")
 
@@ -928,12 +906,9 @@ def challenge_page():
                             
                             # 실시간 레이더 차트
                             if cleanness and sweetness:
-                                #with st.container():
-                                    #st.markdown('<div class="plot-container">', unsafe_allow_html=True)
-                                    taste_data = {"진함": cleanness, "단맛": sweetness}
-                                    fig = create_modern_taste_profile(taste_data, f"{sample} 두유 평가")
-                                    st.plotly_chart(fig, use_container_width=True)
-                                    #st.markdown('</div>', unsafe_allow_html=True)
+                                taste_data = {"진함": cleanness, "단맛": sweetness}
+                                fig = create_modern_taste_profile(taste_data, f"{sample} 두유 평가")
+                                st.plotly_chart(fig, use_container_width=True)
             
             # 선택 현황 표시
             st.markdown('<div class="section-header">📋 현재 선택 현황</div>', unsafe_allow_html=True)
@@ -987,7 +962,7 @@ def challenge_page():
             
             st.markdown(f"""
             <div class="results-summary">
-                <h3 style="color: #27ae60; margin-bottom: 20px;">📋 평가 결과 요약</h3>
+                <h3 style="color: #2980b9; margin-bottom: 20px;">📋 평가 결과 요약</h3>
                 <p><strong>참여자:</strong> {participant['name']} ({participant['gender']}, {participant['age']}세)</p>
                 <p><strong>소속:</strong> {participant['organization']}</p>
             </div>
@@ -1003,15 +978,14 @@ def challenge_page():
                 })
                 results_data.append({
                     '샘플': f'{sample}_두유',
-                    '진함 (1-4)': f"{eval_data['진함']}/4 {'🟢' * eval_data['진함']}{'⚪' * (4-eval_data['진함'])}",
-                    '단맛 (1-4)': f"{eval_data['단맛']}/4 {'🟢' * eval_data['단맛']}{'⚪' * (4-eval_data['단맛'])}",
+                    '진함 (1-4)': f"{eval_data['진함']}/4 {'🔵' * eval_data['진함']}{'⚪' * (4-eval_data['진함'])}",
+                    '단맛 (1-4)': f"{eval_data['단맛']}/4 {'🔵' * eval_data['단맛']}{'⚪' * (4-eval_data['단맛'])}",
                     '예상 브랜드': eval_data['선택브랜드']
                 })
             
             df = pd.DataFrame(results_data)
             st.dataframe(df, use_container_width=True)
             
-            # 제출 버튼
             # 제출 버튼
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
@@ -1186,14 +1160,14 @@ def show_organization_analysis(organization_filter):
                         names = ', '.join(all_correct_participants)
                         st.markdown(f"""
                         <div style="
-                            background: linear-gradient(135deg, #2ecc71, #27ae60);
+                            background: linear-gradient(135deg, #3498db, #2980b9);
                             color: white;
                             padding: 25px;
                             border-radius: 20px;
                             text-align: center;
                             font-size: 1.5rem;
                             font-weight: 700;
-                            box-shadow: 0 0 30px rgba(46,204,113,0.6);
+                            box-shadow: 0 0 30px rgba(52,152,219,0.6);
                             animation: pop 1s ease forwards, glow 1.5s infinite alternate;
                             ">
                             🏆 완벽한 두믈리에 탄생 🏆<br>
@@ -1206,8 +1180,8 @@ def show_organization_analysis(organization_filter):
                             100% {{ transform: scale(1); }}
                         }}
                         @keyframes glow {{
-                            from {{ box-shadow: 0 0 10px rgba(46,204,113,0.6); }}
-                            to {{ box-shadow: 0 0 30px rgba(46,204,113,1); }}
+                            from {{ box-shadow: 0 0 10px rgba(52,152,219,0.6); }}
+                            to {{ box-shadow: 0 0 30px rgba(52,152,219,1); }}
                         }}
                         </style>
                         """, unsafe_allow_html=True)
@@ -1280,7 +1254,7 @@ def show_organization_analysis(organization_filter):
                                                                      accuracy_df['정답자수'], 
                                                                      accuracy_df['전체'])],
                                 textposition='auto',
-                                marker_color=['#2ecc71', '#27ae60', '#16a085', '#1abc9c']
+                                marker_color=['#3498db', '#2980b9', '#1e88e5', '#1976d2']
                             )
                         ])
                         
@@ -1334,4 +1308,19 @@ def show_organization_analysis(organization_filter):
         st.info("Google Sheets 연동이 필요합니다.")
 
 if __name__ == "__main__":
-    main()
+    main()-circle {'step-completed' if current_step > 1 else 'step-current' if current_step == 1 else 'step-pending'}">1</div>
+            <span>참여자 정보</span>
+        </div>
+        <div class="step-line {'completed' if current_step > 1 else ''}"></div>
+        <div class="step-item">
+            <div class="step-circle {'step-completed' if current_step > 2 else 'step-current' if current_step == 2 else 'step-pending'}">2</div>
+            <span>브랜드 소개</span>
+        </div>
+        <div class="step-line {'completed' if current_step > 2 else ''}"></div>
+        <div class="step-item">
+            <div class="step-circle {'step-completed' if current_step > 3 else 'step-current' if current_step == 3 else 'step-pending'}">3</div>
+            <span>시음 평가</span>
+        </div>
+        <div class="step-line {'completed' if current_step > 3 else ''}"></div>
+        <div class="step-item">
+            <div class="step
