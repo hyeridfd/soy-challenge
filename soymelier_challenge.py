@@ -763,7 +763,7 @@ def home_page():
             st.markdown(f"""
             <div style="
                 background: white; 
-                padding: 36px 20px; 
+                padding: 50px 20px; 
                 border-radius: 18px; 
                 text-align: center; 
                 box-shadow: 0 8px 24px rgba(0,0,0,0.08);
