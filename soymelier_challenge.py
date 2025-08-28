@@ -673,7 +673,7 @@ def main():
           position: relative;
         
           /* ↑ 컨텐츠와의 시각적 간격(자유롭게 24~40px 사이로 조절) */
-          --banner-gap: 28px;
+          --banner-gap: 50px;
         }
         
         /* 배너 위로 얇게 겹쳐지는 페이드 스페이서(레이아웃을 밀지 않음) */
