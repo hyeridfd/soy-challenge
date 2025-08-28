@@ -599,42 +599,42 @@ def display_brand_rankings():
         
         st.markdown('</div>', unsafe_allow_html=True)
 
-def display_step_indicator(current_step):
-    """단계 표시기 렌더링"""
-    st.markdown(f"""
-    <div class="step-container">
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 1 else 'step-current' if current_step == 1 else 'step-pending'}">1</div>
-            <span>참여자 정보</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 1 else ''}"></div>
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 2 else 'step-current' if current_step == 2 else 'step-pending'}">2</div>
-            <span>브랜드 소개</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 2 else ''}"></div>
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 3 else 'step-current' if current_step == 3 else 'step-pending'}">3</div>
-            <span>시음 평가</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 3 else ''}"></div>
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step == 4 else 'step-pending'}">4</div>
-            <span>결과 확인</span>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+# def display_step_indicator(current_step):
+#     """단계 표시기 렌더링"""
+#     st.markdown(f"""
+#     <div class="step-container">
+#         <div class="step-item">
+#             <div class="step-circle {'step-completed' if current_step > 1 else 'step-current' if current_step == 1 else 'step-pending'}">1</div>
+#             <span>참여자 정보</span>
+#         </div>
+#         <div class="step-line {'completed' if current_step > 1 else ''}"></div>
+#         <div class="step-item">
+#             <div class="step-circle {'step-completed' if current_step > 2 else 'step-current' if current_step == 2 else 'step-pending'}">2</div>
+#             <span>브랜드 소개</span>
+#         </div>
+#         <div class="step-line {'completed' if current_step > 2 else ''}"></div>
+#         <div class="step-item">
+#             <div class="step-circle {'step-completed' if current_step > 3 else 'step-current' if current_step == 3 else 'step-pending'}">3</div>
+#             <span>시음 평가</span>
+#         </div>
+#         <div class="step-line {'completed' if current_step > 3 else ''}"></div>
+#         <div class="step-item">
+#             <div class="step-circle {'step-completed' if current_step == 4 else 'step-pending'}">4</div>
+#             <span>결과 확인</span>
+#         </div>
+#     </div>
+#     """, unsafe_allow_html=True)
 
-def display_progress_bar(current_step):
-    """프로그레스 바 렌더링"""
-    progress = (current_step / 4) * 100
-    st.markdown(f"""
-    <div class="progress-container">
-        <div class="progress-bar">
-            <div class="progress-fill" style="width: {progress}%;"></div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+# def display_progress_bar(current_step):
+#     """프로그레스 바 렌더링"""
+#     progress = (current_step / 4) * 100
+#     st.markdown(f"""
+#     <div class="progress-container">
+#         <div class="progress-bar">
+#             <div class="progress-fill" style="width: {progress}%;"></div>
+#         </div>
+#     </div>
+#     """, unsafe_allow_html=True)
 
 def main():
     # 메인 헤더
