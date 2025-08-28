@@ -709,11 +709,17 @@ def challenge_page():
             
             st.info("📝 각 브랜드의 맛 특성을 확인하신 후, 다음 단계에서 실제 시음을 진행해주세요!")
             
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                if st.button("시음 평가하기", key="step2_next", use_container_width=True):
+            # 2단계 끝부분 버튼들 ↓ 이 블록으로 교체
+            col_prev, col_next = st.columns([1, 1])
+            with col_prev:
+                if st.button("⬅️ 이전 단계로", key="step2_prev", use_container_width=True):
+                    st.session_state.step = 1
+                    st.rerun()
+            with col_next:
+                if st.button("시음 평가하기 ➡️", key="step2_next", use_container_width=True):
                     st.session_state.step = 3
                     st.rerun()
+
         
         # 3단계: 시음 평가
         elif st.session_state.step == 3:
@@ -833,21 +839,34 @@ def challenge_page():
             
             if all_completed and not has_duplicates:
                 st.success("🎉 모든 두유 평가가 완료되었습니다!")
-                col1, col2, col3 = st.columns([1, 2, 1])
-                with col2:
-                    if st.button("🌱 평가 완료하기", key="step3_complete", use_container_width=True):
-                        for sample in samples:
-                            st.session_state.taste_evaluations[sample] = {
-                                "진함": st.session_state[f"{sample}_cleanness"],
-                                "단맛": st.session_state[f"{sample}_sweetness"],
-                                "선택브랜드": st.session_state[f"{sample}_brand"]
-                            }
-                        st.session_state.step = 4
+                # 완료/경고 메시지 아래쪽 버튼들 ↓ 이 블록으로 교체
+                col_prev, col_center, col_next = st.columns([1, 1, 1])
+
+                with col_prev:
+                    if st.button("⬅️ 이전 단계로", key="step3_prev", use_container_width=True):
+                        st.session_state.step = 2
                         st.rerun()
-            elif not all_completed:
-                st.warning("⚠️ 모든 두유의 브랜드를 선택해주세요.")
-            elif has_duplicates:
-                st.error("❌ 중복된 브랜드가 선택되었습니다. 각 브랜드는 한 번만 선택할 수 있습니다.")
+
+                with col_center:
+                    # 가운데는 비워두거나 안내문 넣어도 됨
+                    pass
+
+                with col_next:
+                    if all_completed and not has_duplicates:
+                        if st.button("🌱 평가 완료하기 ➡️", key="step3_complete", use_container_width=True):
+                            for sample in samples:
+                                st.session_state.taste_evaluations[sample] = {
+                                    "진함": st.session_state[f"{sample}_cleanness"],
+                                    "단맛": st.session_state[f"{sample}_sweetness"],
+                                    "선택브랜드": st.session_state[f"{sample}_brand"]
+                                }
+                            st.session_state.step = 4
+                            st.rerun()
+                    elif not all_completed:
+                        st.warning("⚠️ 모든 두유의 브랜드를 선택해주세요.")
+                    elif has_duplicates:
+                        st.error("❌ 중복된 브랜드가 선택되었습니다. 각 브랜드는 한 번만 선택할 수 있습니다.")
+
         
         # 4단계: 결과 제출
         elif st.session_state.step == 4:
@@ -883,8 +902,15 @@ def challenge_page():
             st.dataframe(df, use_container_width=True)
             
             # 제출 버튼
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
+            # 결과 테이블 아래 '제출' 버튼 부분 ↓ 이 블록으로 교체
+            col_prev, col_submit, col_reset = st.columns([1, 1, 1])
+
+            with col_prev:
+                if st.button("⬅️ 이전 단계로", key="step4_prev", use_container_width=True):
+                    st.session_state.step = 3
+                    st.rerun()
+
+            with col_submit:
                 if st.button("🌿 최종 제출하기", key="step4_submit", use_container_width=True):
                     # 저장할 데이터 준비
                     kst = pytz.timezone('Asia/Seoul')
@@ -895,9 +921,7 @@ def challenge_page():
                         participant['organization'],
                         datetime.now(kst).strftime("%Y-%m-%d %H:%M:%S")
                     ]
-            
-                    # 1,2,3,4 평가 데이터 추가 (안전 접근)
-                    for sample in SAMPLES:  # ['1','2','3','4']
+                    for sample in SAMPLES:
                         eval_data = st.session_state.taste_evaluations.get(sample, {
                             "진함": "",
                             "단맛": "",
@@ -908,16 +932,17 @@ def challenge_page():
                             eval_data.get('단맛', ''),
                             eval_data.get('선택브랜드', '')
                         ])
-            
-                    # 저장
                     if save_to_gsheet(submit_data):
                         st.success("🎉 제출이 완료되었습니다! 참여해주셔서 감사합니다.")
-                        if st.button("🌱 새로운 참여자 시작", key="step4_reset", use_container_width=True):
-                            for key in list(st.session_state.keys()):
-                                del st.session_state[key]
-                            st.rerun()
                     else:
                         st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
+
+            with col_reset:
+                if st.button("🌱 새로운 참여자 시작", key="step4_reset", use_container_width=True):
+                    for key in list(st.session_state.keys()):
+                        del st.session_state[key]
+                    st.rerun()
+
 
 def admin_dashboard():
     """관리자 대시보드"""
