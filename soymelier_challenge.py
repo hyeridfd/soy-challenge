@@ -902,12 +902,12 @@ def challenge_page():
             col_prev, col_submit, col_reset = st.columns([1, 1, 1])
 
             with col_prev:
-                if st.button("⬅️ 이전 단계로", key="step4_prev", use_container_width=True):
+                if st.button("⬅️ 이전 단계", key="step4_prev", use_container_width=True):
                     st.session_state.step = 3
                     st.rerun()
 
             with col_submit:
-                if st.button("🌿 최종 제출하기", key="step4_submit", use_container_width=True):
+                if st.button("➡️ 최종 제출", key="step4_submit", use_container_width=True):
                     # 저장할 데이터 준비
                     kst = pytz.timezone('Asia/Seoul')
                     submit_data = [
@@ -934,7 +934,7 @@ def challenge_page():
                         st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
 
             with col_reset:
-                if st.button("🌱 새로운 참여자 시작", key="step4_reset", use_container_width=True):
+                if st.button("🔄 새로 시작", key="step4_reset", use_container_width=True):
                     for key in list(st.session_state.keys()):
                         del st.session_state[key]
                     st.rerun()
