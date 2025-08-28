@@ -1317,7 +1317,7 @@ def show_organization_analysis(organization_filter):
                     total_attempts = len(filtered_df) * 4
                     overall_accuracy = (total_correct / total_attempts) * 100
                     
-                    col1, col2, col3 = st.columns(3)
+                    col1, col2, col3 = st.columns([1, 1, 8])
                     with col1:
                         st.metric(
                             label="전체 정답률",
