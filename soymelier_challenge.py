@@ -665,8 +665,9 @@ def main():
           <div style="font-weight: 600; margin-bottom: 5px;">서울대학교 정밀푸드솔루션 연구실</div>
           <div style="opacity: 0.9;">SNU Precision Food Solution Laboratory</div>
           <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
-              © 2025 Seoul National University. 본 프로그램은 연구 목적으로 개발되었습니다.
-          </div>
+              © 2025 Seoul National University.</div>
+           <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
+                본 프로그램은 연구 목적으로 개발되었습니다.</div>
       </div>
     </div>
 
