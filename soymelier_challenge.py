@@ -255,24 +255,70 @@ st.markdown("""
         background: linear-gradient(135deg, #2980b9, #3498db);
     }
     
-    /* 입력 필드 스타일 */
+    /* 입력 필드 스타일 통일 */
     .stTextInput > div > div > input,
     .stSelectbox > div > div > select,
     .stNumberInput > div > div > input {
-        border: 2px solid #e8f3ff;
-        border-radius: 15px;
-        padding: 15px 20px;
-        background: rgba(255, 255, 255, 0.8);
+        border: 2px solid #e8f3ff !important;
+        border-radius: 15px !important;
+        padding: 15px 20px !important;
+        background: rgba(255, 255, 255, 0.9) !important;
         backdrop-filter: blur(5px);
-        transition: all 0.3s ease;
+        transition: all 0.3s ease !important;
+        font-size: 16px !important;
+        height: 55px !important;
+        box-sizing: border-box !important;
     }
     
     .stTextInput > div > div > input:focus,
     .stSelectbox > div > div > select:focus,
     .stNumberInput > div > div > input:focus {
-        border-color: #3498db;
-        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-        background: white;
+        border-color: #3498db !important;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
+        background: white !important;
+        outline: none !important;
+    }
+    
+    /* 숫자 입력 필드 특별 스타일링 */
+    .stNumberInput > div > div {
+        border-radius: 15px !important;
+        overflow: hidden !important;
+    }
+    
+    .stNumberInput button {
+        border: none !important;
+        background: #3498db !important;
+        color: white !important;
+        transition: all 0.3s ease !important;
+        height: 25px !important;
+        width: 30px !important;
+    }
+    
+    .stNumberInput button:hover {
+        background: #2980b9 !important;
+    }
+    
+    /* 셀렉트박스 통일 */
+    .stSelectbox > div > div > select {
+        cursor: pointer !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233498db' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 15px center !important;
+        background-size: 16px !important;
+        padding-right: 50px !important;
+    }
+    
+    /* 레이블 스타일 통일 */
+    .stTextInput label,
+    .stSelectbox label,
+    .stNumberInput label {
+        font-weight: 600 !important;
+        color: #2c3e50 !important;
+        margin-bottom: 8px !important;
+        font-size: 16px !important;
     }
     
     /* 알림창 스타일 */
@@ -646,7 +692,7 @@ def challenge_page():
         
         # 1단계: 참여자 정보 입력
         if st.session_state.step == 1:
-            st.markdown('<div class="section-header">참여자 정보 입력</div>', unsafe_allow_html=True)
+            st.markdown('<div class="section-header">🌱 참여자 정보 입력</div>', unsafe_allow_html=True)
             
             col1, col2 = st.columns(2)
             
@@ -655,13 +701,13 @@ def challenge_page():
                 gender = st.selectbox("성별", ["선택하세요", "남성", "여성"], key="gender")
             
             with col2:
-                organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
                 age = st.number_input("연령", min_value=1, max_value=120, key="age", value=35)
+                organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
             
             st.markdown("<br>", unsafe_allow_html=True)
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
-                if st.button("다음 단계", key="step1_next", use_container_width=True):
+                if st.button("🌿 다음 단계로", key="step1_next", use_container_width=True):
                     if name and gender != "선택하세요" and age and organization:
                         st.session_state.participant_info = {
                             "name": name,
