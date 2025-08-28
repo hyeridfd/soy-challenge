@@ -630,65 +630,58 @@ def main():
     with tab3:
         admin_dashboard()
 
-    # 🔻 여기서부터 배너 HTML + CSS (반드시 st.markdown으로 감싸기)
+    # 하단 배너 (sticky, 겹침/그림자 없음, 실제 여백)
     st.markdown("""
-        <div class="bottom-banner-wrap">
-          <div class="bottom-banner">
-              <div style="font-weight: 600; margin-bottom: 5px;">서울대학교 정밀푸드솔루션 연구실</div>
-              <div style="opacity: 0.9;">SNU Precision Food Solution Laboratory</div>
-              <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
-                  © 2025 Seoul National University. 본 프로그램은 연구 목적으로 개발되었습니다.
-              </div>
+    <div class="bottom-banner-wrap">
+      <div class="bottom-banner">
+          <div style="font-weight: 600; margin-bottom: 5px;">서울대학교 정밀푸드솔루션 연구실</div>
+          <div style="opacity: 0.9;">SNU Precision Food Solution Laboratory</div>
+          <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
+              © 2025 Seoul National University. 본 프로그램은 연구 목적으로 개발되었습니다.
           </div>
-        </div>
-        
-        <style>
-        /* Streamlit 하단 기본 패딩 제거 */
-        html, body { margin-bottom: 0 !important; padding-bottom: 0 !important; }
-        section[data-testid="stMain"] .block-container { padding-bottom: 0 !important; }
-        div[data-testid="stAppViewContainer"] main { padding-bottom: 0 !important; }
-        
-        /* sticky 배너 */
-        .bottom-banner-wrap{
-          position: sticky;
-          bottom: 0;
-          z-index: 1000;
-          margin: 0 !important;
-        }
-        
-        /* 배너 본체 */
-        .bottom-banner{
-          background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(41, 128, 185, 0.95));
-          backdrop-filter: blur(10px);
-          padding: 16px 0;
-          text-align: center;
-          color: white;
-          font-size: 0.9rem;
-          font-weight: 500;
-          border-top: 1px solid rgba(255, 255, 255, 0.2);
-          width: 100vw;
-          margin-left: calc(50% - 50vw);   /* 좌우 풀블리드 */
-          border-radius: 0;
-          box-shadow: none;
-          position: relative;
-        
-          /* ↑ 컨텐츠와의 시각적 간격(자유롭게 24~40px 사이로 조절) */
-          --banner-gap: 50px;
-        }
-        
-        /* 배너 위로 얇게 겹쳐지는 페이드 스페이서(레이아웃을 밀지 않음) */
-        .bottom-banner::before{
-          content: '';
-          position: absolute;
-          top: calc(-1 * var(--banner-gap));
-          left: 0; right: 0;
-          height: var(--banner-gap);
-          /* 앱 배경이 완전 흰색이 아니면 첫 색을 배경색에 맞게 조절 */
-          # background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
-          # pointer-events: none;
-        }
-        </style>
-        """, unsafe_allow_html=True)
+      </div>
+    </div>
+    
+    <style>
+    /* Streamlit 하단 기본 패딩 제거 */
+    html, body { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+    section[data-testid="stMain"] .block-container { padding-bottom: 0 !important; }
+    div[data-testid="stAppViewContainer"] main { padding-bottom: 0 !important; }
+    
+    /* sticky 컨테이너 */
+    .bottom-banner-wrap{
+      position: sticky;
+      bottom: 0;
+      z-index: 1000;
+      margin: 0 !important;
+      --banner-gap: 28px;             /* ↑ 위 컨텐츠와의 '실제' 여백 (원하면 20~40px 조절) */
+    }
+    
+    /* 실제 여백을 만드는 스페이서(겹치지 않음) */
+    .bottom-banner-wrap::before{
+      content: '';
+      display: block;
+      height: var(--banner-gap);
+    }
+    
+    /* 배너 본체 (겹침/그림자/블러 제거) */
+    .bottom-banner{
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      /* backdrop-filter: blur(10px);  ← 겹침처럼 보이는 원인, 제거 */
+      padding: 16px 0;
+      text-align: center;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      width: 100vw;                      
+      margin-left: calc(50% - 50vw);     /* 좌우 풀블리드 */
+      border-radius: 0;
+      box-shadow: none;                  /* 그림자 완전 제거 */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 
 
 
