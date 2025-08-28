@@ -7,6 +7,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import json
 import os
+import textwrap
 import pytz
 PLOTLY_CONFIG = {"displayModeBar": False, "displaylogo": False, "responsive": True}
 
@@ -776,23 +777,24 @@ def home_page():
     </style>
     """, unsafe_allow_html=True)
 
-    # 🧩 카드 렌더링(단 한 번)
     cards = ['<div class="home-steps">']
     for i, step in enumerate(steps, start=1):
-        cards.append(textwrap.dedent(f"""
-        <div class="home-step-card">
-          <div style="font-size:48px;line-height:1">{step['icon']}</div>
-          <div style="color:#2980b9;font-weight:700;font-size:18px;text-align:center;margin:8px 0">
-            Step {i}<br>{step['title']}
-          </div>
-          <div style="color:#7f8c8d;font-size:14px;line-height:1.5;text-align:center">
-            {step['desc']}
-          </div>
-        </div>
-        """))
+        cards.append(
+            textwrap.dedent(f"""
+            <div class="home-step-card">
+              <div style="font-size:48px;line-height:1">{step['icon']}</div>
+              <div style="color:#2980b9;font-weight:700;font-size:18px;text-align:center;margin:8px 0">
+                Step {i}<br>{step['title']}
+              </div>
+              <div style="color:#7f8c8d;font-size:14px;line-height:1.5;text-align:center">
+                {step['desc']}
+              </div>
+            </div>
+            """).strip()
+        )
     cards.append("</div>")
-    
     st.markdown("".join(cards), unsafe_allow_html=True)
+
 
 def challenge_page():
     """챌린지 참여 페이지"""
