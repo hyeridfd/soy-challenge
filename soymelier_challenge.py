@@ -970,7 +970,7 @@ def challenge_page():
                             if cleanness and sweetness:
                                 taste_data = {"진함": cleanness, "단맛": sweetness}
                                 fig = create_modern_taste_profile(taste_data, f"{sample} 두유 평가")
-                                st.plotly_chart(fig, use_container_width=True,config=PLOTLY_CONFIG))
+                                st.plotly_chart(fig, use_container_width=True,config=PLOTLY_CONFIG)
             
             # 선택 현황 표시
             st.markdown('<div class="section-header">📋 현재 선택 현황</div>', unsafe_allow_html=True)
@@ -1341,7 +1341,7 @@ def show_organization_analysis(organization_filter):
                         font=dict(family='Noto Sans KR', color='#2c3e50')
                     )
                     
-                    st.plotly_chart(fig_bar, use_container_width=True, config=PLOTLY_CONFIG))
+                    st.plotly_chart(fig_bar, use_container_width=True, config=PLOTLY_CONFIG)
                     
                     #with col2:
                     # 정답률 메트릭
