@@ -733,31 +733,31 @@ def home_page():
     ]
 
     for i, (col, step) in enumerate(zip(step_cols, steps)):
-    with col:
-        st.markdown(f"""
-        <div style="
-            background: white; 
-            padding: 36px 20px; 
-            border-radius: 18px; 
-            text-align: center; 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            border: 2px solid rgba(52, 152, 219, 0.12);
-            min-height: 240px;                 /* ← 높이 확대 */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;                         /* ← 내부 간격 */
-        ">
-            <div style="font-size: 48px; line-height: 1;">{step['icon']}</div>
-            <div style="color: #2980b9; font-weight: 700; font-size: 18px; margin: 8px 0;">
-                Step {i+1}<br>{step['title']}
-            </div> 
-            <div style="color: #7f8c8d; font-size: 14px; line-height: 1.5;">
-                {step['desc']}
+        with col:
+            st.markdown(f"""
+            <div style="
+                background: white; 
+                padding: 36px 20px; 
+                border-radius: 18px; 
+                text-align: center; 
+                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+                border: 2px solid rgba(52, 152, 219, 0.12);
+                min-height: 240px;                 /* ← 높이 확대 */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                gap: 12px;                         /* ← 내부 간격 */
+            ">
+                <div style="font-size: 48px; line-height: 1;">{step['icon']}</div>
+                <div style="color: #2980b9; font-weight: 700; font-size: 18px; margin: 8px 0;">
+                    Step {i+1}<br>{step['title']}
+                </div> 
+                <div style="color: #7f8c8d; font-size: 14px; line-height: 1.5;">
+                    {step['desc']}
+                </div>
             </div>
-        </div>
-        """, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
 
 
 def challenge_page():
