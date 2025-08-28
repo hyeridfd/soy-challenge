@@ -1099,7 +1099,7 @@ def admin_dashboard():
         st.warning("⚠️ 관리자 비밀번호를 입력해주세요.")
         return
     
-    st.markdown("""✅ 관리자 인증 완료""", unsafe_allow_html=True)
+    #st.markdown("""✅ 관리자 인증 완료""", unsafe_allow_html=True)
     
     # 관리 기능들
     col1, col2 = st.columns(2)
