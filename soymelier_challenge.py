@@ -921,7 +921,7 @@ def challenge_page():
 
 def admin_dashboard():
     """관리자 대시보드"""
-    st.markdown('<div class="section-header">👑 관리자 대시보드</div>', unsafe_allow_html=True)
+    #st.markdown('<div class="section-header">👑 관리자 대시보드</div>', unsafe_allow_html=True)
     
     # 관리자 인증
     admin_password = st.text_input("관리자 비밀번호", type="password", key="admin_password")
