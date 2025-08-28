@@ -1099,26 +1099,10 @@ def admin_dashboard():
         st.warning("⚠️ 관리자 비밀번호를 입력해주세요.")
         return
     
-    #st.markdown("""✅ 관리자 인증 완료""", unsafe_allow_html=True)
-    
     # 관리 기능들
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        if st.button("🔗 Google Sheets 연결 테스트", key="admin_connect_test", use_container_width=True):
-            sheet = init_gsheet()
-            if sheet:
-                try:
-                    all_records = sheet.get_all_records()
-                    st.success(f"📊 총 {len(all_records)}개의 데이터가 있습니다.")
-                except Exception as e:
-                    st.error(f"데이터 읽기 오류: {e}")
-            else:
-                st.error("Google Sheets 연결에 실패했습니다.")
-    
-    with col2:
-        if st.button("📊 전체 데이터 보기", key="admin_show_all", use_container_width=True):
-            show_all_data()
+        
+    st.button("📊 전체 데이터 보기", key="admin_show_all", use_container_width=True):
+        show_all_data()
     
     # 소속별 분석
     st.markdown('<div class="section-header">🏢 소속별 결과 분석</div>', unsafe_allow_html=True)
