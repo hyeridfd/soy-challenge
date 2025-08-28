@@ -759,6 +759,61 @@ def home_page():
         {"icon": "🎉", "title": "결과 확인", "desc": "평가 결과를 확인하고 제출합니다"}
     ]
 
+    st.markdown("""
+    <style>
+    /* 홈: 단계 카드 그리드 */
+    .home-steps{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;                 /* 카드 사이 간격 */
+      margin-top: 10px;
+    }
+    
+    /* 카드 모듈 */
+    .home-step-card{
+      background: #fff;
+      border-radius: 18px;
+      border: 2px solid rgba(52, 152, 219, 0.12);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      padding: 36px 20px;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    /* 모바일: 한 줄 배치 + 간격을 더 넓게 */
+    @media (max-width: 768px){
+      .home-steps{ grid-template-columns: 1fr; gap: 18px; }
+      .home-step-card{ min-height: 220px; }
+    }
+    
+    /* 하단 플로팅 UI와 겹침 방지(안전영역 포함) */
+    @media (max-width: 768px){
+      .home-steps{
+        padding-bottom: calc(env(safe-area-inset-bottom) + 90px);
+      }
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    cards_html = ['<div class="home-steps">']
+    for i, step in enumerate(steps, start=1):
+        cards_html.append(f"""
+          <div class="home-step-card">
+            <div style="font-size:48px;line-height:1">{step['icon']}</div>
+            <div style="color:#2980b9;font-weight:700;font-size:18px;text-align:center;margin:8px 0">
+              Step {i}<br>{step['title']}
+            </div>
+            <div style="color:#7f8c8d;font-size:14px;line-height:1.5;text-align:center">
+              {step['desc']}
+            </div>
+          </div>
+        """)
+    cards_html.append("</div>")
+    st.markdown("\n".join(cards_html), unsafe_allow_html=True)
+
     for i, (col, step) in enumerate(zip(step_cols, steps)):
         with col:
             st.markdown(f"""
