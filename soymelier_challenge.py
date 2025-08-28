@@ -887,11 +887,29 @@ def challenge_page():
             # st.markdown("1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.")
 
             st.markdown("""
-            <div class="section-header">
-                <h1 class="main-title">시음 평가</h1>
-                <p class="subtitle">1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.</p>
-            </div>
-            """, unsafe_allow_html=True)
+                <style>
+                /* 시음 평가 섹션 전용 폰트 사이즈 */
+                .section-header.eval h1.main-title{
+                  font-size: 2.2rem !important;   /* 제목 크기 */
+                  margin: 0 0 6px;
+                }
+                .section-header.eval p.subtitle{
+                  font-size: 1.05rem !important;  /* 부제 크기 */
+                }
+                
+                /* 모바일에서 더 작게 */
+                @media (max-width: 768px){
+                  .section-header.eval h1.main-title{ font-size: 1.6rem !important; }
+                  .section-header.eval p.subtitle{  font-size: 0.95rem !important; }
+                }
+                </style>
+                
+                <div class="section-header eval">
+                    <h1 class="main-title">시음 평가</h1>
+                    <p class="subtitle">1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.</p>
+                </div>
+                """, unsafe_allow_html=True)
+
             
             samples = SAMPLES  # ['1','2','3','4']
             
