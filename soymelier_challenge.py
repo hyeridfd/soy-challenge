@@ -654,10 +654,10 @@ def main():
       bottom: 0;
       z-index: 1000;
       margin: 0 !important;
-      --banner-gap: 28px;  /* 원하는 간격 */
+      --banner-gap: 100px;  /* 원하는 간격 */
     }
     
-    /* ⛳️ 배너 위 '실제' 여백 생성 (겹치지 않음) */
+    /*  배너 위 '실제' 여백 생성 (겹치지 않음) */
     .bottom-banner-wrap::before{
       content: '';
       display: block;
@@ -679,7 +679,7 @@ def main():
       box-shadow: none;
     }
     
-    /* ✅ 마지막 요소의 바닥 여백을 0으로 강제 (관리자 탭 경고/입력 등) */
+    /* 마지막 요소의 바닥 여백을 0으로 강제 (관리자 탭 경고/입력 등) */
     section[data-testid="stMain"] .block-container > *:last-child {
       margin-bottom: 0 !important;
       padding-bottom: 0 !important;
