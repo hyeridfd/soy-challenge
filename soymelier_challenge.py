@@ -930,7 +930,24 @@ def challenge_page():
                         ])
                         
                     if save_to_gsheet(submit_data):
-                        st.success("🎉 제출이 완료되었습니다! 참여해주셔서 감사합니다.")
+                        st.markdown("""
+                        <div style="
+                            width: 100%;
+                            text-align: center;
+                            font-size: 1.5rem;
+                            font-weight: 600;
+                            color: #2980b9;
+                            margin: 30px 0;
+                            padding: 20px;
+                        ">
+                            제출이 완료되었습니다! 참여해주셔서 감사합니다.
+                        </div>
+                        """, unsafe_allow_html=True)
+                        if st.button("새로운 참여자 시작", key="challenge_reset", use_container_width=True):
+                            for key in list(st.session_state.keys()):
+                                if key.startswith('challenge_') or key in ['participant_info', 'taste_evaluations', 'challenge_step']:
+                                    del st.session_state[key]
+                            st.rerun()
                     else:
                         st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
 
