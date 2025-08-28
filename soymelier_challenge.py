@@ -654,7 +654,7 @@ def main():
       bottom: 0;
       z-index: 1000;
       margin: 0 !important;
-      --banner-gap: 40px;             /* ↑ 위 컨텐츠와의 '실제' 여백 (원하면 20~40px 조절) */
+      --banner-gap: 100px;             /* ↑ 위 컨텐츠와의 '실제' 여백 (원하면 20~40px 조절) */
     }
     
     /* 실제 여백을 만드는 스페이서(겹치지 않음) */
