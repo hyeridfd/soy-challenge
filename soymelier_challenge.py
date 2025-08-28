@@ -378,20 +378,46 @@ st.markdown("""
     }
     
     /* 반응형 디자인 */
+
+    /* 📱 Mobile tweaks */
     @media (max-width: 768px) {
-        .main-title {
-            font-size: 2.5rem;
-        }
-        
-        .step-container {
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .step-line {
-            width: 3px;
-            height: 30px;
-        }
+      /* 좌우 여백 축소 */
+      :root { --pad-x: 12px; }
+      section[data-testid="stMain"] .block-container{
+        padding-left: var(--pad-x) !important;
+        padding-right: var(--pad-x) !important;
+      }
+    
+      /* 헤더/제목 크기 조정 */
+      .main-header { padding: 24px 0; }
+      .main-title{ font-size: 2rem; }
+      .subtitle{ font-size: 1rem; }
+    
+      /* 섹션 카드/타이틀/본문 간격 축소 */
+      .section-header{ font-size: 1.3rem; padding: 14px; margin: 18px 0; }
+      .brand-card{ padding: 18px; }
+      .sample-card{ padding: 18px; }
+      .sample-title{ font-size: 1.2rem; }
+    
+      /* ✅ 모든 컬럼을 세로 스택으로 */
+      div[data-testid="stHorizontalBlock"] { gap: 10px !important; }
+      div[data-testid="column"] { width: 100% !important; flex: 1 1 100% !important; }
+    
+      /* Plotly 차트 높이 유연하게 */
+      .js-plotly-plot, .plot-container { height: auto !important; }
+    
+      /* 슬라이더/라벨 터치 친화적 */
+      .stSlider label{ font-size: .95rem; }
+      [data-baseweb="slider"] div[role="slider"]{ width: 20px; height: 20px; }
+    
+      /* 탭 컴팩트 */
+      .stTabs [data-baseweb="tab"]{
+        min-width: auto; padding: 0 16px; height: 48px; font-size: 1rem;
+      }
+    
+      /* 하단 배너: 작게 + 여백 축소 */
+      .bottom-banner-wrap{ --banner-gap: 56px; }
+      .bottom-banner{ font-size: .85rem; padding: 12px 0; }
     }
 </style>
 """, unsafe_allow_html=True)
