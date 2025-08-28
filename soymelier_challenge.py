@@ -648,10 +648,10 @@ def main():
         box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
         z-index: 1000;
     ">
-        <div style="font-weight: 600; margin-bottom: 5px;">푸드테크 솔루션 연구실</div>
-        <div style="opacity: 0.9;">Food Tech Solution Laboratory</div>
+        <div style="font-weight: 600; margin-bottom: 5px;">서울대학교 정밀푸드솔루션 연구실</div>
+        <div style="opacity: 0.9;">SNU Precision Food Solution Laboratory</div>
         <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
-            © 2025 Food Tech Lab. 본 챌린지는 연구 목적으로 개발되었습니다.
+            © 2025 Seoul National University. 본 프로그램은 연구 목적으로 개발되었습니다.
         </div>
     </div>
     
