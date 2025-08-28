@@ -800,8 +800,8 @@ def challenge_page():
     # 컨테이너로 감싸기
     with st.container():
         # 단계 표시기 및 프로그레스 바
-        display_step_indicator(st.session_state.step)
-        display_progress_bar(st.session_state.step)
+        #display_step_indicator(st.session_state.step)
+        #display_progress_bar(st.session_state.step)
         
         # 1단계: 참여자 정보 입력
         if st.session_state.step == 1:
