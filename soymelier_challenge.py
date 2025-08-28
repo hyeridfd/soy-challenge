@@ -684,8 +684,8 @@ def main():
           left: 0; right: 0;
           height: var(--banner-gap);
           /* 앱 배경이 완전 흰색이 아니면 첫 색을 배경색에 맞게 조절 */
-          background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
-          pointer-events: none;
+          # background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+          # pointer-events: none;
         }
         </style>
         """, unsafe_allow_html=True)
