@@ -671,8 +671,7 @@ def main():
       border-radius: 0;                  /* 하단에 딱 붙게 */
       box-shadow: none; /* 하단에 그림자/여백처럼 보이는 것 제거 */
       position: relative;
-      --banner-gap: 20px;
-      box-shadow: 0 -8px 20px rgba(0,0,0,0.08);
+      --banner-gap: 200px;
     }
     
     .bottom-banner::before{
