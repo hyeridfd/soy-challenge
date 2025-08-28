@@ -630,25 +630,13 @@ def main():
     with tab3:
         admin_dashboard()
 
-    # 하단 배너 (sticky로 전환)
-    st.markdown("""
-    <div class="bottom-banner-wrap">
-      <div class="bottom-banner">
-          <div style="font-weight: 600; margin-bottom: 5px;">서울대학교 정밀푸드솔루션 연구실</div>
-          <div style="opacity: 0.9;">SNU Precision Food Solution Laboratory</div>
-          <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
-              © 2025 Seoul National University. 본 프로그램은 연구 목적으로 개발되었습니다.
-          </div>
-      </div>
-    </div>
-    
     <style>
-    /* 🔧 Streamlit이 기본으로 주는 아래쪽 패딩/여백 제거 */
+    /* 기존 padding 제거는 그대로 유지 */
     html, body { margin-bottom: 0 !important; padding-bottom: 0 !important; }
     section[data-testid="stMain"] .block-container { padding-bottom: 0 !important; }
     div[data-testid="stAppViewContainer"] main { padding-bottom: 0 !important; }
     
-    /* 배너가 화면 하단에 닿으면 붙도록(sticky) */
+    /* sticky 배너 래퍼 */
     .bottom-banner-wrap{
       position: sticky;
       bottom: 0;
@@ -656,7 +644,7 @@ def main():
       margin: 0 !important;
     }
     
-    /* 전체 너비 꽉 채우기 + 둥근 모서리/그림자 제거로 하단에 딱 맞게 */
+    /* 배너 본체 */
     .bottom-banner{
       background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(41, 128, 185, 0.95));
       backdrop-filter: blur(10px);
@@ -666,27 +654,29 @@ def main():
       font-size: 0.9rem;
       font-weight: 500;
       border-top: 1px solid rgba(255, 255, 255, 0.2);
-      width: 100vw;                      /* 화면 너비 전체 */
-      margin-left: calc(50% - 50vw);     /* 좌우 풀블리드 */
-      border-radius: 0;                  /* 하단에 딱 붙게 */
-      box-shadow: none; /* 하단에 그림자/여백처럼 보이는 것 제거 */
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      border-radius: 0;
+      box-shadow: none;
       position: relative;
-      --banner-gap: 200px;
+    
+      /* 👇 컨텐츠와의 ‘시각적’ 간격 크기 (24~40px 추천) */
+      --banner-gap: 28px;
     }
     
+    /* 🔹 배너 위로 살짝 겹쳐 올라오는 페이드 스페이서(레이아웃을 밀지 않음) */
     .bottom-banner::before{
       content: '';
       position: absolute;
       top: calc(-1 * var(--banner-gap));
       left: 0; right: 0;
       height: var(--banner-gap);
-      /* 상단은 배경색, 아래로 갈수록 투명 → 자연스러운 여백 느낌 */
+      /* 앱 배경이 완전 흰색이 아니면 첫 색을 배경색으로 바꿔주세요 */
       background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
-      pointer-events: none;             /* 클릭 막지 않음 */
+      pointer-events: none; /* 클릭 영향 없음 */
     }
-    
     </style>
-    """, unsafe_allow_html=True)
+
 
 
 
