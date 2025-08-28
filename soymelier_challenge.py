@@ -768,7 +768,7 @@ def home_page():
                 text-align: center; 
                 box-shadow: 0 8px 24px rgba(0,0,0,0.08);
                 border: 2px solid rgba(52, 152, 219, 0.12);
-                min-height: 200px;                 /* ← 높이 확대 */
+                min-height: 100px;                 /* ← 높이 확대 */
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
