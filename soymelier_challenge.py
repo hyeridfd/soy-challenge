@@ -657,7 +657,7 @@ def challenge_page():
             with col2:
                 age = st.text_input("연령", key='age', placeholder="연령을 입력하세요(ex. 35)")
                 #age = st.number_input("연령", min_value=1, max_value=120, key="age", value=35)
-                organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
+                organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요(ex. 푸드테크 최고책임자)")
             
             st.markdown("<br>", unsafe_allow_html=True)
             col1, col2, col3 = st.columns([1, 2, 1])
