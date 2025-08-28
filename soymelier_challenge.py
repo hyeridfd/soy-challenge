@@ -750,7 +750,7 @@ def home_page():
     # """, unsafe_allow_html=True)
     
     # 단계별 안내
-    step_cols = st.columns(4)
+    #step_cols = st.columns(4)
     
     steps = [
         {"icon": "📝", "title": "참여자 정보 입력", "desc": "이름, 성별, 연령, 소속을 입력합니다"},
