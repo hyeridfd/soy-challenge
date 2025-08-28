@@ -696,10 +696,7 @@ def main():
       padding-bottom: 0 !important;
     }
     </style>
-
-
-
-
+    """)
 
 
 def home_page():
