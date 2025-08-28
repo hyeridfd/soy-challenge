@@ -1171,7 +1171,12 @@ def show_organization_analysis(organization_filter):
             
             if not df.empty and '소속' in df.columns:
                 # 해당 소속 데이터 필터링
-                filtered_df = df[df['소속'].str.contains(organization_filter, na=False)]
+                # filtered_df = df[df['소속'].str.contains(organization_filter, na=False)]
+                
+                input_org = " ".join(str(organization_filter).split())  # 입력 공백 정규화
+                filtered_df = df[
+                    df['소속'].astype(str).str.replace(r'\s+', ' ', regex=True).str.strip() == input_org
+                ]
                 
                 if not filtered_df.empty:
                     st.write(f"📈 **{organization_filter}** 소속 참여자: {len(filtered_df)}명")
