@@ -887,7 +887,7 @@ def challenge_page():
             # st.markdown("1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.")
 
             st.markdown("""
-            <div class="ection-header">
+            <div class="section-header">
                 <h1 class="main-title">시음 평가</h1>
                 <p class="subtitle">1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.</p>
             </div>
