@@ -777,22 +777,22 @@ def home_page():
     """, unsafe_allow_html=True)
 
     # 🧩 카드 렌더링(단 한 번)
-    cards_html = ['<div class="home-steps">']
+    cards = ['<div class="home-steps">']
     for i, step in enumerate(steps, start=1):
-        cards_html.append(f"""
-          <div class="home-step-card">
-            <div style="font-size:48px;line-height:1">{step['icon']}</div>
-            <div style="color:#2980b9;font-weight:700;font-size:18px;text-align:center;margin:8px 0">
-              Step {i}<br>{step['title']}
-            </div>
-            <div style="color:#7f8c8d;font-size:14px;line-height:1.5;text-align:center">
-              {step['desc']}
-            </div>
+        cards.append(textwrap.dedent(f"""
+        <div class="home-step-card">
+          <div style="font-size:48px;line-height:1">{step['icon']}</div>
+          <div style="color:#2980b9;font-weight:700;font-size:18px;text-align:center;margin:8px 0">
+            Step {i}<br>{step['title']}
           </div>
-        """)
-    cards_html.append("</div>")
-    st.markdown("".join(cards_html), unsafe_allow_html=True)
-
+          <div style="color:#7f8c8d;font-size:14px;line-height:1.5;text-align:center">
+            {step['desc']}
+          </div>
+        </div>
+        """))
+    cards.append("</div>")
+    
+    st.markdown("".join(cards), unsafe_allow_html=True)
 
 def challenge_page():
     """챌린지 참여 페이지"""
