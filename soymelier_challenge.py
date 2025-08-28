@@ -884,7 +884,7 @@ def challenge_page():
         # 3단계: 시음 평가
         elif st.session_state.step == 3:
             st.markdown('<div class="section-header">시음 평가</div>', unsafe_allow_html=True)
-            st.info("1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.")
+            st.markdown("1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.")
             
             samples = SAMPLES  # ['1','2','3','4']
             
