@@ -646,7 +646,7 @@ def challenge_page():
         
         # 1단계: 참여자 정보 입력
         if st.session_state.step == 1:
-            st.markdown('<div class="section-header">🌱 참여자 정보 입력</div>', unsafe_allow_html=True)
+            st.markdown('<div class="section-header">참여자 정보 입력</div>', unsafe_allow_html=True)
             
             col1, col2 = st.columns(2)
             
@@ -655,8 +655,8 @@ def challenge_page():
                 gender = st.selectbox("성별", ["선택하세요", "남성", "여성"], key="gender")
             
             with col2:
-                age = st.number_input("연령", min_value=1, max_value=120, key="age", value=35)
                 organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
+                age = st.number_input("연령", min_value=1, max_value=120, key="age", value=35)
             
             st.markdown("<br>", unsafe_allow_html=True)
             col1, col2, col3 = st.columns([1, 2, 1])
