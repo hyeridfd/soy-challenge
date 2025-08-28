@@ -1317,7 +1317,7 @@ def show_organization_analysis(organization_filter):
                     total_attempts = len(filtered_df) * 4
                     overall_accuracy = (total_correct / total_attempts) * 100
                     
-                    col1, col2 = st.columns(2)
+                    col1, col2, col3 = st.columns(3)
                     with col1:
                         st.metric(
                             label="전체 정답률",
@@ -1330,16 +1330,17 @@ def show_organization_analysis(organization_filter):
                             value=f"{len(all_correct_participants)}명",
                             delta=f"{len(all_correct_participants)}/{len(filtered_df)}"
                         )
-                    
+
+                    with col3:
                     # 개별 정답률
-                    st.markdown("**브랜드별 상세 정답률:**")
-                    for _, row in accuracy_df.iterrows():
-                        st.metric(
-                            label=row['샘플'].replace('\n', ' '),
-                            value=f"{row['정답률']:.1f}%",
-                            delta=f"{row['정답자수']}/{row['전체']}"
-                        )
-                
+                        st.markdown("브랜드별 상세 정답률")
+                        for _, row in accuracy_df.iterrows():
+                            st.metric(
+                                label=row['샘플'].replace('\n', ' '),
+                                value=f"{row['정답률']:.1f}%",
+                                delta=f"{row['정답자수']}/{row['전체']}"
+                            )
+                    
                 else:
                     st.info(f"'{organization_filter}' 소속의 데이터가 없습니다.")
             else:
