@@ -639,7 +639,7 @@ def main():
     # 메인 헤더
     st.markdown("""
     <div class="main-header fade-in">
-        <h1 class="main-title">🌿두믈리에 챌린지🌿</h1>
+        <h1 class="main-title">두믈리에 챌린지</h1>
         <p class="subtitle">자연의 맛을 찾아가는 특별한 여행</p>
     </div>
     """, unsafe_allow_html=True)
