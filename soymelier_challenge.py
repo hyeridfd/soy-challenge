@@ -633,20 +633,16 @@ def main():
     # 하단 배너
     st.markdown("""
     <div style="
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
         background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(41, 128, 185, 0.95));
         backdrop-filter: blur(10px);
-        padding: 15px 0;
+        padding: 20px 0;
+        margin-top: 50px;
         text-align: center;
         color: white;
         font-size: 0.9rem;
         font-weight: 500;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-        z-index: 1000;
     ">
         <div style="font-weight: 600; margin-bottom: 5px;">푸드테크 솔루션 연구실</div>
         <div style="opacity: 0.9;">Food Tech Solution Laboratory</div>
@@ -654,11 +650,8 @@ def main():
             © 2025 Food Tech Lab. 본 챌린지는 연구 목적으로 개발되었습니다.
         </div>
     </div>
-    
-    <!-- 하단 배너 공간 확보를 위한 여백 -->
-    <div style="height: 120px;"></div>
     """, unsafe_allow_html=True)
-
+    
 def home_page():
     """홈 페이지 - 두믈리에 챌린지 소개"""
     st.markdown("""
