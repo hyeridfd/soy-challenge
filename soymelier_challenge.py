@@ -928,10 +928,10 @@ def challenge_page():
                             eval_data.get('단맛', ''),
                             eval_data.get('선택브랜드', '')
                         ])
-                    if save_to_gsheet(submit_data):
-                        st.success("🎉 제출이 완료되었습니다! 참여해주셔서 감사합니다.")
-                    else:
-                        st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
+            if save_to_gsheet(submit_data):
+                st.success("🎉 제출이 완료되었습니다! 참여해주셔서 감사합니다.")
+            else:
+                st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
 
             with col_reset:
                 if st.button("🔄 새로 시작", key="step4_reset", use_container_width=True):
