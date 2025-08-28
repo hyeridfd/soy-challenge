@@ -17,7 +17,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 자연 힐링 CSS 스타일 적용
+# CSS 스타일 적용
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
@@ -83,22 +83,14 @@ st.markdown("""
         padding: 10px;
         border: 1px solid rgba(255,255,255,0.2);
         box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        /* 탭 리스트 가운데 정렬 */
         justify-content: center !important;
         display: flex !important;
         width: 100%;
-        
-        /* 개별 탭 설정 */
-        flex: 0 0 auto;
-        min-width: 180px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
     
     .stTabs [data-baseweb="tab"] {
         height: 60px;
-        padding: 0 25px;
+        padding: 0 35px;
         background: transparent;
         border-radius: 15px;
         color: #34495e;
@@ -107,7 +99,6 @@ st.markdown("""
         border: none;
         transition: all 0.3s ease;
         min-width: 250px;
-        padding: 0 35px;
     }
     
     .stTabs [data-baseweb="tab"]:hover {
@@ -209,7 +200,6 @@ st.markdown("""
         background: rgba(255, 255, 255, 0.9);
         border-radius: 20px;
         padding: 25px;
-        #margin: px 0;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         border: 2px solid rgba(52, 152, 219, 0.1);
         transition: all 0.3s ease;
@@ -258,21 +248,6 @@ st.markdown("""
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
     }
-
-        /* 브랜드 카드 하단 여백 완전 제거 */
-    .stMarkdown {
-        margin-bottom: 0.5rem !important;
-    }
-    
-    /* 차트 컨테이너 여백 제거 */
-    .js-plotly-plot {
-        margin-bottom: 0px !important;
-    }
-    
-    /* 컬럼 간격 조정 */
-    .stColumns > div {
-        padding-bottom: 0px !important;
-    }
     
     .stButton > button:hover {
         transform: translateY(-2px);
@@ -298,29 +273,6 @@ st.markdown("""
         border-color: #3498db;
         box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
         background: white;
-    }
-    
-    /* 슬라이더 스타일 */
-    # .stSlider > div > div > div > div {
-    #     background: linear-gradient(90deg, #072ac8);
-    # }
-
-    # /* 슬라이더 진행 바 (빨간색→초록색으로 변경) */
-    # .stSlider > div > div > div > div {
-    #     background: linear-gradient(90deg, #2ecc71, #27ae60) !important;
-    # }
-
-    # /* 슬라이더 핸들 (초록 동그라미) */
-    # .stSlider > div > div > div > div > div {
-    #     background: #27ae60 !important;
-    #     border: 2px solid white !important;
-    # }
-    
-    /* 핸들 색상 */
-    .stSlider [role="slider"] {
-        background: #1e88e5 !important;
-        border: 3px solid white !important;
-        box-shadow: 0 2px 6px rgba(39, 174, 96, 0.3) !important;
     }
     
     /* 알림창 스타일 */
@@ -350,38 +302,6 @@ st.markdown("""
         border-left-color: #3498db;
     }
     
-    # /* 데이터프레임 스타일 */
-    # .stDataFrame {
-    #     border-radius: 15px;
-    #     overflow: hidden;
-    #     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    # }
-    
-    # /* 메트릭 스타일 */
-    # .stMetric {
-    #     background: rgba(255, 255, 255, 0.8);
-    #     padding: 20px;
-    #     border-radius: 15px;
-    #     border: 2px solid rgba(46, 204, 113, 0.1);
-    #     transition: all 0.3s ease;
-    # }
-    
-    # .stMetric:hover {
-    #     transform: translateY(-2px);
-    #     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    # }
-    
-    # /* 사이드바 숨기기 */
-    # .css-1d391kg {
-    #     display: none;
-    # }
-    
-    # /* 여백 조정 */
-    # .block-container {
-    #     padding-top: 2rem;
-    #     padding-bottom: 2rem;
-    # }
-    
     /* 섹션 헤더 스타일 */
     .section-header {
         color: #2980b9;
@@ -402,7 +322,7 @@ st.markdown("""
         padding: 25px;
         margin: 20px 0;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        border: 2px solid rgba(46, 204, 113, 0.1);
+        border: 2px solid rgba(52, 152, 219, 0.1);
         transition: all 0.3s ease;
     }
     
@@ -438,16 +358,6 @@ st.markdown("""
         border-radius: 20px 20px 0 0;
     }
     
-    /* 플롯 컨테이너 */
-    .plot-container {
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 15px;
-        padding: 20px;
-        margin: 15px 0;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        border: 1px solid rgba(52, 152, 219, 0.1);
-    }
-    
     /* 관리자 패널 */
     .admin-panel {
         background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.05));
@@ -467,29 +377,10 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
     
-    /* 떠다니는 장식 요소 */
-    .floating-decoration {
-        position: fixed;
-        pointer-events: none;
-        opacity: 0.3;
-        z-index: -1;
-        animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(-20px) rotate(180deg); }
-    }
-    
     /* 반응형 디자인 */
     @media (max-width: 768px) {
         .main-title {
             font-size: 2.5rem;
-        }
-        
-        .content-container {
-            padding: 25px;
-            margin: 15px 0;
         }
         
         .step-container {
@@ -509,7 +400,7 @@ st.markdown("""
 BRANDS = {
     "A": {
         "description": "100% 국산 약콩을 통째로, 콩 본연의 건강한 맛",
-        "taste_profile": {"진함": 4, "단맛": 1}  # 1-4 스케일
+        "taste_profile": {"진함": 4, "단맛": 1}
     },
     "B": {
         "description": "국내산 검은콩, 검은콩의 고소하고 진한 맛",
@@ -527,11 +418,9 @@ BRANDS = {
 
 SAMPLES = ['1','2','3','4']
 
-# Google Sheets 연동 함수
 def init_gsheet():
     """Google Sheets 초기화"""
     try:
-        # 방법 1: JSON 파일 사용 (로컬 개발용)
         if os.path.exists('service-account-key.json'):
             scope = ['https://spreadsheets.google.com/feeds',
                     'https://www.googleapis.com/auth/drive']
@@ -542,7 +431,6 @@ def init_gsheet():
             gc = gspread.authorize(credentials)
             return gc.open('두믈리에_챌린지_데이터').sheet1
         
-        # 방법 2: Streamlit Secrets 사용 (배포용)
         elif "gcp_service_account" in st.secrets:
             credentials = Credentials.from_service_account_info(
                 st.secrets["gcp_service_account"],
@@ -570,14 +458,14 @@ def save_to_gsheet(data):
                        '1_진함', '1_단맛', '1_선택브랜드',
                        '2_진함', '2_단맛', '2_선택브랜드',
                        '3_진함', '3_단맛', '3_선택브랜드',
-                       '4_진함', '4_단맛', '4_선택브랜드']  # ← 총 17개
+                       '4_진함', '4_단맛', '4_선택브랜드']
 
             try:
                 all_values = sheet.get_all_values()
                 if not all_values or len(all_values) == 0:
                     sheet.append_row(headers)
                     st.info(f"✅ 헤더 생성 완료 (총 {len(headers)}개 컬럼)")
-                elif len(all_values[0]) < len(headers):  # ← 17과 비교
+                elif len(all_values[0]) < len(headers):
                     sheet.clear()
                     sheet.append_row(headers)
                     st.info("✅ 시트가 재초기화되었습니다.")
@@ -585,9 +473,8 @@ def save_to_gsheet(data):
                 sheet.clear()
                 sheet.append_row(headers)
 
-            # 데이터 길이를 17개로 맞춤
             if len(data) > len(headers):
-                data = data[:len(headers)]      # ← [:17]
+                data = data[:len(headers)]
             elif len(data) < len(headers):
                 data.extend([''] * (len(headers) - len(data)))
 
@@ -597,7 +484,6 @@ def save_to_gsheet(data):
 
         except Exception as e:
             st.error(f"❌ 데이터 저장 오류: {e}")
-            st.error(f"❌ 오류 상세: {type(e).__name__}")
             return False
     else:
         if 'demo_data' not in st.session_state:
@@ -607,9 +493,8 @@ def save_to_gsheet(data):
         st.info("🔗 실제 Google Sheets 연동을 위해 설정 가이드를 참조해주세요.")
         return True
 
-# 기존 create_taste_profile_radar 함수를 교체
 def create_modern_taste_profile(taste_data, title):
-    """수평 바 차트 + 이모지로 맛 프로필 생성"""
+    """수평 바 차트로 맛 프로필 생성"""
     fig = go.Figure()
     
     categories = ['☕ 진함', '🧊 단맛']
@@ -642,9 +527,7 @@ def display_brand_rankings():
     """브랜드 순위 정리 표시"""
     st.markdown('<div class="section-header">📊 브랜드 맛 특성 순위</div>', unsafe_allow_html=True)
     
-    # 진함 순위
     brands_by_intensity = sorted(BRANDS.items(), key=lambda x: x[1]["taste_profile"]["진함"], reverse=True)
-    # 단맛 순위  
     brands_by_sweetness = sorted(BRANDS.items(), key=lambda x: x[1]["taste_profile"]["단맛"], reverse=True)
     
     col1, col2 = st.columns(2)
@@ -688,11 +571,26 @@ def display_brand_rankings():
             """, unsafe_allow_html=True)
         
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
 def display_step_indicator(current_step):
     """단계 표시기 렌더링"""
     st.markdown(f"""
     <div class="step-container">
+        <div class="step-item">
+            <div class="step-circle {'step-completed' if current_step > 1 else 'step-current' if current_step == 1 else 'step-pending'}">1</div>
+            <span>참여자 정보</span>
+        </div>
+        <div class="step-line {'completed' if current_step > 1 else ''}"></div>
+        <div class="step-item">
+            <div class="step-circle {'step-completed' if current_step > 2 else 'step-current' if current_step == 2 else 'step-pending'}">2</div>
+            <span>브랜드 소개</span>
+        </div>
+        <div class="step-line {'completed' if current_step > 2 else ''}"></div>
+        <div class="step-item">
+            <div class="step-circle {'step-completed' if current_step > 3 else 'step-current' if current_step == 3 else 'step-pending'}">3</div>
+            <span>시음 평가</span>
+        </div>
+        <div class="step-line {'completed' if current_step > 3 else ''}"></div>
         <div class="step-item">
             <div class="step-circle {'step-completed' if current_step == 4 else 'step-pending'}">4</div>
             <span>결과 확인</span>
@@ -742,8 +640,6 @@ def challenge_page():
     
     # 컨테이너로 감싸기
     with st.container():
-        st.markdown('<div class="content-container fade-in">', unsafe_allow_html=True)
-        
         # 단계 표시기 및 프로그레스 바
         display_step_indicator(st.session_state.step)
         display_progress_bar(st.session_state.step)
@@ -795,7 +691,6 @@ def challenge_page():
                     </div>
                     """, unsafe_allow_html=True)
                     
-                    # 수정 후 (간단하게)
                     fig = create_modern_taste_profile(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
                     st.plotly_chart(fig, use_container_width=True)
 
@@ -1023,12 +918,8 @@ def challenge_page():
                     else:
                         st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
 
-        
-        st.markdown('</div>', unsafe_allow_html=True)
-
 def admin_dashboard():
     """관리자 대시보드"""
-    st.markdown('<div class="content-container fade-in">', unsafe_allow_html=True)
     st.markdown('<div class="section-header">👑 관리자 대시보드</div>', unsafe_allow_html=True)
     
     # 관리자 인증
@@ -1036,7 +927,6 @@ def admin_dashboard():
     
     if admin_password != "admin123":
         st.warning("⚠️ 관리자 비밀번호를 입력해주세요.")
-        st.markdown('</div>', unsafe_allow_html=True)
         return
     
     st.markdown("""
@@ -1071,8 +961,6 @@ def admin_dashboard():
     if organization_filter:
         if st.button("📈 분석하기", use_container_width=True):
             show_organization_analysis(organization_filter)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
 
 def show_all_data():
     """전체 데이터 표시"""
@@ -1121,7 +1009,6 @@ def show_all_data():
 
 def show_organization_analysis(organization_filter):
     """소속별 분석 표시"""
-
     samples = ['1', '2', '3', '4']
     sheet = init_gsheet()
     if sheet:
@@ -1308,19 +1195,4 @@ def show_organization_analysis(organization_filter):
         st.info("Google Sheets 연동이 필요합니다.")
 
 if __name__ == "__main__":
-    main()-circle {'step-completed' if current_step > 1 else 'step-current' if current_step == 1 else 'step-pending'}">1</div>
-            <span>참여자 정보</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 1 else ''}"></div>
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 2 else 'step-current' if current_step == 2 else 'step-pending'}">2</div>
-            <span>브랜드 소개</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 2 else ''}"></div>
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 3 else 'step-current' if current_step == 3 else 'step-pending'}">3</div>
-            <span>시음 평가</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 3 else ''}"></div>
-        <div class="step-item">
-            <div class="step
+    main()
