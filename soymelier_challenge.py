@@ -710,7 +710,7 @@ def home_page():
                 <strong>블라인드 테스트</strong>입니다.
             </p>
             <p style="font-size: 16px; line-height: 1.6; color: #34495e; margin-top: 20px;">
-                당신의 미각은 얼마나 정확할까요? 진정한 <strong style="color: #2980b9;">두믈리에(두유 소믈리에)</strong>가 되어보세요!
+                당신의 미각은 얼마나 정확할까요? 진정한 <strong style="color: #2980b9;"><strong>두믈리에(두유 소믈리에)</strong>가 되어보세요!
             </p>
         </div>
         """, unsafe_allow_html=True)
