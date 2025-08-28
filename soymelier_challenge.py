@@ -674,16 +674,16 @@ def main():
       --banner-gap: 200px;
     }
     
-    .bottom-banner::before{
-      content: '';
-      position: absolute;
-      top: calc(-1 * var(--banner-gap));
-      left: 0; right: 0;
-      height: var(--banner-gap);
-      /* 상단은 배경색, 아래로 갈수록 투명 → 자연스러운 여백 느낌 */
-      background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
-      pointer-events: none;             /* 클릭 막지 않음 */
-    }
+    # .bottom-banner::before{
+    #   content: '';
+    #   position: absolute;
+    #   top: calc(-1 * var(--banner-gap));
+    #   left: 0; right: 0;
+    #   height: var(--banner-gap);
+    #   /* 상단은 배경색, 아래로 갈수록 투명 → 자연스러운 여백 느낌 */
+    #   background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+    #   pointer-events: none;             /* 클릭 막지 않음 */
+    # }
     
     </style>
     """, unsafe_allow_html=True)
