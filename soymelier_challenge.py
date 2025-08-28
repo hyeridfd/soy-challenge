@@ -1101,7 +1101,7 @@ def admin_dashboard():
     
     # 관리 기능들
         
-    st.button("📊 전체 데이터 보기", key="admin_show_all", use_container_width=True):
+    if st.button("📊 전체 데이터 보기", key="admin_show_all", use_container_width=True):
         show_all_data()
     
     # 소속별 분석
