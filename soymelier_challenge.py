@@ -630,34 +630,43 @@ def main():
     with tab3:
         admin_dashboard()
 
-    # 하단 배너
+    # 하단 배너 (sticky로 전환)
     st.markdown("""
-    <div style="
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(41, 128, 185, 0.95));
-        backdrop-filter: blur(10px);
-        padding: 15px 0;
-        text-align: center;
-        color: white;
-        font-size: 0.9rem;
-        font-weight: 500;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-        z-index: 1000;
-    ">
-        <div style="font-weight: 600; margin-bottom: 5px;">서울대학교 정밀푸드솔루션 연구실</div>
-        <div style="opacity: 0.9;">SNU Precision Food Solution Laboratory</div>
-        <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
-            © 2025 Seoul National University. 본 프로그램은 연구 목적으로 개발되었습니다.
-        </div>
+    <div class="bottom-banner-wrap">
+      <div class="bottom-banner">
+          <div style="font-weight: 600; margin-bottom: 5px;">서울대학교 정밀푸드솔루션 연구실</div>
+          <div style="opacity: 0.9;">SNU Precision Food Solution Laboratory</div>
+          <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
+              © 2025 Seoul National University. 본 프로그램은 연구 목적으로 개발되었습니다.
+          </div>
+      </div>
     </div>
     
-    <!-- 하단 배너 공간 확보를 위한 여백 -->
-    <div style="height: 120px;"></div>
+    <style>
+    /* 배너를 콘텐츠 흐름 안에 두고, 화면 하단에 닿으면 붙도록 */
+    .bottom-banner-wrap{
+      position: sticky;
+      bottom: 0;
+      z-index: 1000;
+    }
+    
+    /* 전체 화면 너비로 “풀 블리드” (컨텐츠 폭 제약 해제) */
+    .bottom-banner{
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(41, 128, 185, 0.95));
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      text-align: center;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+      width: 100vw;                         /* 콘텐츠 영역 밖까지 확장 */
+      margin-left: calc(50% - 50vw);        /* 가운데 기준으로 좌우 풀 */
+    }
+    </style>
     """, unsafe_allow_html=True)
+
 
 def home_page():
     """홈 페이지 - 두믈리에 챌린지 소개"""
