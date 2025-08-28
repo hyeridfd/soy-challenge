@@ -1334,12 +1334,14 @@ def show_organization_analysis(organization_filter):
                     with col3:
                     # 개별 정답률
                         st.markdown("브랜드별 상세 정답률")
-                        for _, row in accuracy_df.iterrows():
-                            st.metric(
-                                label=row['샘플'].replace('\n', ' '),
-                                value=f"{row['정답률']:.1f}%",
-                                delta=f"{row['정답자수']}/{row['전체']}"
-                            )
+                        subcols = st.columns(len(accuracy_df))
+                        for scol, (_, row) in zip(subcols, accuracy_df.iterrows()):
+                            with scol:
+                                st.metric(
+                                    label=row['샘플'].replace('\n', ' '),
+                                    value=f"{row['정답률']:.1f}%",
+                                    delta=f"{row['정답자수']}/{row['전체']}"
+                                )
                     
                 else:
                     st.info(f"'{organization_filter}' 소속의 데이터가 없습니다.")
