@@ -1328,6 +1328,7 @@ def show_organization_analysis(organization_filter):
                             label="전체 정답률",
                             value=f"{overall_accuracy:.1f}%",
                             delta=f"{total_correct}/{total_attempts}"
+                        )
                         st.metric(
                             label="완벽한 정답자",
                             value=f"{len(all_correct_participants)}명",
