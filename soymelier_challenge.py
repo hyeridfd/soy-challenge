@@ -643,7 +643,7 @@ def main():
     </div>
     
     <style>
-    /* Streamlit 하단 기본 패딩 제거 */
+    /* 기존 것 유지 */
     html, body { margin-bottom: 0 !important; padding-bottom: 0 !important; }
     section[data-testid="stMain"] .block-container { padding-bottom: 0 !important; }
     div[data-testid="stAppViewContainer"] main { padding-bottom: 0 !important; }
@@ -654,33 +654,49 @@ def main():
       bottom: 0;
       z-index: 1000;
       margin: 0 !important;
-      --banner-gap: 100px;             /* ↑ 위 컨텐츠와의 '실제' 여백 (원하면 20~40px 조절) */
+      --banner-gap: 28px;  /* 원하는 간격 */
     }
     
-    /* 실제 여백을 만드는 스페이서(겹치지 않음) */
+    /* ⛳️ 배너 위 '실제' 여백 생성 (겹치지 않음) */
     .bottom-banner-wrap::before{
       content: '';
       display: block;
       height: var(--banner-gap);
     }
     
-    /* 배너 본체 (겹침/그림자/블러 제거) */
+    /* 배너 본체 */
     .bottom-banner{
       background: linear-gradient(135deg, #3498db, #2980b9);
-      /* backdrop-filter: blur(10px);  ← 겹침처럼 보이는 원인, 제거 */
       padding: 16px 0;
       text-align: center;
       color: #fff;
       font-size: 0.9rem;
       font-weight: 500;
       border-top: 1px solid rgba(255,255,255,0.2);
-      width: 100vw;                      
-      margin-left: calc(50% - 50vw);     /* 좌우 풀블리드 */
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
       border-radius: 0;
-      box-shadow: none;                  /* 그림자 완전 제거 */
+      box-shadow: none;
+    }
+    
+    /* ✅ 마지막 요소의 바닥 여백을 0으로 강제 (관리자 탭 경고/입력 등) */
+    section[data-testid="stMain"] .block-container > *:last-child {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    
+    /* 보수적으로 알림/폼/컨테이너가 마지막일 때도 여백 제거 */
+    .stAlert:last-child,
+    [data-testid="stAlert"]:last-child,
+    .stForm:last-child,
+    .stMarkdown:last-child,
+    .stTextInput:last-child,
+    [data-baseweb="notification"]:last-child {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
     }
     </style>
-    """, unsafe_allow_html=True)
+
 
 
 
