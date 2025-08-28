@@ -12,7 +12,7 @@ import pytz
 # 페이지 설정
 st.set_page_config(
     page_title="두믈리에 챌린지",
-    page_icon="🥛",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -74,9 +74,9 @@ st.markdown("""
         opacity: 0.7;
     }
     
-    # 탭 스타일 업데이트 - 4개 탭에 맞게 조정
+    /* 탭 스타일 */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 10px;
+        gap: 15px;
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(10px);
         border-radius: 20px;
@@ -90,16 +90,15 @@ st.markdown("""
     
     .stTabs [data-baseweb="tab"] {
         height: 60px;
-        padding: 0 20px;
+        padding: 0 35px;
         background: transparent;
         border-radius: 15px;
         color: #34495e;
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 1.1rem;
         border: none;
         transition: all 0.3s ease;
-        min-width: 200px;
-        text-align: center;
+        min-width: 250px;
     }
     
     .stTabs [data-baseweb="tab"]:hover {
@@ -256,70 +255,24 @@ st.markdown("""
         background: linear-gradient(135deg, #2980b9, #3498db);
     }
     
-    /* 입력 필드 스타일 통일 */
+    /* 입력 필드 스타일 */
     .stTextInput > div > div > input,
     .stSelectbox > div > div > select,
     .stNumberInput > div > div > input {
-        border: 2px solid #e8f3ff !important;
-        border-radius: 15px !important;
-        padding: 15px 20px !important;
-        background: rgba(255, 255, 255, 0.9) !important;
+        border: 2px solid #e8f3ff;
+        border-radius: 15px;
+        padding: 15px 20px;
+        background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(5px);
-        transition: all 0.3s ease !important;
-        font-size: 16px !important;
-        height: 55px !important;
-        box-sizing: border-box !important;
+        transition: all 0.3s ease;
     }
     
     .stTextInput > div > div > input:focus,
     .stSelectbox > div > div > select:focus,
     .stNumberInput > div > div > input:focus {
-        border-color: #3498db !important;
-        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
-        background: white !important;
-        outline: none !important;
-    }
-    
-    /* 숫자 입력 필드 특별 스타일링 */
-    .stNumberInput > div > div {
-        border-radius: 15px !important;
-        overflow: hidden !important;
-    }
-    
-    .stNumberInput button {
-        border: none !important;
-        background: #3498db !important;
-        color: white !important;
-        transition: all 0.3s ease !important;
-        height: 25px !important;
-        width: 30px !important;
-    }
-    
-    .stNumberInput button:hover {
-        background: #2980b9 !important;
-    }
-    
-    /* 셀렉트박스 통일 */
-    .stSelectbox > div > div > select {
-        cursor: pointer !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: none !important;
-        appearance: none !important;
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233498db' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
-        background-repeat: no-repeat !important;
-        background-position: right 15px center !important;
-        background-size: 16px !important;
-        padding-right: 50px !important;
-    }
-    
-    /* 레이블 스타일 통일 */
-    .stTextInput label,
-    .stSelectbox label,
-    .stNumberInput label {
-        font-weight: 600 !important;
-        color: #2c3e50 !important;
-        margin-bottom: 8px !important;
-        font-size: 16px !important;
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        background: white;
     }
     
     /* 알림창 스타일 */
@@ -424,217 +377,20 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
     
-    /* 반응형 디자인 - 모바일 최적화 */
+    /* 반응형 디자인 */
     @media (max-width: 768px) {
-        /* 메인 헤더 모바일 최적화 */
-        .main-header {
-            padding: 25px 15px;
-            margin-bottom: 20px;
-        }
-        
         .main-title {
-            font-size: 2.2rem;
-            line-height: 1.2;
+            font-size: 2.5rem;
         }
         
-        .subtitle {
-            font-size: 1rem;
-        }
-        
-        /* 탭 모바일 최적화 */
-        .stTabs [data-baseweb="tab-list"] {
-            flex-direction: column;
-            gap: 8px;
-            padding: 8px;
-            width: 95%;
-            margin: 0 auto;
-        }
-        
-        .stTabs [data-baseweb="tab"] {
-            width: 100%;
-            min-width: auto;
-            height: 50px;
-            font-size: 0.95rem;
-            padding: 0 15px;
-        }
-        
-        /* 단계 표시기 모바일 최적화 */
         .step-container {
             flex-direction: column;
             gap: 15px;
-            padding: 0 10px;
-        }
-        
-        .step-item {
-            flex-direction: row;
-            justify-content: center;
-            text-align: center;
-        }
-        
-        .step-circle {
-            width: 40px;
-            height: 40px;
-            font-size: 1rem;
         }
         
         .step-line {
             width: 3px;
-            height: 20px;
-            transform: rotate(90deg);
-        }
-        
-        /* 섹션 헤더 모바일 최적화 */
-        .section-header {
-            font-size: 1.5rem;
-            padding: 15px 10px;
-            margin: 20px 0;
-        }
-        
-        /* 브랜드 카드 모바일 최적화 */
-        .brand-card {
-            padding: 20px 15px;
-            margin: 15px 0;
-        }
-        
-        .brand-name {
-            font-size: 1.2rem;
-        }
-        
-        .brand-description {
-            font-size: 0.9rem;
-        }
-        
-        /* 샘플 카드 모바일 최적화 */
-        .sample-card {
-            padding: 20px 15px;
-            margin: 15px 0;
-        }
-        
-        .sample-title {
-            font-size: 1.3rem;
-            padding: 12px;
-        }
-        
-        /* 버튼 모바일 최적화 */
-        .stButton > button {
-            font-size: 1rem;
-            padding: 12px 20px;
-            width: 100%;
-            margin: 5px 0;
-        }
-        
-        /* 입력 필드 모바일 최적화 */
-        .stTextInput > div > div > input,
-        .stSelectbox > div > div > select,
-        .stNumberInput > div > div > input {
-            font-size: 16px;
-            padding: 12px 15px;
-            height: 50px;
-        }
-        
-        .stTextInput label,
-        .stSelectbox label,
-        .stNumberInput label {
-            font-size: 0.95rem;
-        }
-        
-        /* 슬라이더 모바일 최적화 */
-        .stSlider {
-            margin: 15px 0;
-        }
-        
-        /* 데이터프레임 모바일 최적화 */
-        .stDataFrame {
-            font-size: 0.8rem;
-        }
-        
-        /* 결과 요약 모바일 최적화 */
-        .results-summary {
-            padding: 20px 15px;
-            margin: 20px 0;
-        }
-        
-        .results-summary p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        
-        /* 홈페이지 단계 카드 모바일 최적화 */
-        .home-step-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        /* 관리자 패널 모바일 최적화 */
-        .admin-panel {
-            padding: 20px 15px;
-        }
-        
-        /* 하단 배너 모바일 최적화 */
-        .bottom-banner {
-            font-size: 0.8rem;
-            padding: 12px 0;
-        }
-        
-        /* 컨테이너 여백 조정 */
-        .stContainer {
-            padding: 0 10px;
-        }
-        
-        /* 컬럼 간격 조정 */
-        .stColumns {
-            gap: 10px;
-        }
-        
-        /* 차트 높이 조정 */
-        .js-plotly-plot {
-            height: 300px !important;
-        }
-    }
-    
-    /* 더 작은 모바일 화면 (480px 이하) */
-    @media (max-width: 480px) {
-        .main-title {
-            font-size: 1.8rem;
-        }
-        
-        .section-header {
-            font-size: 1.3rem;
-            padding: 12px 8px;
-        }
-        
-        .brand-card, .sample-card {
-            padding: 15px 10px;
-        }
-        
-        .stButton > button {
-            font-size: 0.9rem;
-            padding: 10px 15px;
-        }
-        
-        /* 홈페이지 단계 카드를 1열로 변경 */
-        .home-step-grid {
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-        
-        .step-circle {
-            width: 35px;
-            height: 35px;
-            font-size: 0.9rem;
-        }
-        
-        /* 차트 높이 더 작게 */
-        .js-plotly-plot {
-            height: 250px !important;
-        }
-        
-        /* 하단 배너 텍스트 크기 */
-        .bottom-banner {
-            font-size: 0.75rem;
-            padding: 10px 0;
+            height: 30px;
         }
     }
 </style>
@@ -857,501 +613,154 @@ def main():
     # 메인 헤더
     st.markdown("""
     <div class="main-header fade-in">
-        <div class="decorative-text">🌿 🥛 🌿</div>
-        <h1 class="main-title">두믈리에 챌린지</h1>
+        <h1 class="main-title">🌿 두믈리에 챌린지 🌿</h1>
         <p class="subtitle">자연의 맛을 찾아가는 특별한 여행</p>
     </div>
     """, unsafe_allow_html=True)
     
-    # 4개 탭 구성
-    tab1, tab2, tab3, tab4 = st.tabs(["🏠 홈", "📝 참여자 정보 입력", "🥛 챌린지 참여", "👑 관리자"])
+    # 탭 구성
+    tab1, tab2, tab3 = st.tabs(["🏠 홈", "🚀 챌린지", "🔧 관리자"])
     
     with tab1:
         home_page()
-    
+
     with tab2:
-        participant_info_page()
+        challenge_page()
     
     with tab3:
-        challenge_participation_page()
-    
-    with tab4:
         admin_dashboard()
-    
-    # 하단 배너
+
+    # 하단 배너 (sticky, 겹침/그림자 없음, 실제 여백)
     st.markdown("""
-    <div style="
-        background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(41, 128, 185, 0.95));
-        backdrop-filter: blur(10px);
-        padding: 20px 0;
-        margin-top: 50px;
-        text-align: center;
-        color: white;
-        font-size: 0.9rem;
-        font-weight: 500;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-    ">
-        <div style="font-weight: 600; margin-bottom: 5px;">푸드테크 솔루션 연구실</div>
-        <div style="opacity: 0.9;">Food Tech Solution Laboratory</div>
-        <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
-            © 2025 Food Tech Lab. 본 챌린지는 연구 목적으로 개발되었습니다.
-        </div>
+    <div class="bottom-banner-wrap">
+      <div class="bottom-banner">
+          <div style="font-weight: 600; margin-bottom: 5px;">서울대학교 정밀푸드솔루션 연구실</div>
+          <div style="opacity: 0.9;">SNU Precision Food Solution Laboratory</div>
+          <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
+              © 2025 Seoul National University. 본 프로그램은 연구 목적으로 개발되었습니다.
+          </div>
+      </div>
     </div>
+
+    <style>
+    /* 기존 것 유지 */
+    html, body { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+    section[data-testid="stMain"] .block-container { padding-bottom: 0 !important; }
+    div[data-testid="stAppViewContainer"] main { padding-bottom: 0 !important; }
+    
+    /* sticky 컨테이너 */
+    .bottom-banner-wrap{
+      position: sticky;
+      bottom: 0;
+      z-index: 1000;
+      margin: 0 !important;
+      --banner-gap: 100px;  /* 원하는 간격 */
+    }
+    
+    /*  배너 위 '실제' 여백 생성 (겹치지 않음) */
+    .bottom-banner-wrap::before{
+      content: '';
+      display: block;
+      height: var(--banner-gap);
+    }
+    
+    /* 배너 본체 */
+    .bottom-banner{
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      padding: 16px 0;
+      text-align: center;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      border-radius: 0;
+      box-shadow: none;
+    }
+    
+    /* 마지막 요소의 바닥 여백을 0으로 강제 (관리자 탭 경고/입력 등) */
+    section[data-testid="stMain"] .block-container > *:last-child {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    
+    /* 보수적으로 알림/폼/컨테이너가 마지막일 때도 여백 제거 */
+    .stAlert:last-child,
+    [data-testid="stAlert"]:last-child,
+    .stForm:last-child,
+    .stMarkdown:last-child,
+    .stTextInput:last-child,
+    [data-baseweb="notification"]:last-child {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    </style>
     """, unsafe_allow_html=True)
+
 
 def home_page():
     """홈 페이지 - 두믈리에 챌린지 소개"""
-    st.markdown('<div class="section-header">🌿 두믈리에 챌린지에 오신 것을 환영합니다!</div>', unsafe_allow_html=True)
-    
-    # 소개 섹션
-    col1, col2 = st.columns([2, 1])
-    
-    with col1:
-        st.markdown("""
+    st.markdown("""
         <div style="background: rgba(52, 152, 219, 0.05); padding: 30px; border-radius: 20px; border: 2px solid rgba(52, 152, 219, 0.1); margin: 20px 0;">
             <h3 style="color: #2980b9; margin-bottom: 20px;">🥛 두믈리에 챌린지란?</h3>
             <p style="font-size: 18px; line-height: 1.8; color: #2c3e50;">
-                <strong>두믈리에 챌린지</strong>는 네 가지 다른 브랜드의 두유를 시음하고 
+                <strong>두믈리에 챌린지</strong>는 <strong>네 가지 다른 브랜드의 두유</strong>를 시음하고 
                 각각의 맛 특성을 평가한 후, 어떤 브랜드인지 맞춰보는 
-                재미있는 블라인드 테스트입니다.
+                <strong>블라인드 테스트</strong>입니다.
             </p>
             <p style="font-size: 16px; line-height: 1.6; color: #34495e; margin-top: 20px;">
                 당신의 미각은 얼마나 정확할까요? 진정한 <strong style="color: #2980b9;">두믈리에(두유 소믈리에)</strong>가 되어보세요!
             </p>
         </div>
         """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div style="text-align: center; padding: 20px;">
-            <div style="font-size: 120px; margin: 20px 0;">🥛</div>
-            <p style="color: #7f8c8d; font-style: italic;">당신의 미각을 테스트해보세요</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
+
     # 참여 방법 안내
-    st.markdown("""
-    <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid rgba(52, 152, 219, 0.1); margin: 30px 0;">
-        <h3 style="color: #2980b9; text-align: center; margin-bottom: 25px;">📋 참여 방법</h3>
-    </div>
-    """, unsafe_allow_html=True)
+    # st.markdown("""
+    # <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid rgba(52, 152, 219, 0.1); margin: 30px 0;">
+    #     <h3 style="color: #2980b9; text-align: center; margin-bottom: 25px;">📋 참여 방법</h3>
+    # </div>
+    # """, unsafe_allow_html=True)
     
     # 단계별 안내
     step_cols = st.columns(4)
     
     steps = [
-        {"icon": "📝", "title": "정보 입력", "desc": "이름, 성별, 연령, 소속을 입력합니다"},
-        {"icon": "👀", "title": "브랜드 확인", "desc": "네 가지 브랜드의 특성을 미리 확인합니다"},
-        {"icon": "🥛", "title": "시음 평가", "desc": "각 두유의 맛을 평가하고 브랜드를 선택합니다"},
+        {"icon": "📝", "title": "참여자 정보 입력", "desc": "이름, 성별, 연령, 소속을 입력합니다"},
+        {"icon": "👀", "title": "브랜드 확인", "desc": "네 가지 브랜드의 맛 프로필을 확인합니다"},
+        {"icon": "👅", "title": "시음 평가", "desc": "각 두유의 맛을 평가하고 브랜드를 선택합니다"},
         {"icon": "🎉", "title": "결과 확인", "desc": "평가 결과를 확인하고 제출합니다"}
     ]
-    
+
     for i, (col, step) in enumerate(zip(step_cols, steps)):
         with col:
             st.markdown(f"""
             <div style="
                 background: white; 
-                padding: 25px 15px; 
-                border-radius: 15px; 
+                padding: 36px 20px; 
+                border-radius: 18px; 
                 text-align: center; 
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                border: 2px solid rgba(52, 152, 219, 0.1);
-                height: 180px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+                border: 2px solid rgba(52, 152, 219, 0.12);
+                min-height: 240px;                 /* ← 높이 확대 */
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+                align-items: center;
+                gap: 12px;                         /* ← 내부 간격 */
             ">
-                <div style="font-size: 40px;">{step['icon']}</div>
-                <div style="color: #2980b9; font-weight: 600; font-size: 16px; margin: 10px 0;">
+                <div style="font-size: 48px; line-height: 1;">{step['icon']}</div>
+                <div style="color: #2980b9; font-weight: 700; font-size: 18px; margin: 8px 0;">
                     Step {i+1}<br>{step['title']}
-                </div>
-                <div style="color: #7f8c8d; font-size: 13px; line-height: 1.4;">
+                </div> 
+                <div style="color: #7f8c8d; font-size: 14px; line-height: 1.5;">
                     {step['desc']}
                 </div>
             </div>
             """, unsafe_allow_html=True)
-    
-    # 브랜드 미리보기
-    st.markdown('<div class="section-header">🥛 참여 브랜드 미리보기</div>', unsafe_allow_html=True)
-    
-    brand_cols = st.columns(4)
-    brand_previews = [
-        {"name": "브랜드 A", "desc": "100% 국산 약콩", "color": "#3498db"},
-        {"name": "브랜드 B", "desc": "국내산 검은콩", "color": "#2980b9"},
-        {"name": "브랜드 C", "desc": "원액 두유 99.9%", "color": "#1e88e5"},
-        {"name": "브랜드 D", "desc": "오랜 역사와 대중성", "color": "#1976d2"}
-    ]
-    
-    for col, brand in zip(brand_cols, brand_previews):
-        with col:
-            st.markdown(f"""
-            <div style="
-                background: {brand['color']};
-                color: white;
-                padding: 20px;
-                border-radius: 15px;
-                text-align: center;
-                margin: 10px 0;
-            ">
-                <div style="font-size: 24px; font-weight: 700;">{brand['name']}</div>
-                <div style="font-size: 12px; opacity: 0.9; margin-top: 8px;">{brand['desc']}</div>
-            </div>
-            """, unsafe_allow_html=True)
-    
-    # 시작 안내
-    st.markdown("<br>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.markdown("""
-        <div style="
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 600;
-            margin: 20px 0;
-        ">
-            준비가 되셨다면 '참여자 정보 입력' 탭에서 시작해주세요!
-        </div>
-        """, unsafe_allow_html=True)
 
-def participant_info_page():
-    """참여자 정보 입력 페이지"""
-    st.markdown('<div class="section-header">📝 참여자 정보 입력</div>', unsafe_allow_html=True)
-    
-    # 세션 상태 초기화
-    if 'participant_info' not in st.session_state:
-        st.session_state.participant_info = {}
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        name = st.text_input("이름", key="name", placeholder="이름을 입력하세요")
-        gender = st.selectbox("성별", ["선택하세요", "남성", "여성"], key="gender")
-    
-    with col2:
-        age = st.number_input("연령", min_value=1, max_value=120, key="age", value=25)
-        organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    
-    # 정보 저장 및 안내
-    if name and gender != "선택하세요" and age and organization:
-        st.session_state.participant_info = {
-            "name": name,
-            "gender": gender,
-            "age": age,
-            "organization": organization
-        }
-        
-        st.success("✅ 정보가 입력되었습니다! '챌린지 참여' 탭에서 시음을 시작해주세요.")
-        
-        # 입력된 정보 요약
-        st.markdown(f"""
-        <div style="background: rgba(52, 152, 219, 0.1); padding: 20px; border-radius: 15px; margin: 20px 0;">
-            <h4 style="color: #2980b9;">입력된 정보</h4>
-            <p><strong>이름:</strong> {name}</p>
-            <p><strong>성별:</strong> {gender}</p>
-            <p><strong>연령:</strong> {age}세</p>
-            <p><strong>소속:</strong> {organization}</p>
-        </div>
-        """, unsafe_allow_html=True)
-    else:
-        st.info("모든 항목을 입력해주세요.")
 
-def challenge_participation_page():
-    """챌린지 참여 페이지"""
-    # 참여자 정보 확인
-    if 'participant_info' not in st.session_state or not st.session_state.participant_info:
-        st.warning("⚠️ 먼저 '참여자 정보 입력' 탭에서 정보를 입력해주세요.")
-        return
-    
-    # 기존 challenge_page 내용을 사용하되 단계를 수정
-    if 'challenge_step' not in st.session_state:
-        st.session_state.challenge_step = 1
-    if 'taste_evaluations' not in st.session_state:
-        st.session_state.taste_evaluations = {}
-    
-    # 단계 표시기 (2단계로 축소: 브랜드 소개 → 시음 평가 → 결과)
-    step_names = ["브랜드 소개", "시음 평가", "결과 확인"]
-    current_step = st.session_state.challenge_step
-    
-    st.markdown(f"""
-    <div class="step-container">
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 1 else 'step-current' if current_step == 1 else 'step-pending'}">1</div>
-            <span>브랜드 소개</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 1 else ''}"></div>
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step > 2 else 'step-current' if current_step == 2 else 'step-pending'}">2</div>
-            <span>시음 평가</span>
-        </div>
-        <div class="step-line {'completed' if current_step > 2 else ''}"></div>
-        <div class="step-item">
-            <div class="step-circle {'step-completed' if current_step == 3 else 'step-pending'}">3</div>
-            <span>결과 확인</span>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # 프로그레스 바
-    progress = (current_step / 3) * 100
-    st.markdown(f"""
-    <div class="progress-container">
-        <div class="progress-bar">
-            <div class="progress-fill" style="width: {progress}%;"></div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # 1단계: 브랜드 소개
-    if current_step == 1:
-        st.markdown('<div class="section-header">🥛 네 가지 두유 브랜드 소개</div>', unsafe_allow_html=True)
-        
-        # 브랜드 카드들을 2x2 그리드로 배치
-        col1, col2 = st.columns(2)
-        brand_list = list(BRANDS.keys())
-        
-        for i, brand in enumerate(brand_list):
-            with col1 if i % 2 == 0 else col2:
-                st.markdown(f"""
-                <div class="brand-card">
-                    <h3 class="brand-name">{brand}</h3>
-                    <p class="brand-description">{BRANDS[brand]["description"]}</p>
-                </div>
-                """, unsafe_allow_html=True)
-                
-                fig = create_modern_taste_profile(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
-                st.plotly_chart(fig, use_container_width=True)
-
-                cleanness = BRANDS[brand]["taste_profile"]["진함"]
-                sweetness = BRANDS[brand]["taste_profile"]["단맛"]
-                
-                st.markdown("**맛 특성:**")
-                st.markdown(f"단맛: {'🔵' * sweetness}{'⚪' * (4-sweetness)} ({sweetness}/4)")
-                st.markdown(f"진함: {'🔵' * cleanness}{'⚪' * (4-cleanness)} ({cleanness}/4)")
-                if i < len(brand_list) - 1:
-                    st.markdown("---")
-
-        display_brand_rankings()
-        
-        st.info("📝 각 브랜드의 맛 특성을 확인하신 후, 다음 단계에서 실제 시음을 진행해주세요!")
-        
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
-            if st.button("🌱 시음 평가하기", key="challenge_step1_next", use_container_width=True):
-                st.session_state.challenge_step = 2
-                st.rerun()
-    
-    # 2단계: 시음 평가 (기존 3단계 코드 사용)
-    elif current_step == 2:
-        st.markdown('<div class="section-header">🌿 시음 평가</div>', unsafe_allow_html=True)
-        st.info("1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.")
-        
-        samples = SAMPLES
-        
-        def get_selected_brands():
-            selected = []
-            for sample in samples:
-                brand = st.session_state.get(f"challenge_{sample}_brand", "선택하세요")
-                if brand != "선택하세요":
-                    selected.append(brand)
-            return selected
-        
-        def get_available_brands(current_sample):
-            selected_brands = get_selected_brands()
-            current_selection = st.session_state.get(f"challenge_{current_sample}_brand", "선택하세요")
-            available_brands = ["선택하세요"]
-            for brand in BRANDS.keys():
-                if brand not in selected_brands or brand == current_selection:
-                    available_brands.append(brand)
-            return available_brands
-        
-        # 2x2 그리드로 샘플 배치
-        for row in range(2):
-            col1, col2 = st.columns(2)
-            for col_idx, col in enumerate([col1, col2]):
-                sample_idx = row * 2 + col_idx
-                if sample_idx < len(samples):
-                    sample = samples[sample_idx]
-                    
-                    with col:
-                        st.markdown(f"""
-                        <div class="sample-card">
-                            <div class="sample-title">🥛 {sample}_두유</div>
-                        </div>
-                        """, unsafe_allow_html=True)
-
-                        sweetness = st.slider(
-                            f"**1) 단맛 정도**",
-                            min_value=1, max_value=4, value=2,
-                            help="1: 달지 않음, 4: 달큰함",
-                            key=f"challenge_{sample}_sweetness"
-                        )
-                        st.markdown(f"현재 값: {sweetness}/4 {'🔵' * sweetness}{'⚪' * (4-sweetness)}")
-                        
-                        cleanness = st.slider(
-                            f"**2) 맛의 진함**",
-                            min_value=1, max_value=4, value=2,
-                            help="1: 매우 깔끔함, 4: 매우 진함",
-                            key=f"challenge_{sample}_cleanness"
-                        )
-                        st.markdown(f"현재 값: {cleanness}/4 {'🔵' * cleanness}{'⚪' * (4-cleanness)}")
-                        
-                        available_brands = get_available_brands(sample)
-                        current_selection = st.session_state.get(f"challenge_{sample}_brand", "선택하세요")
-                        
-                        if current_selection not in available_brands:
-                            current_selection = "선택하세요"
-                        
-                        selected_brand = st.selectbox(
-                            f"**3) 어떤 브랜드일까요?**",
-                            available_brands,
-                            index=available_brands.index(current_selection) if current_selection in available_brands else 0,
-                            key=f"challenge_{sample}_brand"
-                        )
-                        
-                        if selected_brand != "선택하세요":
-                            selected_brands = get_selected_brands()
-                            duplicate_samples = []
-                            for other_sample in samples:
-                                if other_sample != sample and st.session_state.get(f"challenge_{other_sample}_brand") == selected_brand:
-                                    duplicate_samples.append(other_sample)
-                            
-                            if duplicate_samples:
-                                st.warning(f"⚠️ {selected_brand}는 {', '.join(duplicate_samples)} 샘플에서도 선택되었습니다!")
-                                st.info("💡 각 브랜드는 한 번만 선택할 수 있습니다.")
-                        
-                        if cleanness and sweetness:
-                            taste_data = {"진함": cleanness, "단맛": sweetness}
-                            fig = create_modern_taste_profile(taste_data, f"{sample} 두유 평가")
-                            st.plotly_chart(fig, use_container_width=True)
-        
-        # 선택 현황 표시
-        st.markdown('<div class="section-header">📋 현재 선택 현황</div>', unsafe_allow_html=True)
-        
-        selection_status = []
-        for sample in samples:
-            brand = st.session_state.get(f"challenge_{sample}_brand", "선택하세요")
-            status = "✅ 완료" if brand != "선택하세요" else "❌ 미완료"
-            selection_status.append({
-                "샘플": f"{sample}_두유",
-                "선택한 브랜드": brand,
-                "상태": status
-            })
-        
-        status_df = pd.DataFrame(selection_status)
-        st.dataframe(status_df, use_container_width=True)
-        
-        # 완료 확인
-        all_completed = all([
-            st.session_state.get(f"challenge_{sample}_brand", "선택하세요") != "선택하세요"
-            for sample in samples
-        ])
-        
-        selected_brands = get_selected_brands()
-        has_duplicates = len(selected_brands) != len(set(selected_brands))
-        
-        if all_completed and not has_duplicates:
-            st.success("🎉 모든 두유 평가가 완료되었습니다!")
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                if st.button("🌱 평가 완료하기", key="challenge_step2_complete", use_container_width=True):
-                    for sample in samples:
-                        st.session_state.taste_evaluations[sample] = {
-                            "진함": st.session_state[f"challenge_{sample}_cleanness"],
-                            "단맛": st.session_state[f"challenge_{sample}_sweetness"],
-                            "선택브랜드": st.session_state[f"challenge_{sample}_brand"]
-                        }
-                    st.session_state.challenge_step = 3
-                    st.rerun()
-        elif not all_completed:
-            st.warning("⚠️ 모든 두유의 브랜드를 선택해주세요.")
-        elif has_duplicates:
-            st.error("❌ 중복된 브랜드가 선택되었습니다. 각 브랜드는 한 번만 선택할 수 있습니다.")
-    
-    # 3단계: 결과 제출
-    elif current_step == 3:
-        st.markdown('<div class="section-header">🎉 평가 완료!</div>', unsafe_allow_html=True)
-        
-        participant = st.session_state.participant_info
-        
-        st.markdown(f"""
-        <div class="results-summary">
-            <h3 style="color: #2980b9; margin-bottom: 20px;">📋 평가 결과 요약</h3>
-            <p><strong>참여자:</strong> {participant['name']} ({participant['gender']}, {participant['age']}세)</p>
-            <p><strong>소속:</strong> {participant['organization']}</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # 평가 결과 테이블
-        results_data = []
-        for sample in SAMPLES:
-            eval_data = st.session_state.taste_evaluations.get(sample, {
-                "진함": 0,
-                "단맛": 0,
-                "선택브랜드": "선택안함"
-            })
-            results_data.append({
-                '샘플': f'{sample}_두유',
-                '진함 (1-4)': f"{eval_data['진함']}/4 {'🔵' * eval_data['진함']}{'⚪' * (4-eval_data['진함'])}",
-                '단맛 (1-4)': f"{eval_data['단맛']}/4 {'🔵' * eval_data['단맛']}{'⚪' * (4-eval_data['단맛'])}",
-                '예상 브랜드': eval_data['선택브랜드']
-            })
-        
-        df = pd.DataFrame(results_data)
-        st.dataframe(df, use_container_width=True)
-        
-        # 제출 버튼
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
-            if st.button("🌿 최종 제출하기", key="challenge_final_submit", use_container_width=True):
-                kst = pytz.timezone('Asia/Seoul')
-                submit_data = [
-                    participant['name'],
-                    participant['gender'],
-                    participant['age'],
-                    participant['organization'],
-                    datetime.now(kst).strftime("%Y-%m-%d %H:%M:%S")
-                ]
-        
-                for sample in SAMPLES:
-                    eval_data = st.session_state.taste_evaluations.get(sample, {
-                        "진함": "",
-                        "단맛": "",
-                        "선택브랜드": ""
-                    })
-                    submit_data.extend([
-                        eval_data.get('진함', ''),
-                        eval_data.get('단맛', ''),
-                        eval_data.get('선택브랜드', '')
-                    ])
-        
-                if save_to_gsheet(submit_data):
-                    st.markdown("""
-                    <div style="
-                        width: 100%;
-                        text-align: center;
-                        font-size: 1.5rem;
-                        font-weight: 600;
-                        color: #2980b9;
-                        margin: 30px 0;
-                        padding: 20px;
-                    ">
-                        제출이 완료되었습니다! 참여해주셔서 감사합니다.
-                    </div>
-                    """, unsafe_allow_html=True)
-                    if st.button("새로운 참여자 시작", key="challenge_reset", use_container_width=True):
-                        for key in list(st.session_state.keys()):
-                            if key.startswith('challenge_') or key in ['participant_info', 'taste_evaluations', 'challenge_step']:
-                                del st.session_state[key]
-                        st.rerun()
-                else:
-                    st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
+def challenge_page():
     """챌린지 참여 페이지"""
     # 세션 상태 초기화
     if 'step' not in st.session_state:
@@ -1369,22 +778,24 @@ def challenge_participation_page():
         
         # 1단계: 참여자 정보 입력
         if st.session_state.step == 1:
-            st.markdown('<div class="section-header">🌱 참여자 정보 입력</div>', unsafe_allow_html=True)
+            st.markdown('<div class="section-header">참여자 정보 입력</div>', unsafe_allow_html=True)
             
             col1, col2 = st.columns(2)
             
             with col1:
-                name = st.text_input("이름", key="name", placeholder="이름을 입력하세요")
-                gender = st.selectbox("성별", ["선택하세요", "남성", "여성"], key="gender")
+                name = st.text_input("이름", key="name", placeholder="이름을 입력하세요(ex. 김스누)")
+                gender = st.text_input("성별", key='gender', placeholder="성별을 입력하세요(ex. 남/여)")
+                #gender = st.selectbox("성별", ["선택하세요", "남성", "여성"], key="gender")
             
             with col2:
-                age = st.number_input("연령", min_value=1, max_value=120, key="age", value=35)
-                organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요")
+                age = st.text_input("연령", key='age', placeholder="연령을 입력하세요(ex. 35)")
+                #age = st.number_input("연령", min_value=1, max_value=120, key="age", value=35)
+                organization = st.text_input("소속", key="organization", placeholder="소속을 입력하세요(ex. 푸드테크 최고책임자)")
             
             st.markdown("<br>", unsafe_allow_html=True)
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
-                if st.button("🌿 다음 단계로", key="step1_next", use_container_width=True):
+                if st.button("다음 단계로", key="step1_next", use_container_width=True):
                     if name and gender != "선택하세요" and age and organization:
                         st.session_state.participant_info = {
                             "name": name,
@@ -1431,15 +842,21 @@ def challenge_participation_page():
             
             st.info("📝 각 브랜드의 맛 특성을 확인하신 후, 다음 단계에서 실제 시음을 진행해주세요!")
             
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                if st.button("🌱 시음 평가하기", key="step2_next", use_container_width=True):
+            # 2단계 끝부분 버튼들 ↓ 이 블록으로 교체
+            col_prev, col_next = st.columns([1, 1])
+            with col_prev:
+                if st.button("⬅️ 이전 단계로", key="step2_prev", use_container_width=True):
+                    st.session_state.step = 1
+                    st.rerun()
+            with col_next:
+                if st.button("시음 평가하기 ➡️", key="step2_next", use_container_width=True):
                     st.session_state.step = 3
                     st.rerun()
+
         
         # 3단계: 시음 평가
         elif st.session_state.step == 3:
-            st.markdown('<div class="section-header">🌿 시음 평가</div>', unsafe_allow_html=True)
+            st.markdown('<div class="section-header">시음 평가</div>', unsafe_allow_html=True)
             st.info("1, 2, 3, 4 두유를 시음하고 각각의 맛을 평가해주세요.")
             
             samples = SAMPLES  # ['1','2','3','4']
@@ -1555,21 +972,30 @@ def challenge_participation_page():
             
             if all_completed and not has_duplicates:
                 st.success("🎉 모든 두유 평가가 완료되었습니다!")
-                col1, col2, col3 = st.columns([1, 2, 1])
-                with col2:
-                    if st.button("🌱 평가 완료하기", key="step3_complete", use_container_width=True):
-                        for sample in samples:
-                            st.session_state.taste_evaluations[sample] = {
-                                "진함": st.session_state[f"{sample}_cleanness"],
-                                "단맛": st.session_state[f"{sample}_sweetness"],
-                                "선택브랜드": st.session_state[f"{sample}_brand"]
-                            }
-                        st.session_state.step = 4
+                # 완료/경고 메시지 아래쪽 버튼들 ↓ 이 블록으로 교체
+                col_prev, col_next = st.columns([1, 1])
+
+                with col_prev:
+                    if st.button("⬅️ 이전 단계로", key="step3_prev", use_container_width=True):
+                        st.session_state.step = 2
                         st.rerun()
-            elif not all_completed:
-                st.warning("⚠️ 모든 두유의 브랜드를 선택해주세요.")
-            elif has_duplicates:
-                st.error("❌ 중복된 브랜드가 선택되었습니다. 각 브랜드는 한 번만 선택할 수 있습니다.")
+
+                with col_next:
+                    if all_completed and not has_duplicates:
+                        if st.button("평가 완료하기 ➡️", key="step3_complete", use_container_width=True):
+                            for sample in samples:
+                                st.session_state.taste_evaluations[sample] = {
+                                    "진함": st.session_state[f"{sample}_cleanness"],
+                                    "단맛": st.session_state[f"{sample}_sweetness"],
+                                    "선택브랜드": st.session_state[f"{sample}_brand"]
+                                }
+                            st.session_state.step = 4
+                            st.rerun()
+                    elif not all_completed:
+                        st.warning("⚠️ 모든 두유의 브랜드를 선택해주세요.")
+                    elif has_duplicates:
+                        st.error("❌ 중복된 브랜드가 선택되었습니다. 각 브랜드는 한 번만 선택할 수 있습니다.")
+
         
         # 4단계: 결과 제출
         elif st.session_state.step == 4:
@@ -1605,9 +1031,16 @@ def challenge_participation_page():
             st.dataframe(df, use_container_width=True)
             
             # 제출 버튼
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                if st.button("🌿 최종 제출하기", key="step4_submit", use_container_width=True):
+            # 결과 테이블 아래 '제출' 버튼 부분 ↓ 이 블록으로 교체
+            col_prev, col_submit, col_reset = st.columns([1, 1, 1])
+
+            with col_prev:
+                if st.button("⬅️ 이전 단계", key="step4_prev", use_container_width=True):
+                    st.session_state.step = 3
+                    st.rerun()
+
+            with col_submit:
+                if st.button("➡️ 최종 제출", key="step4_submit", use_container_width=True):
                     # 저장할 데이터 준비
                     kst = pytz.timezone('Asia/Seoul')
                     submit_data = [
@@ -1617,9 +1050,7 @@ def challenge_participation_page():
                         participant['organization'],
                         datetime.now(kst).strftime("%Y-%m-%d %H:%M:%S")
                     ]
-            
-                    # 1,2,3,4 평가 데이터 추가 (안전 접근)
-                    for sample in SAMPLES:  # ['1','2','3','4']
+                    for sample in SAMPLES:
                         eval_data = st.session_state.taste_evaluations.get(sample, {
                             "진함": "",
                             "단맛": "",
@@ -1630,20 +1061,39 @@ def challenge_participation_page():
                             eval_data.get('단맛', ''),
                             eval_data.get('선택브랜드', '')
                         ])
-            
-                    # 저장
+                        
                     if save_to_gsheet(submit_data):
-                        st.success("🎉 제출이 완료되었습니다! 참여해주셔서 감사합니다.")
-                        if st.button("🌱 새로운 참여자 시작", key="step4_reset", use_container_width=True):
-                            for key in list(st.session_state.keys()):
-                                del st.session_state[key]
-                            st.rerun()
+                        st.markdown("""
+                        <div style="
+                            width: 100%;
+                            text-align: center;
+                            font-size: 1.5rem;
+                            font-weight: 600;
+                            color: #2980b9;
+                            margin: 30px 0;
+                            padding: 20px;
+                        ">
+                            제출이 완료되었습니다! 참여해주셔서 감사합니다.
+                        </div>
+                        """, unsafe_allow_html=True)
+                        # if st.button("새로운 참여자 시작", key="challenge_reset", use_container_width=True):
+                        #     for key in list(st.session_state.keys()):
+                        #         if key.startswith('challenge_') or key in ['participant_info', 'taste_evaluations', 'challenge_step']:
+                        #             del st.session_state[key]
+                        #     st.rerun()
                     else:
                         st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
 
+            with col_reset:
+                if st.button("🔄 새로 시작", key="step4_reset", use_container_width=True):
+                    for key in list(st.session_state.keys()):
+                        del st.session_state[key]
+                    st.rerun()
+
+
 def admin_dashboard():
     """관리자 대시보드"""
-    st.markdown('<div class="section-header">👑 관리자 대시보드</div>', unsafe_allow_html=True)
+    #st.markdown('<div class="section-header">👑 관리자 대시보드</div>', unsafe_allow_html=True)
     
     # 관리자 인증
     admin_password = st.text_input("관리자 비밀번호", type="password", key="admin_password")
@@ -1652,30 +1102,10 @@ def admin_dashboard():
         st.warning("⚠️ 관리자 비밀번호를 입력해주세요.")
         return
     
-    st.markdown("""
-    <div class="admin-panel">
-        <h3 style="color: #3498db; margin-bottom: 20px;">✅ 관리자 인증 완료</h3>
-    </div>
-    """, unsafe_allow_html=True)
-    
     # 관리 기능들
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        if st.button("🔗 Google Sheets 연결 테스트", key="admin_connect_test", use_container_width=True):
-            sheet = init_gsheet()
-            if sheet:
-                try:
-                    all_records = sheet.get_all_records()
-                    st.success(f"📊 총 {len(all_records)}개의 데이터가 있습니다.")
-                except Exception as e:
-                    st.error(f"데이터 읽기 오류: {e}")
-            else:
-                st.error("Google Sheets 연결에 실패했습니다.")
-    
-    with col2:
-        if st.button("📊 전체 데이터 보기", key="admin_show_all", use_container_width=True):
-            show_all_data()
+        
+    if st.button("📊 전체 데이터 보기", key="admin_show_all", use_container_width=True):
+        show_all_data()
     
     # 소속별 분석
     st.markdown('<div class="section-header">🏢 소속별 결과 분석</div>', unsafe_allow_html=True)
@@ -1741,7 +1171,12 @@ def show_organization_analysis(organization_filter):
             
             if not df.empty and '소속' in df.columns:
                 # 해당 소속 데이터 필터링
-                filtered_df = df[df['소속'].str.contains(organization_filter, na=False)]
+                # filtered_df = df[df['소속'].str.contains(organization_filter, na=False)]
+                
+                input_org = " ".join(str(organization_filter).split())  # 입력 공백 정규화
+                filtered_df = df[
+                    df['소속'].astype(str).str.replace(r'\s+', ' ', regex=True).str.strip() == input_org
+                ]
                 
                 if not filtered_df.empty:
                     st.write(f"📈 **{organization_filter}** 소속 참여자: {len(filtered_df)}명")
@@ -1836,78 +1271,82 @@ def show_organization_analysis(organization_filter):
                     # 시각화
                     st.markdown('<div class="section-header">📊 정답률 분석</div>', unsafe_allow_html=True)
                     
-                    col1, col2 = st.columns(2)
+                    # col1, col2 = st.columns(2)
                     
-                    with col1:
-                        # 브랜드별 정답률 차트
-                        accuracy_data = []
-                        for sample in samples:
-                            correct_count = sum(1 for _, row in filtered_df.iterrows() 
-                                              if row.get(f'{sample}_선택브랜드') == correct_answers[sample])
-                            accuracy_rate = (correct_count / len(filtered_df)) * 100
-                            accuracy_data.append({
-                                '샘플': f'{sample}\n({correct_answers[sample]})',
-                                '정답률': accuracy_rate,
-                                '정답자수': correct_count,
-                                '전체': len(filtered_df)
-                            })
-                        
-                        accuracy_df = pd.DataFrame(accuracy_data)
-                        
-                        # 막대 차트
-                        fig_bar = go.Figure(data=[
-                            go.Bar(
-                                x=accuracy_df['샘플'],
-                                y=accuracy_df['정답률'],
-                                text=[f"{rate:.1f}%<br>({correct}/{total})" 
-                                      for rate, correct, total in zip(accuracy_df['정답률'], 
-                                                                     accuracy_df['정답자수'], 
-                                                                     accuracy_df['전체'])],
-                                textposition='auto',
-                                marker_color=['#3498db', '#2980b9', '#1e88e5', '#1976d2']
-                            )
-                        ])
-                        
-                        fig_bar.update_layout(
-                            title=f"{organization_filter} 브랜드별 정답률",
-                            xaxis_title="두유 샘플",
-                            yaxis_title="정답률 (%)",
-                            yaxis=dict(range=[0, 100]),
-                            height=400,
-                            paper_bgcolor='rgba(0,0,0,0)',
-                            plot_bgcolor='rgba(0,0,0,0)',
-                            font=dict(family='Noto Sans KR', color='#2c3e50')
+                    # with col1:
+                    # 브랜드별 정답률 차트
+                    accuracy_data = []
+                    for sample in samples:
+                        correct_count = sum(1 for _, row in filtered_df.iterrows() 
+                                          if row.get(f'{sample}_선택브랜드') == correct_answers[sample])
+                        accuracy_rate = (correct_count / len(filtered_df)) * 100
+                        accuracy_data.append({
+                            '샘플': f'{sample}\n({correct_answers[sample]})',
+                            '정답률': accuracy_rate,
+                            '정답자수': correct_count,
+                            '전체': len(filtered_df)
+                        })
+                    
+                    accuracy_df = pd.DataFrame(accuracy_data)
+                    
+                    # 막대 차트
+                    fig_bar = go.Figure(data=[
+                        go.Bar(
+                            x=accuracy_df['샘플'],
+                            y=accuracy_df['정답률'],
+                            text=[f"{rate:.1f}%<br>({correct}/{total})" 
+                                  for rate, correct, total in zip(accuracy_df['정답률'], 
+                                                                 accuracy_df['정답자수'], 
+                                                                 accuracy_df['전체'])],
+                            textposition='auto',
+                            marker_color=['#3498db', '#2980b9', '#1e88e5', '#1976d2']
                         )
-                        
-                        st.plotly_chart(fig_bar, use_container_width=True)
+                    ])
                     
-                    with col2:
-                        # 정답률 메트릭
-                        total_correct = sum(accuracy_df['정답자수'])
-                        total_attempts = len(filtered_df) * 4
-                        overall_accuracy = (total_correct / total_attempts) * 100
-                        
+                    fig_bar.update_layout(
+                        title=f"{organization_filter} 브랜드별 정답률",
+                        xaxis_title="두유 샘플",
+                        yaxis_title="정답률 (%)",
+                        yaxis=dict(range=[0, 100]),
+                        height=400,
+                        paper_bgcolor='rgba(0,0,0,0)',
+                        plot_bgcolor='rgba(0,0,0,0)',
+                        font=dict(family='Noto Sans KR', color='#2c3e50')
+                    )
+                    
+                    st.plotly_chart(fig_bar, use_container_width=True)
+                    
+                    #with col2:
+                    # 정답률 메트릭
+                    total_correct = sum(accuracy_df['정답자수'])
+                    total_attempts = len(filtered_df) * 4
+                    overall_accuracy = (total_correct / total_attempts) * 100
+                    
+                    col1, col2 = st.columns([2, 8])
+                    with col1:
                         st.metric(
                             label="전체 정답률",
                             value=f"{overall_accuracy:.1f}%",
                             delta=f"{total_correct}/{total_attempts}"
                         )
-                        
                         st.metric(
                             label="완벽한 정답자",
                             value=f"{len(all_correct_participants)}명",
                             delta=f"{len(all_correct_participants)}/{len(filtered_df)}"
                         )
-                        
-                        # 개별 정답률
-                        st.markdown("**브랜드별 상세 정답률:**")
-                        for _, row in accuracy_df.iterrows():
-                            st.metric(
-                                label=row['샘플'].replace('\n', ' '),
-                                value=f"{row['정답률']:.1f}%",
-                                delta=f"{row['정답자수']}/{row['전체']}"
-                            )
-                
+
+                    with col2:
+                    # 개별 정답률
+                        st.markdown("브랜드별 상세 정답률")
+                        subcols = st.columns(len(accuracy_df))
+                        for scol, (_, row) in zip(subcols, accuracy_df.iterrows()):
+                            with scol:
+                                st.metric(
+                                    label=row['샘플'].replace('\n', ' '),
+                                    value=f"{row['정답률']:.1f}%",
+                                    delta=f"{row['정답자수']}/{row['전체']}"
+                                )
+                    
                 else:
                     st.info(f"'{organization_filter}' 소속의 데이터가 없습니다.")
             else:
