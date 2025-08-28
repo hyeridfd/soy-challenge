@@ -633,6 +633,7 @@ def main():
     # 하단 배너
     st.markdown("""
     <div style="
+        position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
