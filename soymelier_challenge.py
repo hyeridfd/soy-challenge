@@ -727,7 +727,7 @@ def main():
 
 
 def home_page():
-    """홈 페이지 - 두믈리에 챌린지 소개"""
+    # 소개 박스
     st.markdown("""
         <div style="background: rgba(52, 152, 219, 0.05); padding: 30px; border-radius: 20px; border: 2px solid rgba(52, 152, 219, 0.1); margin: 20px 0;">
             <h3 style="color: #2980b9; margin-bottom: 20px;">🥛 두믈리에 챌린지란?</h3>
@@ -740,64 +740,43 @@ def home_page():
                 당신의 미각은 얼마나 정확할까요? 진정한 <strong style="color: #2980b9;">두믈리에(두유 소믈리에)</strong>가 되어보세요!
             </p>
         </div>
-        """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
-    # 참여 방법 안내
-    # st.markdown("""
-    # <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid rgba(52, 152, 219, 0.1); margin: 30px 0;">
-    #     <h3 style="color: #2980b9; text-align: center; margin-bottom: 25px;">📋 참여 방법</h3>
-    # </div>
-    # """, unsafe_allow_html=True)
-    
-    # 단계별 안내
-    #step_cols = st.columns(4)
-    
     steps = [
         {"icon": "📝", "title": "참여자 정보 입력", "desc": "이름, 성별, 연령, 소속을 입력합니다"},
-        {"icon": "👀", "title": "브랜드 확인", "desc": "네 가지 브랜드의 맛 프로필을 확인합니다"},
-        {"icon": "👅", "title": "시음 평가", "desc": "각 두유의 맛을 평가하고 브랜드를 선택합니다"},
-        {"icon": "🎉", "title": "결과 확인", "desc": "평가 결과를 확인하고 제출합니다"}
+        {"icon": "👀", "title": "브랜드 확인",     "desc": "네 가지 브랜드의 맛 프로필을 확인합니다"},
+        {"icon": "👅", "title": "시음 평가",       "desc": "각 두유의 맛을 평가하고 브랜드를 선택합니다"},
+        {"icon": "🎉", "title": "결과 확인",       "desc": "평가 결과를 확인하고 제출합니다"}
     ]
 
+    # 🔧 카드 레이아웃 전용 CSS (가능하면 전역 CSS에 한 번만 넣어도 OK)
     st.markdown("""
     <style>
-    /* 홈: 단계 카드 그리드 */
-    .home-steps{
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;                 /* 카드 사이 간격 */
-      margin-top: 10px;
-    }
-    
-    /* 카드 모듈 */
-    .home-step-card{
-      background: #fff;
-      border-radius: 18px;
-      border: 2px solid rgba(52, 152, 219, 0.12);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      padding: 36px 20px;
-      min-height: 240px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    /* 모바일: 한 줄 배치 + 간격을 더 넓게 */
-    @media (max-width: 768px){
-      .home-steps{ grid-template-columns: 1fr; gap: 18px; }
-      .home-step-card{ min-height: 220px; }
-    }
-    
-    /* 하단 플로팅 UI와 겹침 방지(안전영역 포함) */
-    @media (max-width: 768px){
       .home-steps{
-        padding-bottom: calc(env(safe-area-inset-bottom) + 90px);
+        display:grid;
+        grid-template-columns:repeat(4, minmax(0,1fr));
+        gap:16px;
+        margin-top:10px;
       }
-    }
+      .home-step-card{
+        background:#fff;
+        border-radius:18px;
+        border:2px solid rgba(52,152,219,.12);
+        box-shadow:0 8px 24px rgba(0,0,0,.08);
+        padding:36px 20px;
+        min-height:240px;
+        display:flex; flex-direction:column;
+        justify-content:space-between; align-items:center;
+      }
+      @media (max-width:768px){
+        .home-steps{ grid-template-columns:1fr; gap:18px; }
+        .home-step-card{ min-height:220px; }
+        .home-steps{ padding-bottom:calc(env(safe-area-inset-bottom) + 90px); }
+      }
     </style>
     """, unsafe_allow_html=True)
 
+    # 🧩 카드 렌더링(단 한 번)
     cards_html = ['<div class="home-steps">']
     for i, step in enumerate(steps, start=1):
         cards_html.append(f"""
@@ -812,34 +791,7 @@ def home_page():
           </div>
         """)
     cards_html.append("</div>")
-    st.markdown("\n".join(cards_html), unsafe_allow_html=True)
-
-    for i, (col, step) in enumerate(zip(step_cols, steps)):
-        with col:
-            st.markdown(f"""
-            <div style="
-                background: white; 
-                padding: 50px 50px; 
-                border-radius: 18px; 
-                text-align: center; 
-                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-                border: 2px solid rgba(52, 152, 219, 0.12);
-                min-height: 100px;                 /* ← 높이 확대 */
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                gap: 12px;                         /* ← 내부 간격 */
-            ">
-                <div style="font-size: 48px; line-height: 1;">{step['icon']}</div>
-                <div style="color: #2980b9; font-weight: 700; font-size: 18px; margin: 8px 0;">
-                    Step {i+1}<br>{step['title']}
-                </div> 
-                <div style="color: #7f8c8d; font-size: 14px; line-height: 1.5;">
-                    {step['desc']}
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+    st.markdown("".join(cards_html), unsafe_allow_html=True)
 
 
 def challenge_page():
