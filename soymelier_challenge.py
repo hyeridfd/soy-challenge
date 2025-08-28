@@ -641,7 +641,7 @@ def main():
           </div>
       </div>
     </div>
-     """)
+
     <style>
     /* 기존 것 유지 */
     html, body { margin-bottom: 0 !important; padding-bottom: 0 !important; }
@@ -696,6 +696,7 @@ def main():
       padding-bottom: 0 !important;
     }
     </style>
+    """, unsafe_allow_html=True)
 
 
 def home_page():
