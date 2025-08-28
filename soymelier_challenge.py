@@ -8,6 +8,7 @@ from google.oauth2.service_account import Credentials
 import json
 import os
 import pytz
+PLOTLY_CONFIG = {"displayModeBar": False, "displaylogo": False, "responsive": True}
 
 # 페이지 설정
 st.set_page_config(
@@ -749,7 +750,7 @@ def home_page():
     # """, unsafe_allow_html=True)
     
     # 단계별 안내
-    #step_cols = st.columns(4)
+    step_cols = st.columns(4)
     
     steps = [
         {"icon": "📝", "title": "참여자 정보 입력", "desc": "이름, 성별, 연령, 소속을 입력합니다"},
@@ -758,32 +759,32 @@ def home_page():
         {"icon": "🎉", "title": "결과 확인", "desc": "평가 결과를 확인하고 제출합니다"}
     ]
 
-    #for i, (col, step) in enumerate(zip(step_cols, steps)):
-        #with col:
-    st.markdown(f"""
-    <div style="
-        background: white; 
-        padding: 50px 50px; 
-        border-radius: 18px; 
-        text-align: center; 
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        border: 2px solid rgba(52, 152, 219, 0.12);
-        min-height: 100px;                 /* ← 높이 확대 */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;                         /* ← 내부 간격 */
-    ">
-        <div style="font-size: 48px; line-height: 1;">{step['icon']}</div>
-        <div style="color: #2980b9; font-weight: 700; font-size: 18px; margin: 8px 0;">
-            Step {i+1}<br>{step['title']}
-        </div> 
-        <div style="color: #7f8c8d; font-size: 14px; line-height: 1.5;">
-            {step['desc']}
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    for i, (col, step) in enumerate(zip(step_cols, steps)):
+        with col:
+            st.markdown(f"""
+            <div style="
+                background: white; 
+                padding: 50px 50px; 
+                border-radius: 18px; 
+                text-align: center; 
+                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+                border: 2px solid rgba(52, 152, 219, 0.12);
+                min-height: 100px;                 /* ← 높이 확대 */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                gap: 12px;                         /* ← 내부 간격 */
+            ">
+                <div style="font-size: 48px; line-height: 1;">{step['icon']}</div>
+                <div style="color: #2980b9; font-weight: 700; font-size: 18px; margin: 8px 0;">
+                    Step {i+1}<br>{step['title']}
+                </div> 
+                <div style="color: #7f8c8d; font-size: 14px; line-height: 1.5;">
+                    {step['desc']}
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
 
 
 def challenge_page():
@@ -852,7 +853,7 @@ def challenge_page():
                     """, unsafe_allow_html=True)
                     
                     fig = create_modern_taste_profile(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
-                    st.plotly_chart(fig, use_container_width=True)
+                    st.plotly_chart(fig, use_container_width=True, config=PLOTLY_CONFIG)
 
                     # 맛 프로필 바 차트
                     cleanness = BRANDS[brand]["taste_profile"]["진함"]
@@ -969,7 +970,7 @@ def challenge_page():
                             if cleanness and sweetness:
                                 taste_data = {"진함": cleanness, "단맛": sweetness}
                                 fig = create_modern_taste_profile(taste_data, f"{sample} 두유 평가")
-                                st.plotly_chart(fig, use_container_width=True)
+                                st.plotly_chart(fig, use_container_width=True,config=PLOTLY_CONFIG))
             
             # 선택 현황 표시
             st.markdown('<div class="section-header">📋 현재 선택 현황</div>', unsafe_allow_html=True)
@@ -1340,7 +1341,7 @@ def show_organization_analysis(organization_filter):
                         font=dict(family='Noto Sans KR', color='#2c3e50')
                     )
                     
-                    st.plotly_chart(fig_bar, use_container_width=True)
+                    st.plotly_chart(fig_bar, use_container_width=True, config=PLOTLY_CONFIG))
                     
                     #with col2:
                     # 정답률 메트릭
