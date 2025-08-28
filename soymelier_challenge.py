@@ -11,8 +11,8 @@ import pytz
 
 # 페이지 설정
 st.set_page_config(
-    page_title="두믈리에 챌린지",
-    page_icon="🥛",
+    page_title="🌿두믈리에 챌린지",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
