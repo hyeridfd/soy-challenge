@@ -676,11 +676,11 @@ def home_page():
         """, unsafe_allow_html=True)
 
     # 참여 방법 안내
-    st.markdown("""
-    <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid rgba(52, 152, 219, 0.1); margin: 30px 0;">
-        <h3 style="color: #2980b9; text-align: center; margin-bottom: 25px;">📋 참여 방법</h3>
-    </div>
-    """, unsafe_allow_html=True)
+    # st.markdown("""
+    # <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid rgba(52, 152, 219, 0.1); margin: 30px 0;">
+    #     <h3 style="color: #2980b9; text-align: center; margin-bottom: 25px;">📋 참여 방법</h3>
+    # </div>
+    # """, unsafe_allow_html=True)
     
     # 단계별 안내
     step_cols = st.columns(4)
