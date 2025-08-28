@@ -1283,83 +1283,86 @@ def show_organization_analysis(organization_filter):
                     # 시각화
                     st.markdown('<div class="section-header">📊 정답률 분석</div>', unsafe_allow_html=True)
                     
-                    # 브랜드별 정답률 차트
-                    accuracy_data = []
-                    for sample in samples:
-                        correct_count = sum(1 for _, row in filtered_df.iterrows() 
-                                          if row.get(f'{sample}_선택브랜드') == correct_answers[sample])
-                        accuracy_rate = (correct_count / len(filtered_df)) * 100
-                        accuracy_data.append({
-                            '샘플': f'{sample}\n({correct_answers[sample]})',
-                            '정답률': accuracy_rate,
-                            '정답자수': correct_count,
-                            '전체': len(filtered_df)
-                        })
+                    col1, col2 = st.columns(2)
                     
-                    accuracy_df = pd.DataFrame(accuracy_data)
-                    
-                    # 막대 차트
-                    fig_bar = go.Figure(data=[
-                        go.Bar(
-                            x=accuracy_df['샘플'],
-                            y=accuracy_df['정답률'],
-                            text=[f"{rate:.1f}%<br>({correct}/{total})" 
-                                  for rate, correct, total in zip(accuracy_df['정답률'], 
-                                                                 accuracy_df['정답자수'], 
-                                                                 accuracy_df['전체'])],
-                            textposition='auto',
-                            marker_color=['#3498db', '#2980b9', '#1e88e5', '#1976d2']
+                    with col1:
+                        # 브랜드별 정답률 차트
+                        accuracy_data = []
+                        for sample in samples:
+                            correct_count = sum(1 for _, row in filtered_df.iterrows() 
+                                              if row.get(f'{sample}_선택브랜드') == correct_answers[sample])
+                            accuracy_rate = (correct_count / len(filtered_df)) * 100
+                            accuracy_data.append({
+                                '샘플': f'{sample}\n({correct_answers[sample]})',
+                                '정답률': accuracy_rate,
+                                '정답자수': correct_count,
+                                '전체': len(filtered_df)
+                            })
+                        
+                        accuracy_df = pd.DataFrame(accuracy_data)
+                        
+                        # 막대 차트
+                        fig_bar = go.Figure(data=[
+                            go.Bar(
+                                x=accuracy_df['샘플'],
+                                y=accuracy_df['정답률'],
+                                text=[f"{rate:.1f}%<br>({correct}/{total})" 
+                                      for rate, correct, total in zip(accuracy_df['정답률'], 
+                                                                     accuracy_df['정답자수'], 
+                                                                     accuracy_df['전체'])],
+                                textposition='auto',
+                                marker_color=['#3498db', '#2980b9', '#1e88e5', '#1976d2']
+                            )
+                        ])
+                        
+                        fig_bar.update_layout(
+                            title=f"{organization_filter} 브랜드별 정답률",
+                            xaxis_title="두유 샘플",
+                            yaxis_title="정답률 (%)",
+                            yaxis=dict(range=[0, 100]),
+                            height=400,
+                            paper_bgcolor='rgba(0,0,0,0)',
+                            plot_bgcolor='rgba(0,0,0,0)',
+                            font=dict(family='Noto Sans KR', color='#2c3e50')
                         )
-                    ])
+                        
+                        st.plotly_chart(fig_bar, use_container_width=True)
                     
-                    fig_bar.update_layout(
-                        title=f"{organization_filter} 브랜드별 정답률",
-                        xaxis_title="두유 샘플",
-                        yaxis_title="정답률 (%)",
-                        yaxis=dict(range=[0, 100]),
-                        height=400,
-                        paper_bgcolor='rgba(0,0,0,0)',
-                        plot_bgcolor='rgba(0,0,0,0)',
-                        font=dict(family='Noto Sans KR', color='#2c3e50')
-                    )
-                    
-                    st.plotly_chart(fig_bar, use_container_width=True)
-                    
-
-                    # 정답률 메트릭
-                    total_correct = sum(accuracy_df['정답자수'])
-                    total_attempts = len(filtered_df) * 4
-                    overall_accuracy = (total_correct / total_attempts) * 100
-                    
-                    st.metric(
-                        label="전체 정답률",
-                        value=f"{overall_accuracy:.1f}%",
-                        delta=f"{total_correct}/{total_attempts}"
-                    )
-                    
-                    st.metric(
-                        label="완벽한 정답자",
-                        value=f"{len(all_correct_participants)}명",
-                        delta=f"{len(all_correct_participants)}/{len(filtered_df)}"
-                    )
-                    
-                    # 개별 정답률
-                    st.markdown("**브랜드별 상세 정답률:**")
-                    for _, row in accuracy_df.iterrows():
+                    with col2:
+                        # 정답률 메트릭
+                        total_correct = sum(accuracy_df['정답자수'])
+                        total_attempts = len(filtered_df) * 4
+                        overall_accuracy = (total_correct / total_attempts) * 100
+                        
                         st.metric(
-                            label=row['샘플'].replace('\n', ' '),
-                            value=f"{row['정답률']:.1f}%",
-                            delta=f"{row['정답자수']}/{row['전체']}"
+                            label="전체 정답률",
+                            value=f"{overall_accuracy:.1f}%",
+                            delta=f"{total_correct}/{total_attempts}"
                         )
-            
+                        
+                        st.metric(
+                            label="완벽한 정답자",
+                            value=f"{len(all_correct_participants)}명",
+                            delta=f"{len(all_correct_participants)}/{len(filtered_df)}"
+                        )
+                        
+                        # 개별 정답률
+                        st.markdown("**브랜드별 상세 정답률:**")
+                        for _, row in accuracy_df.iterrows():
+                            st.metric(
+                                label=row['샘플'].replace('\n', ' '),
+                                value=f"{row['정답률']:.1f}%",
+                                delta=f"{row['정답자수']}/{row['전체']}"
+                            )
+                
+                else:
+                    st.info(f"'{organization_filter}' 소속의 데이터가 없습니다.")
             else:
-                st.info(f"'{organization_filter}' 소속의 데이터가 없습니다.")
-        else:
-            st.warning("데이터가 없거나 형식이 올바르지 않습니다.")
-    except Exception as e:
-        st.error(f"데이터 분석 오류: {e}")
-else:
-    st.info("Google Sheets 연동이 필요합니다.")
+                st.warning("데이터가 없거나 형식이 올바르지 않습니다.")
+        except Exception as e:
+            st.error(f"데이터 분석 오류: {e}")
+    else:
+        st.info("Google Sheets 연동이 필요합니다.")
 
 if __name__ == "__main__":
     main()
