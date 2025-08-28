@@ -662,7 +662,7 @@ def challenge_page():
             st.markdown("<br>", unsafe_allow_html=True)
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
-                if st.button("🌿 다음 단계로", key="step1_next", use_container_width=True):
+                if st.button("다음 단계로", key="step1_next", use_container_width=True):
                     if name and gender != "선택하세요" and age and organization:
                         st.session_state.participant_info = {
                             "name": name,
