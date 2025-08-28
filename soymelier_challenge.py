@@ -619,14 +619,104 @@ def main():
     """, unsafe_allow_html=True)
     
     # 탭 구성
-    tab1, tab2 = st.tabs(["🚀 챌린지 참여", "🔧 관리자 대시보드"])
+    tab1, tab2, tab3 = st.tabs(["🏠 홈", "🚀 챌린지", "🔧 관리자"])
     
     with tab1:
+        home_page()
+
+    with tab2:
         challenge_page()
     
-    with tab2:
+    with tab3:
         admin_dashboard()
 
+    # 하단 배너
+    st.markdown("""
+    <div style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(41, 128, 185, 0.95));
+        backdrop-filter: blur(10px);
+        padding: 15px 0;
+        text-align: center;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+    ">
+        <div style="font-weight: 600; margin-bottom: 5px;">푸드테크 솔루션 연구실</div>
+        <div style="opacity: 0.9;">Food Tech Solution Laboratory</div>
+        <div style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
+            © 2025 Food Tech Lab. 본 챌린지는 연구 목적으로 개발되었습니다.
+        </div>
+    </div>
+    
+    <!-- 하단 배너 공간 확보를 위한 여백 -->
+    <div style="height: 120px;"></div>
+    """, unsafe_allow_html=True)
+
+def home_page():
+    """홈 페이지 - 두믈리에 챌린지 소개"""
+    st.markdown("""
+        <div style="background: rgba(52, 152, 219, 0.05); padding: 30px; border-radius: 20px; border: 2px solid rgba(52, 152, 219, 0.1); margin: 20px 0;">
+            <h3 style="color: #2980b9; margin-bottom: 20px;">🥛 두믈리에 챌린지란?</h3>
+            <p style="font-size: 18px; line-height: 1.8; color: #2c3e50;">
+                <strong>두믈리에 챌린지</strong>는 네 가지 다른 브랜드의 두유를 시음하고 
+                각각의 맛 특성을 평가한 후, 어떤 브랜드인지 맞춰보는 
+                재미있는 블라인드 테스트입니다.
+            </p>
+            <p style="font-size: 16px; line-height: 1.6; color: #34495e; margin-top: 20px;">
+                당신의 미각은 얼마나 정확할까요? 진정한 <strong style="color: #2980b9;">두믈리에(두유 소믈리에)</strong>가 되어보세요!
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # 참여 방법 안내
+    st.markdown("""
+    <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid rgba(52, 152, 219, 0.1); margin: 30px 0;">
+        <h3 style="color: #2980b9; text-align: center; margin-bottom: 25px;">📋 참여 방법</h3>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # 단계별 안내
+    step_cols = st.columns(4)
+    
+    steps = [
+        {"icon": "📝", "title": "참여자 정보 입력", "desc": "이름, 성별, 연령, 소속을 입력합니다"},
+        {"icon": "👀", "title": "브랜드 확인", "desc": "네 가지 브랜드의 맛 프로필을 확인합니다"},
+        {"icon": "👅", "title": "시음 평가", "desc": "각 두유의 맛을 평가하고 브랜드를 선택합니다"},
+        {"icon": "🎉", "title": "결과 확인", "desc": "평가 결과를 확인하고 제출합니다"}
+    ]
+
+    for i, (col, step) in enumerate(zip(step_cols, steps)):
+            with col:
+                st.markdown(f"""
+                <div style="
+                    background: white; 
+                    padding: 25px 15px; 
+                    border-radius: 15px; 
+                    text-align: center; 
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                    border: 2px solid rgba(52, 152, 219, 0.1);
+                    height: 180px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                ">
+                    <div style="font-size: 40px;">{step['icon']}</div>
+                    <div style="color: #2980b9; font-weight: 600; font-size: 16px; margin: 10px 0;">
+                        Step {i+1}<br>{step['title']}
+                    </div>
+                    <div style="color: #7f8c8d; font-size: 13px; line-height: 1.4;">
+                        {step['desc']}
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                
 def challenge_page():
     """챌린지 참여 페이지"""
     # 세션 상태 초기화
