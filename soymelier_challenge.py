@@ -643,29 +643,37 @@ def main():
     </div>
     
     <style>
-    /* 배너를 콘텐츠 흐름 안에 두고, 화면 하단에 닿으면 붙도록 */
+    /* 🔧 Streamlit이 기본으로 주는 아래쪽 패딩/여백 제거 */
+    html, body { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+    section[data-testid="stMain"] .block-container { padding-bottom: 0 !important; }
+    div[data-testid="stAppViewContainer"] main { padding-bottom: 0 !important; }
+    
+    /* 배너가 화면 하단에 닿으면 붙도록(sticky) */
     .bottom-banner-wrap{
       position: sticky;
       bottom: 0;
       z-index: 1000;
+      margin: 0 !important;
     }
     
-    /* 전체 화면 너비로 “풀 블리드” (컨텐츠 폭 제약 해제) */
+    /* 전체 너비 꽉 채우기 + 둥근 모서리/그림자 제거로 하단에 딱 맞게 */
     .bottom-banner{
       background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(41, 128, 185, 0.95));
       backdrop-filter: blur(10px);
-      padding: 15px 0;
+      padding: 16px 0;
       text-align: center;
       color: white;
       font-size: 0.9rem;
       font-weight: 500;
       border-top: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-      width: 100vw;                         /* 콘텐츠 영역 밖까지 확장 */
-      margin-left: calc(50% - 50vw);        /* 가운데 기준으로 좌우 풀 */
+      width: 100vw;                      /* 화면 너비 전체 */
+      margin-left: calc(50% - 50vw);     /* 좌우 풀블리드 */
+      border-radius: 0;                  /* 하단에 딱 붙게 */
+      box-shadow: none;                  /* 하단에 그림자/여백처럼 보이는 것 제거 */
     }
     </style>
     """, unsafe_allow_html=True)
+
 
 
 def home_page():
