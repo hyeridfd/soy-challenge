@@ -9,6 +9,8 @@ import json
 import os
 import textwrap
 import pytz
+import streamlit.components.v1 as components
+
 PLOTLY_CONFIG = {"displayModeBar": False, "displaylogo": False, "responsive": True}
 
 # 페이지 설정
@@ -654,6 +656,18 @@ def main():
     with tab3:
         admin_dashboard()
 
+    # ← 여기 아래에 추가
+    if st.session_state.get("jump_to_challenge"):
+        components.html("""
+            <script>
+            const tabs = window.parent.document.querySelectorAll('[data-baseweb="tab"]');
+            let target = -1;
+            tabs.forEach((el, i) => { if (el.innerText.includes('🚀 챌린지')) target = i; });
+            if (target >= 0) tabs[target].click();
+            </script>
+        """, height=0, width=0)
+        st.session_state["jump_to_challenge"] = False
+        
     # 하단 배너 (sticky, 겹침/그림자 없음, 실제 여백)
     st.markdown("""
     <div class="bottom-banner-wrap">
@@ -798,9 +812,10 @@ def home_page():
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if st.button("🚀 챌린지 시작하기", key="home_start_challenge", use_container_width=True):
-            st.session_state.nav = "🚀 챌린지"  # ← 여기!
+            st.session_state["jump_to_challenge"] = True
             st.session_state.step = 1
             st.rerun()
+
 
 
 def challenge_page():
