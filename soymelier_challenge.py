@@ -854,7 +854,7 @@ def challenge_page():
                     st.markdown(f"""
                     <div class="brand-card">
                         <h3 class="brand-name">{brand}</h3>
-                        <p class="brand-description">{BRANDS[brand]["description"]}</p>
+                        #<p class="brand-description">{BRANDS[brand]["description"]}</p>
                     </div>
                     """, unsafe_allow_html=True)
                     
