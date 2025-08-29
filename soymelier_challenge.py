@@ -797,9 +797,9 @@ def home_page():
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if st.button("🚀 챌린지 시작하기", key="home_start_challenge", use_container_width=True):
+            st.session_state.current_page = 'challenge'
             st.session_state.step = 1
             st.rerun()
-            # 사용자에게 챌린지 탭 클릭을 안내
 
 def challenge_page():
     """챌린지 참여 페이지"""
