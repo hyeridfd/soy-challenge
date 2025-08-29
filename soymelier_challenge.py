@@ -1029,6 +1029,11 @@ def challenge_page():
             
             if all_completed and not has_duplicates:
                 st.success("🎉 모든 두유 평가가 완료되었습니다!")
+            elif not all_completed:
+                    st.warning("⚠️ 모든 두유의 브랜드를 선택해주세요.")
+
+            elif has_duplicates:
+                    st.error("❌ 중복된 브랜드가 선택되었습니다. 각 브랜드는 한 번만 선택할 수 있습니다.")
             # 완료/경고 메시지 아래쪽 버튼들 ↓ 이 블록으로 교체
             col_prev, col_next = st.columns([1, 1])
 
