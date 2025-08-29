@@ -427,19 +427,15 @@ st.markdown("""
 # 네 가지 두유 브랜드 정보
 BRANDS = {
     "A": {
-        #"description": "100% 국산 약콩을 통째로, 콩 본연의 건강한 맛",
         "taste_profile": {"진함": 4, "단맛": 1}
     },
-    "C": {
-        #"description": "원액 두유 99.9%, 건강하고 고소한 맛",
-        "taste_profile": {"진함": 1, "단맛": 2}
-    },
     "B": {
-        #"description": "국내산 검은콩, 검은콩의 고소하고 진한 맛",
         "taste_profile": {"진함": 3, "단맛": 4}
     },
+    "C": {
+        "taste_profile": {"진함": 1, "단맛": 2}
+    },
     "D": {
-        #"description": "오랜 역사와 대중성, 균형 잡히고 친숙한 부드러운 맛",
         "taste_profile": {"진함": 2, "단맛": 3}
     }
 }
