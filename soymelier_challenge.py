@@ -1029,29 +1029,29 @@ def challenge_page():
             
             if all_completed and not has_duplicates:
                 st.success("🎉 모든 두유 평가가 완료되었습니다!")
-                # 완료/경고 메시지 아래쪽 버튼들 ↓ 이 블록으로 교체
-                col_prev, col_next = st.columns([1, 1])
+            # 완료/경고 메시지 아래쪽 버튼들 ↓ 이 블록으로 교체
+            col_prev, col_next = st.columns([1, 1])
 
-                with col_prev:
-                    if st.button("⬅️ 이전 단계로", key="step3_prev", use_container_width=True):
-                        st.session_state.step = 2
+            with col_prev:
+                if st.button("⬅️ 이전 단계로", key="step3_prev", use_container_width=True):
+                    st.session_state.step = 2
+                    st.rerun()
+
+            with col_next:
+                if all_completed and not has_duplicates:
+                    if st.button("평가 완료하기 ➡️", key="step3_complete", use_container_width=True):
+                        for sample in samples:
+                            st.session_state.taste_evaluations[sample] = {
+                                "진함": st.session_state[f"{sample}_cleanness"],
+                                "단맛": st.session_state[f"{sample}_sweetness"],
+                                "선택브랜드": st.session_state[f"{sample}_brand"]
+                            }
+                        st.session_state.step = 4
                         st.rerun()
-
-                with col_next:
-                    if all_completed and not has_duplicates:
-                        if st.button("평가 완료하기 ➡️", key="step3_complete", use_container_width=True):
-                            for sample in samples:
-                                st.session_state.taste_evaluations[sample] = {
-                                    "진함": st.session_state[f"{sample}_cleanness"],
-                                    "단맛": st.session_state[f"{sample}_sweetness"],
-                                    "선택브랜드": st.session_state[f"{sample}_brand"]
-                                }
-                            st.session_state.step = 4
-                            st.rerun()
-                    elif not all_completed:
-                        st.warning("⚠️ 모든 두유의 브랜드를 선택해주세요.")
-                    elif has_duplicates:
-                        st.error("❌ 중복된 브랜드가 선택되었습니다. 각 브랜드는 한 번만 선택할 수 있습니다.")
+                elif not all_completed:
+                    st.warning("⚠️ 모든 두유의 브랜드를 선택해주세요.")
+                elif has_duplicates:
+                    st.error("❌ 중복된 브랜드가 선택되었습니다. 각 브랜드는 한 번만 선택할 수 있습니다.")
 
         
         # 4단계: 결과 제출
