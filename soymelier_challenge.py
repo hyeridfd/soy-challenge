@@ -1096,7 +1096,7 @@ def challenge_page():
                     st.session_state.step = 3
                     st.rerun()
 
-           with col_submit:
+            with col_submit:
                 if st.button("➡️ 최종 제출", key="step4_submit", use_container_width=True):
                     # 저장할 데이터 준비
                     kst = pytz.timezone('Asia/Seoul')
