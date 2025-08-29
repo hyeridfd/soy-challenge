@@ -792,6 +792,15 @@ def home_page():
     cards.append("</div>")
     st.markdown("".join(cards), unsafe_allow_html=True)
 
+    # 챌린지 시작하기 버튼 추가
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("🚀 챌린지 시작하기", key="home_start_challenge", use_container_width=True):
+            # 사용자에게 챌린지 탭 클릭을 안내
+            #st.success("위쪽의 '🚀 챌린지' 탭을 클릭해서 챌린지를 시작하세요!")
+            #st.balloons()  # 시각적 효과 추가
+
 
 def challenge_page():
     """챌린지 참여 페이지"""
