@@ -641,18 +641,28 @@ def main():
         <p class="subtitle">자연의 맛을 찾아가는 특별한 여행</p>
     </div>
     """, unsafe_allow_html=True)
-    
-    # 탭 구성
-    tab1, tab2, tab3 = st.tabs(["🏠 홈", "🚀 챌린지", "🔧 관리자"])
-    
-    with tab1:
-        home_page()
 
-    with tab2:
+    # --- 네비게이션 (탭 대신 라디오) ---
+    if "nav" not in st.session_state:
+        st.session_state.nav = "🏠 홈"
+
+    nav_options = ["🏠 홈", "🚀 챌린지", "🔧 관리자"]
+    nav = st.radio(
+        "navigation",
+        nav_options,
+        index=nav_options.index(st.session_state.nav),
+        horizontal=True,
+        label_visibility="collapsed",
+        key="nav",
+    )
+
+    if nav == "🏠 홈":
+        home_page()
+    elif nav == "🚀 챌린지":
         challenge_page()
-    
-    with tab3:
+    else:
         admin_dashboard()
+
 
     # 하단 배너 (sticky, 겹침/그림자 없음, 실제 여백)
     st.markdown("""
@@ -793,13 +803,15 @@ def home_page():
     st.markdown("".join(cards), unsafe_allow_html=True)
 
     # 챌린지 시작하기 버튼 추가
+   # 챌린지 시작하기 버튼
     st.markdown("<br><br>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if st.button("🚀 챌린지 시작하기", key="home_start_challenge", use_container_width=True):
-            st.session_state.current_page = 'challenge'
+            st.session_state.nav = "🚀 챌린지"  # ← 여기!
             st.session_state.step = 1
             st.rerun()
+
 
 def challenge_page():
     """챌린지 참여 페이지"""
