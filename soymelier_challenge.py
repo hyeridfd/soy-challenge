@@ -641,28 +641,18 @@ def main():
         <p class="subtitle">자연의 맛을 찾아가는 특별한 여행</p>
     </div>
     """, unsafe_allow_html=True)
-
-    # --- 네비게이션 (탭 대신 라디오) ---
-    if "nav" not in st.session_state:
-        st.session_state.nav = "🏠 홈"
-
-    nav_options = ["🏠 홈", "🚀 챌린지", "🔧 관리자"]
-    nav = st.radio(
-        "navigation",
-        nav_options,
-        index=nav_options.index(st.session_state.nav),
-        horizontal=True,
-        label_visibility="collapsed",
-        key="nav",
-    )
-
-    if nav == "🏠 홈":
+    
+    # 탭 구성
+    tab1, tab2, tab3 = st.tabs(["🏠 홈", "🚀 챌린지", "🔧 관리자"])
+    
+    with tab1:
         home_page()
-    elif nav == "🚀 챌린지":
-        challenge_page()
-    else:
-        admin_dashboard()
 
+    with tab2:
+        challenge_page()
+    
+    with tab3:
+        admin_dashboard()
 
     # 하단 배너 (sticky, 겹침/그림자 없음, 실제 여백)
     st.markdown("""
