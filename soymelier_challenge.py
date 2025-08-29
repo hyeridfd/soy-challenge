@@ -1131,7 +1131,7 @@ def challenge_page():
                             margin: 20px 0 10px;
                             padding: 16px;
                         ">
-                            제출이 완료되었습니다! 참여해주셔서 감사합니다.
+                            제출이 완료되었습니다
                         </div>
                         """, unsafe_allow_html=True)
             
@@ -1160,7 +1160,7 @@ def challenge_page():
             
                         # 요약 배지
                         if wrong_count == 0:
-                            st.success("🏆 네 개 모두 정답! 진정한 두믈리에입니다!")
+                            st.success("🏆 4개의 두유 브랜드를 모두 맞추셨습니다. 진정한 두믈리에입니다!")
                             st.balloons()
                         else:
                             st.info(f"결과 요약: {correct_count}/4개 정답, {wrong_count}개 오답")
@@ -1187,7 +1187,7 @@ def challenge_page():
 
 def admin_dashboard():
     """관리자 대시보드"""
-    #st.markdown('<div class="section-header">👑 관리자 대시보드</div>', unsafe_allow_html=True)
+    #st.markdown('<div class="section-header">🔧 관리자 대시보드</div>', unsafe_allow_html=True)
     
     # 관리자 인증
     admin_password = st.text_input("관리자 비밀번호", type="password", key="admin_password")
