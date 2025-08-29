@@ -1087,102 +1087,91 @@ def challenge_page():
             df = pd.DataFrame(results_data)
             st.dataframe(df, use_container_width=True)
             
-            # 제출 버튼
-            # 결과 테이블 아래 '제출' 버튼 부분 ↓ 이 블록으로 교체
+            # 결과 테이블 아래 버튼들 — 버튼은 열 안, 처리/표시는 전체 폭
+            submit_clicked = False  # 버튼 클릭 상태를 밖에서 받아두기
             col_prev, col_submit, col_reset = st.columns([1, 1, 1])
-
+            
             with col_prev:
                 if st.button("⬅️ 이전 단계", key="step4_prev", use_container_width=True):
                     st.session_state.step = 3
                     st.rerun()
-
+            
             with col_submit:
-                if st.button("➡️ 최종 제출", key="step4_submit", use_container_width=True):
-                    # 저장할 데이터 준비
-                    kst = pytz.timezone('Asia/Seoul')
-                    submit_data = [
-                        participant['name'],
-                        participant['gender'],
-                        participant['age'],
-                        participant['organization'],
-                        datetime.now(kst).strftime("%Y-%m-%d %H:%M:%S")
-                    ]
-                    for sample in SAMPLES:
-                        eval_data = st.session_state.taste_evaluations.get(sample, {
-                            "진함": "",
-                            "단맛": "",
-                            "선택브랜드": ""
-                        })
-                        submit_data.extend([
-                            eval_data.get('진함', ''),
-                            eval_data.get('단맛', ''),
-                            eval_data.get('선택브랜드', '')
-                        ])
-                    
-            if save_to_gsheet(submit_data):
-                # ✅ 저장 성공 메시지
-                st.markdown("""
-                <div style="
-                    width: 100%;
-                    text-align: center;
-                    font-size: 1.5rem;
-                    font-weight: 600;
-                    color: #2980b9;
-                    margin: 20px 0 10px;
-                    padding: 16px;
-                ">
-                    제출이 완료되었습니다
-                </div>
-                """, unsafe_allow_html=True)
-    
-                # 🔎 제출 즉시 정답/오답 피드백
-                correct_answers = {'1': 'A', '2': 'B', '3': 'C', '4': 'D'}  # 필요 시 수정
-                details = []
-                correct_count = 0
-                wrong_samples = []
-    
-                for sample in SAMPLES:
-                    chosen = st.session_state.taste_evaluations.get(sample, {}).get('선택브랜드', '')
-                    answer = correct_answers.get(sample, '')
-                    is_correct = (chosen == answer)
-                    if is_correct:
-                        correct_count += 1
-                    else:
-                        wrong_samples.append(f"{sample}번(정답 {answer}, 선택 {chosen or '미선택'})")
-                    details.append({
-                        "샘플": f"{sample}번",
-                        "정답": answer,
-                        "선택": chosen or "미선택",
-                        "결과": "✅ 정답" if is_correct else "❌ 오답"
-                    })
-    
-                wrong_count = len(SAMPLES) - correct_count
-    
-                # 요약 배지
-                if wrong_count == 0:
-                    st.success("🏆 4개의 두유 브랜드를 모두 맞추셨습니다. 진정한 두믈리에입니다!")
-                    st.balloons()
-                else:
-                    st.info(f"결과 요약: {correct_count}/4개 정답, {wrong_count}개 오답")
-    
-                # 오답이 무엇이었는지 간단 표시
-                if wrong_samples:
-                    st.markdown(
-                        "**오답 항목:** " + ", ".join(wrong_samples)
-                    )
-    
-                # (선택) 상세 표
-                st.dataframe(pd.DataFrame(details), use_container_width=True)
-    
-            else:
-                st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
-
-
+                submit_clicked = st.button("➡️ 최종 제출", key="step4_submit", use_container_width=True)
+            
             with col_reset:
                 if st.button("🔄 새로 시작", key="step4_reset", use_container_width=True):
                     for key in list(st.session_state.keys()):
                         del st.session_state[key]
                     st.rerun()
+            
+            # === 여기부터는 컬럼 밖: 전체 폭으로 표시됨 ===
+            if submit_clicked:
+                # 저장할 데이터 준비
+                kst = pytz.timezone('Asia/Seoul')
+                submit_data = [
+                    participant['name'],
+                    participant['gender'],
+                    participant['age'],
+                    participant['organization'],
+                    datetime.now(kst).strftime("%Y-%m-%d %H:%M:%S")
+                ]
+                for sample in SAMPLES:
+                    eval_data = st.session_state.taste_evaluations.get(sample, {
+                        "진함": "",
+                        "단맛": "",
+                        "선택브랜드": ""
+                    })
+                    submit_data.extend([
+                        eval_data.get('진함', ''),
+                        eval_data.get('단맛', ''),
+                        eval_data.get('선택브랜드', '')
+                    ])
+            
+                if save_to_gsheet(submit_data):
+                    # 저장 성공 안내 (전체 폭)
+                    st.markdown("""
+                    <div style="width:100%;text-align:center;font-size:1.5rem;font-weight:600;color:#2980b9;margin:20px 0 10px;padding:16px;">
+                        제출이 완료되었습니다! 참여해주셔서 감사합니다.
+                    </div>
+                    """, unsafe_allow_html=True)
+            
+                    # 제출 즉시 정답/오답 피드백
+                    correct_answers = {'1': 'A', '2': 'B', '3': 'C', '4': 'D'}  # 필요 시 수정
+                    details = []
+                    correct_count = 0
+                    wrong_samples = []
+            
+                    for sample in SAMPLES:
+                        chosen = st.session_state.taste_evaluations.get(sample, {}).get('선택브랜드', '')
+                        answer = correct_answers.get(sample, '')
+                        is_correct = (chosen == answer)
+                        if is_correct:
+                            correct_count += 1
+                        else:
+                            wrong_samples.append(f"{sample}번(정답 {answer}, 선택 {chosen or '미선택'})")
+                        details.append({
+                            "샘플": f"{sample}번",
+                            "정답": answer,
+                            "선택": chosen or "미선택",
+                            "결과": "✅ 정답" if is_correct else "❌ 오답"
+                        })
+            
+                    wrong_count = len(SAMPLES) - correct_count
+            
+                    if wrong_count == 0:
+                        st.success("🏆 4개의 두유 브랜드를 모두 맞추셨습니다. 진정한 두믈리에입니다!")
+                        st.balloons()
+                    else:
+                        st.info(f"결과 요약: {correct_count}/4개 정답, {wrong_count}개 오답")
+            
+                    if wrong_samples:
+                        st.markdown("**오답 항목:** " + ", ".join(wrong_samples))
+            
+                    st.dataframe(pd.DataFrame(details), use_container_width=True)
+            
+                else:
+                    st.error("제출 중 오류가 발생했습니다. 다시 시도해주세요.")
 
 
 def admin_dashboard():
