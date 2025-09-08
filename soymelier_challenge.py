@@ -872,28 +872,32 @@ def challenge_page():
             
             # 브랜드 카드들을 2x2 그리드로 배치
             col1, col2 = st.columns(2)
-            brand_list = list(BRANDS.keys())
+            brand_list = sorted(BRANDS.keys())
             
-            for i, brand in enumerate(brand_list):
-                with col1 if i % 2 == 0 else col2:
-                    st.markdown(f"""
-                    <div class="brand-card">
-                        <h3 class="brand-name">{brand}</h3>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
-                    fig = create_modern_taste_profile(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
-                    st.plotly_chart(fig, use_container_width=True, config=PLOTLY_CONFIG)
-
-                    # 맛 프로필 바 차트
-                    cleanness = BRANDS[brand]["taste_profile"]["진함"]
-                    sweetness = BRANDS[brand]["taste_profile"]["단맛"]
-                    
-                    st.markdown("**맛 특성:**")
-                    st.markdown(f"단맛: {'🔵' * sweetness}{'⚪' * (4-sweetness)} ({sweetness}/4)")
-                    st.markdown(f"진함: {'🔵' * cleanness}{'⚪' * (4-cleanness)} ({cleanness}/4)")
-                    if i < len(brand_list) - 1:
-                        st.markdown("---")
+            for i in range(0, len(brand_list), 2):
+                cols = st.columns(2)
+                for j in range(2):
+                    if i + j < len(brand_list):
+                        brand = brand_list[i + j]
+                        with cols[j]:
+                            st.markdown(f"""
+                            <div class="brand-card">
+                                <h3 class="brand-name">{brand}</h3>
+                            </div>
+                            """, unsafe_allow_html=True)
+            
+                            fig = create_modern_taste_profile(BRANDS[brand]["taste_profile"], f"{brand} 맛 프로필")
+                            st.plotly_chart(fig, use_container_width=True, config=PLOTLY_CONFIG)
+            
+                            cleanness = BRANDS[brand]["taste_profile"]["진함"]
+                            sweetness = BRANDS[brand]["taste_profile"]["단맛"]
+            
+                            st.markdown("**맛 특성:**")
+                            st.markdown(f"단맛: {'🔵' * sweetness}{'⚪' * (4-sweetness)} ({sweetness}/4)")
+                            st.markdown(f"진함: {'🔵' * cleanness}{'⚪' * (4-cleanness)} ({cleanness}/4)")
+            
+                            if not (i == len(brand_list) - 2 and j == 1):
+                                st.markdown("---")
 
             display_brand_rankings()
             
